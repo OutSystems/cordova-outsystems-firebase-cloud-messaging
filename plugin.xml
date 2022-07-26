@@ -97,9 +97,6 @@
     </config-file>
 
     <source-file src="src/android/com/outsystems/firebase/cloudmessaging/OSFirebaseCloudMessaging.kt" target-dir="app/src/main/kotlin/com/outsystems/firebase/cloudmessaging"/>
-    <resource-file src="src/android/lib/OSCordova-Android.aar" target="libs/OSCordova-Android.aar" />
-    <resource-file src="src/android/lib/OSFirebaseMessagingLib.aar" target="libs/OSFirebaseMessagingLib.aar" />
-    <framework src="com.google.code.gson:gson:2.8.8" />
     <framework src="src/android/com/outsystems/firebase/cloudmessaging/build.gradle" custom="true" type="gradleReference" />
 
   </platform>

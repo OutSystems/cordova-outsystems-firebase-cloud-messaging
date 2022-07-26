@@ -11,32 +11,28 @@ buildscript {
     }
 }
 
-allprojects {
+repositories {
+    google()
+    mavenCentral()
     repositories {
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-repositories{
-    jcenter()
-    flatDir {
-        dirs 'src/main/libs'
+        maven { url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1' }
     }
 }
 
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-    implementation (name:'OSCordova-Android', ext:'aar')
-    implementation (name:'OSFirebaseMessagingLib', ext:'aar')
+    implementation("com.github.outsystems:oscore-android:1.1.0@aar")
+    implementation("com.github.outsystems:oscordova-android:1.1.0@aar")
+    implementation("com.github.outsystems:osfirebasemessaging-android:0.0.3@aar")
 
-    implementation 'com.github.OutSystems.os-plugins-base-interface:oscore-android:core-0.0.5@aar'
+    implementation("com.google.code.gson:gson:2.8.9")
 
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
-    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation("com.google.firebase:firebase-messaging-ktx")
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
 
     def roomVersion = "2.4.2"
     implementation("androidx.room:room-runtime:$roomVersion")

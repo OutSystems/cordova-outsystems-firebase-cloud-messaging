@@ -1,15 +1,13 @@
 package com.outsystems.firebase.cloudmessaging;
 
-import android.content.Intent
 import android.content.Context
+import android.content.Intent
 import com.outsystems.plugins.firebasemessaging.controller.*
 import com.outsystems.plugins.firebasemessaging.model.FirebaseMessagingError
 import com.outsystems.plugins.firebasemessaging.model.database.DatabaseManager
 import com.outsystems.plugins.firebasemessaging.model.database.DatabaseManagerInterface
 import com.outsystems.plugins.oscordova.CordovaImplementation
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.Default
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaInterface
 import org.apache.cordova.CordovaWebView
@@ -17,6 +15,7 @@ import org.json.JSONArray
 
 class OSFirebaseCloudMessaging : CordovaImplementation() {
 
+    override var callbackContext: CallbackContext? = null
     private lateinit var notificationManager : FirebaseNotificationManagerInterface
     private lateinit var messagingManager : FirebaseMessagingManagerInterface
     private lateinit var controller : FirebaseMessagingController
@@ -58,8 +57,8 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     }
 
     private val controllerDelegate = object: FirebaseMessagingInterface {
-        override fun callback(result: String, callbackId: String) {
-            sendPluginResult(result, callbackId = callbackId)
+        override fun callback(result: String) {
+            sendPluginResult(result)
         }
         override fun callbackNotifyApp(event: String, result: String) {
             val js = "cordova.plugins.OSFirebaseCloudMessaging.fireEvent(" +
@@ -71,14 +70,14 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
                 eventQueue.add(js)
             }
         }
-        override fun callbackSuccess(callbackId: String) {
-            sendPluginResult(true, callbackId = callbackId)
+        override fun callbackSuccess() {
+            sendPluginResult(true)
         }
-        override fun callbackBadgeNumber(number: Int, callbackId: String) {
+        override fun callbackBadgeNumber(number: Int) {
             //Does nothing on android
         }
-        override fun callbackError(error: FirebaseMessagingError, callbackId: String) {
-            sendPluginResult(null, Pair(formatErrorCode(error.code), error.description), callbackId)
+        override fun callbackError(error: FirebaseMessagingError) {
+            sendPluginResult(null, Pair(formatErrorCode(error.code), error.description))
         }
     }
 
@@ -91,53 +90,53 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     }
 
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
-        super.execute(action, args, callbackContext)
-        val callbackId = callbackContext.callbackId
-        CoroutineScope(Default).launch {
+        this.callbackContext = callbackContext
+        val result = runBlocking {
             when (action) {
                 "ready" -> {
                     ready()
                 }
                 "getToken" -> {
-                    controller.getToken(callbackId)
+                    controller.getToken()
                 }
                 "subscribe" -> {
                     args.getString(0)?.let { topic ->
-                        controller.subscribe(topic, callbackId)
+                        controller.subscribe(topic)
                     }
                 }
                 "unsubscribe" -> {
                     args.getString(0)?.let { topic ->
-                        controller.unsubscribe(topic, callbackId)
+                        controller.unsubscribe(topic)
                     }
                 }
                 "registerDevice" -> {
-                    controller.registerDevice(callbackId)
+                    controller.registerDevice()
                 }
                 "unregisterDevice" -> {
-                    controller.unregisterDevice(callbackId)
+                    controller.unregisterDevice()
                 }
                 "clearNotifications" -> {
-                    clearNotifications(callbackId)
+                    clearNotifications()
                 }
                 "sendLocalNotification" -> {
-                    sendLocalNotification(args, callbackId)
+                    sendLocalNotification(args)
                 }
                 "setBadge" -> {
-                    setBadgeNumber(callbackId)
+                    setBadgeNumber()
                 }
                 "getBadge" -> {
-                    getBadgeNumber(callbackId)
+                    getBadgeNumber()
                 }
                 "getPendingNotifications" -> {
                     args.getBoolean(0).let { clearFromDatabase ->
-                        controller.getPendingNotifications(clearFromDatabase, callbackId)
+                        controller.getPendingNotifications(clearFromDatabase)
                     }
                 }
-                else -> {}
+                else -> false
             }
+            true
         }
-        return true
+        return result
     }
 
     override fun onRequestPermissionResult(requestCode: Int,
@@ -151,25 +150,25 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         return false
     }
 
-    private fun getBadgeNumber(callbackId: String) {
-        controller.getBadgeNumber(callbackId)
+    private fun getBadgeNumber() {
+        controller.getBadgeNumber()
     }
 
-    private fun sendLocalNotification(args : JSONArray, callbackId: String) {
+    private fun sendLocalNotification(args : JSONArray) {
         val badge = args.get(0).toString().toInt()
         val title = args.get(1).toString()
         val text = args.get(2).toString()
         val channelName = args.get(3).toString()
         val channelDescription = args.get(4).toString()
-        controller.sendLocalNotification(badge, title, text, null, channelName, channelDescription, callbackId)
+        controller.sendLocalNotification(badge, title, text, null, channelName, channelDescription)
     }
 
-    private fun clearNotifications(callbackId: String) {
-        controller.clearNotifications(callbackId)
+    private fun clearNotifications() {
+        controller.clearNotifications()
     }
 
-    private fun setBadgeNumber(callbackId: String) {
-        controller.setBadgeNumber(callbackId)
+    private fun setBadgeNumber() {
+        controller.setBadgeNumber()
     }
 
     private fun setupChannelNameAndDescription(){
