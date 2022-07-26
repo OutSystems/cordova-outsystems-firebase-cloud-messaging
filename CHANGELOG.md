@@ -8,8 +8,11 @@ The changes documented here do not include those from the original repository.
 
 ## [Released]
 
+## 26-07-2022
+- Added dependency on external libs. Changed methods to sync. (https://outsystemsrd.atlassian.net/browse/RMET-1480)
+
 ## 29-06-2022
-- Removed hook that adds swift support and added the plugin as dependecy. (https://outsystemsrd.atlassian.net/browse/RMET-1680)
+- Removed hook that adds swift support and added the plugin as dependency. (https://outsystemsrd.atlassian.net/browse/RMET-1680)
 
 ## [Version 1.0.0]
 
