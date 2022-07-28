@@ -11,7 +11,7 @@ public protocol NotificationManagerProtocol {
     
     /// Fetches the store notifications on Core Data.
     /// - Returns: An array of notifications or an error, in case of failure.
-    func fetchNotifications() -> Result<[OSNotification], Error>
+    func fetchNotifications() -> Result<[OSFCMNotification], Error>
     
     /// Sends a local notification on to the Notification Center.
     /// - Parameters:
@@ -65,8 +65,8 @@ public final class NotificationManager: NSObject {
     /// Deletes all notifications provided by input from Core Data manager.
     /// - Parameter notifications: Notifications to remove.
     /// - Returns: A boolean indicating the success of the operation or an error, in case of failure.
-    public func deletePendingNotifications(_ notifications: [OSNotification]) -> Result<Bool, Error> {
-        let fetchRequest: NSFetchRequest<OSNotification> = OSNotification.fetchRequest()
+    public func deletePendingNotifications(_ notifications: [OSFCMNotification]) -> Result<Bool, Error> {
+        let fetchRequest: NSFetchRequest<OSFCMNotification> = OSFCMNotification.fetchRequest()
         do {
             let fetchRequestResults = try self.coreDataManager.fetch(fetchRequest)
             let filtered = fetchRequestResults.filter({ notifications.contains($0) })
@@ -119,7 +119,7 @@ extension NotificationManager: NotificationManagerProtocol {
         decoder.userInfo[CodingUserInfoKey.managedObjectContext] = self.coreDataManager.context()
         do {
             let notificationData = try JSONSerialization.data(withJSONObject: notificationDict)
-            _ = try decoder.decode(OSNotification.self, from: notificationData)
+            _ = try decoder.decode(OSFCMNotification.self, from: notificationData)
             
             try self.coreDataManager.saveContext()
         } catch {
@@ -131,8 +131,8 @@ extension NotificationManager: NotificationManagerProtocol {
     
     /// Fetches the store notifications on Core Data.
     /// - Returns: An array of notifications or an error, in case of failure.
-    public func fetchNotifications() -> Result<[OSNotification], Error> {
-        let fetchRequest: NSFetchRequest<OSNotification> = OSNotification.fetchRequest()
+    public func fetchNotifications() -> Result<[OSFCMNotification], Error> {
+        let fetchRequest: NSFetchRequest<OSFCMNotification> = OSFCMNotification.fetchRequest()
         do {
             let notifications = try self.coreDataManager.fetch(fetchRequest)
             return .success(notifications)            

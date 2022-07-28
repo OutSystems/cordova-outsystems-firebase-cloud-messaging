@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Released]
 
+## 28-07-2022
+- Renamed classes to avoid incompatibility. (https://outsystemsrd.atlassian.net/browse/RMET-1743)
+
 ## 26-07-2022
 - Added dependency on external libs. Changed methods to sync. (https://outsystemsrd.atlassian.net/browse/RMET-1480)
 

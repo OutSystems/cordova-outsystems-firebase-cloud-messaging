@@ -250,10 +250,10 @@ extension FirebaseMessagingApplicationDelegate {
            let extraData = userInfo[JSONKeys.extraDataList] as? [NotificationDictionary] {
             
             let notificationDict: [String: Any] = [
-                OSNotification.CodingKeys.messageID.rawValue: messageID,
-                OSNotification.CodingKeys.timeToLive.rawValue: timeToLive,
-                OSNotification.CodingKeys.extraDataList.rawValue: extraData,
-                OSNotification.CodingKeys.timeStamp.rawValue: Date().millisecondsSince1970
+                OSFCMNotification.CodingKeys.messageID.rawValue: messageID,
+                OSFCMNotification.CodingKeys.timeToLive.rawValue: timeToLive,
+                OSFCMNotification.CodingKeys.extraDataList.rawValue: extraData,
+                OSFCMNotification.CodingKeys.timeStamp.rawValue: Date().millisecondsSince1970
             ]
             _ = notificationManager.insertNotification(notificationDict: notificationDict)
         }

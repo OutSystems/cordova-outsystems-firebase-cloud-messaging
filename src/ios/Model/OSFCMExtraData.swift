@@ -1,8 +1,8 @@
 import CoreData
 
 /// Core Data Model that stores the dynamic properties associated with a specific Notification.
-@objc(OSExtraData)
-public class OSExtraData: NSManagedObject, Codable {
+@objc(OSFCMExtraData)
+public class OSFCMExtraData: NSManagedObject, Codable {
     
     /// Constructor method inherited from `NSManagedObject`.
     /// - Parameters:
@@ -20,7 +20,7 @@ public class OSExtraData: NSManagedObject, Codable {
     init(key: String,
          value: String,
          context: NSManagedObjectContext) {
-        super.init(entity: NSEntityDescription.entity(forEntityName: "OSExtraData", in: context)!, insertInto: context)
+        super.init(entity: NSEntityDescription.entity(forEntityName: "OSFCMExtraData", in: context)!, insertInto: context)
         self.key = key
         self.value = value
     }

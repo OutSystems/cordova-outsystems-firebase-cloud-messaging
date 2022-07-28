@@ -43,8 +43,8 @@
     <source-file src="src/ios/Managers/MessagingManager.swift" />
     <source-file src="src/ios/Managers/NotificationManager.swift" />
 
-    <source-file src="src/ios/Model/OSExtraData.swift" />
-    <source-file src="src/ios/Model/OSNotification.swift" />
+    <source-file src="src/ios/Model/OSFCMExtraData.swift" />
+    <source-file src="src/ios/Model/OSFCMNotification.swift" />
 
     <source-file src="src/ios/Protocols/FirebaseMessagingProtocol.swift" />
     <source-file src="src/ios/Protocols/MessagingProtocol.swift" />
