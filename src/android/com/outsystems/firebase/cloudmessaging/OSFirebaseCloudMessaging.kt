@@ -2,6 +2,7 @@ package com.outsystems.firebase.cloudmessaging;
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import com.outsystems.osnotificationpermissions.OSNotificationPermissions
 import com.outsystems.plugins.firebasemessaging.controller.*
 import com.outsystems.plugins.firebasemessaging.model.FirebaseMessagingError
@@ -9,6 +10,7 @@ import com.outsystems.plugins.firebasemessaging.model.database.DatabaseManager
 import com.outsystems.plugins.firebasemessaging.model.database.DatabaseManagerInterface
 import com.outsystems.plugins.oscordova.CordovaImplementation
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaInterface
 import org.apache.cordova.CordovaWebView
@@ -30,6 +32,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         private const val CHANNEL_NAME_KEY = "notification_channel_name"
         private const val CHANNEL_DESCRIPTION_KEY = "notification_channel_description"
         private const val ERROR_FORMAT_PREFIX = "OS-PLUG-FCMS-"
+        private const val NOTIFICATION_PERMISSION = "android.permission.POST_NOTIFICATIONS"
         private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 123123
     }
 
@@ -148,12 +151,20 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
 
         when(requestCode) {
             NOTIFICATION_PERMISSION_REQUEST_CODE -> {
-                GlobalScope.async {
-                    controller.registerDevice()
+
+                val wasGranted = permissions.isNotEmpty() &&
+                        grantResults.isNotEmpty() &&
+                        permissions[0] == NOTIFICATION_PERMISSION &&
+                        grantResults[0] == 0
+
+                if(wasGranted) {
+                    CoroutineScope(IO).launch {
+                        controller.registerDevice()
+                    }
                 }
-            }
-            else -> {
-                //Does nothing
+                else {
+                    controllerDelegate.callbackError(FirebaseMessagingError.SUBSCRIPTION_ERROR)
+                }
             }
         }
     }
@@ -169,7 +180,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
 
     private suspend fun registerWithPermission() {
         val hasPermission = notificationPermission.hasNotificationPermission(this)
-        if(hasPermission) {
+        if(Build.VERSION.SDK_INT < 33 || hasPermission) {
             controller.registerDevice()
         }
         else {
