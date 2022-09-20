@@ -32,7 +32,6 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         private const val CHANNEL_NAME_KEY = "notification_channel_name"
         private const val CHANNEL_DESCRIPTION_KEY = "notification_channel_description"
         private const val ERROR_FORMAT_PREFIX = "OS-PLUG-FCMS-"
-        private const val NOTIFICATION_PERMISSION = "android.permission.POST_NOTIFICATIONS"
         private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 123123
     }
 
@@ -148,22 +147,10 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     override fun onRequestPermissionResult(requestCode: Int,
                                            permissions: Array<String>,
                                            grantResults: IntArray) {
-
         when(requestCode) {
             NOTIFICATION_PERMISSION_REQUEST_CODE -> {
-
-                val wasGranted = permissions.isNotEmpty() &&
-                        grantResults.isNotEmpty() &&
-                        permissions[0] == NOTIFICATION_PERMISSION &&
-                        grantResults[0] == 0
-
-                if(wasGranted) {
-                    CoroutineScope(IO).launch {
-                        controller.registerDevice()
-                    }
-                }
-                else {
-                    controllerDelegate.callbackError(FirebaseMessagingError.SUBSCRIPTION_ERROR)
+                CoroutineScope(IO).launch {
+                    controller.registerDevice()
                 }
             }
         }
