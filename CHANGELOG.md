@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## 20-09-2022
+- Added permission request to receive notifications on Android API >= 33.
+
 ## [Version 1.0.2]
 
 ## 28-07-2022
