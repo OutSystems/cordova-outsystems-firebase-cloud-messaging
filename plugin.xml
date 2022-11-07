@@ -60,7 +60,6 @@
 		<source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
-    <framework src="src/ios/frameworks/OSCore.xcframework" embed="true" custom="true" />
 
     <dependency id="cordova-plugin-add-swift-support" url="https://github.com/OutSystems/cordova-plugin-add-swift-support.git#2.0.3-OS1"/>
 
@@ -70,6 +69,7 @@
         </config>
         <pods use-frameworks="true">
             <pod name="Firebase/Messaging" spec="~> 8.6.0" />
+            <pod name="OSCommonPluginLib" spec="1.0.0" />
         </pods>
     </podspec>
 

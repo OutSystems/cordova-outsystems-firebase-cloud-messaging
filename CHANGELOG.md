@@ -8,6 +8,11 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 08-11-2022
+- Fix: [iOS] Replace the old `OSCore` framework for the new `OSCommonPluginLib` pod.
+
+## [Version 1.0.4]
+
 ### 12-10-2022
 - Fix: [iOS] Rename the swizzled `appDelegate:didFinishLaunchingWithOptions:` method to something unique (https://outsystemsrd.atlassian.net/jira/software/c/projects/RMET/boards/893?selectedIssue=RPM-3153).
 

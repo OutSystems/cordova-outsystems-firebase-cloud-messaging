@@ -1,5 +1,5 @@
 import Foundation
-import OSCore
+import OSCommonPluginLib
 
 @objc(OSFirebaseCloudMessaging)
 class OSFirebaseCloudMessaging: CDVPlugin {
@@ -153,7 +153,7 @@ class OSFirebaseCloudMessaging: CDVPlugin {
 
 }
 
-// MARK: - OSCore's PlatformProtocol Methods
+// MARK: - OSCommonPluginLib's PlatformProtocol Methods
 extension OSFirebaseCloudMessaging: PlatformProtocol {
     func sendResult(result: String?, error: NSError?, callBackID: String) {
         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
