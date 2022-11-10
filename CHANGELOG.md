@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+[Unreleased]
+### 2022-11-10
+- Use fixed versions (https://outsystemsrd.atlassian.net/browse/RMET-2045).
+
 ## [Version 1.0.5]
 
 ### 08-11-2022
