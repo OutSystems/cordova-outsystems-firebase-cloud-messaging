@@ -6,16 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
-## [Unreleased]
-
-### 21-12-2022
-- Fix: [Android] Fixes clicking a notification without deeplink, when app in foreground (https://outsystemsrd.atlassian.net/browse/RMET-2114)
-
-### 16-12-2022
-- Feat: [iOS] Update iOS lib files in order to include the new Get APNs Token method (https://outsystemsrd.atlassian.net/browse/RMET-2054).
-- Replaced jcenter with more up to date mavenCentral [RMET-2036](https://outsystemsrd.atlassian.net/browse/RMET-2036)
-
-### 10-11-2022
+[Unreleased]
+### 2022-11-10
 - Use fixed versions (https://outsystemsrd.atlassian.net/browse/RMET-2045).
 
 ## [Version 1.0.5]
