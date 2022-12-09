@@ -17,6 +17,7 @@ repositories {
     repositories {
         maven { url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1' }
     }
+
 }
 
 apply plugin: 'kotlin-kapt'
@@ -24,7 +25,8 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation("com.github.outsystems:oscore-android:1.2.0@aar")
     implementation("com.github.outsystems:oscordova-android:1.2.0@aar")
-    implementation("com.github.outsystems:osfirebasemessaging-android:0.0.3@aar")
+    //implementation("com.github.outsystems:osfirebasemessaging-android:0.0.3@aar")
+    implementation fileTree(dir: 'libs', include: '*.aar')
     implementation("com.github.outsystems:osnotificationpermissions-android:0.0.4@aar")
 
     implementation("com.google.code.gson:gson:2.8.9")
