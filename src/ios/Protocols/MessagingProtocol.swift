@@ -4,9 +4,13 @@ public protocol MessagingProtocol {
     /// - Returns: Main topic.
     func getGeneralTopic() -> String
     
-    /// Returns the Firebase Cloud Messaging registration token. This token is obtained asynchronously.
+    /// Returns the token associated to the parameter `type`.
+    /// If `fcm` it returns the Firebase Cloud Messaging registration token.
+    /// If `apns` it returns  the Apple Push Notification service token.
+    ///  This token is obtained asynchronously.
     /// - Returns: Registration token.
-    func getToken() async throws -> String
+    /// - Parameter type: type of token to return. Can be `FCM` or `APNs`.
+    func getToken(of type: OSFCMTokenType) async throws -> String
     
     /// Deletes the Firebase cloud Messaging registration token. The deletion is made asynchronously.
     func deleteToken() async throws

@@ -64,7 +64,15 @@ class OSFirebaseCloudMessaging: CDVPlugin {
     func getToken(command: CDVInvokedUrlCommand) {
         self.callbackId = command.callbackId
         Task {
-            await self.plugin?.getToken()
+            await self.plugin?.getToken(ofType: .fcm)
+        }
+    }
+
+    @objc(getAPNsToken:)
+    func getAPNsToken(command: CDVInvokedUrlCommand) {
+        self.callbackId = command.callbackId
+        Task {
+            await self.plugin?.getToken(ofType: .apns)
         }
     }
     

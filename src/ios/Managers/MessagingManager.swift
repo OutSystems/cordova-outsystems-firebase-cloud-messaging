@@ -17,10 +17,24 @@ public class MessagingManager: MessagingProtocol {
         return "\(FirebaseApp.app()?.options.gcmSenderID ?? "")\(Self.generalTopic)"
     }
     
-    /// Returns the Firebase Cloud Messaging registration token. This token is obtained asynchronously.
+    /// Returns the token associated to the parameter `type`.
+    /// If `fcm` it returns the Firebase Cloud Messaging registration token.
+    /// If `apns` it returns  the Apple Push Notification service token.
+    ///  This token is obtained asynchronously.
     /// - Returns: Registration token.
-    public func getToken() async throws -> String {
-        return try await Messaging.messaging().token()
+    /// - Parameter type: type of token to return. Can be `FCM` or `APNs`.
+    public func getToken(of type: OSFCMTokenType) async throws -> String {
+        var result: String
+        let messagingInstance = Messaging.messaging()
+        
+        if type == .apns {
+            guard let data = messagingInstance.apnsToken else { throw FirebaseMessagingErrors.obtainingTokenError }
+            result = data.map{ String(format: "%02.2hhx", $0) }.joined()
+        } else {
+            result = try await messagingInstance.token()
+        }
+        
+        return result
     }
     
     /// Deletes the Firebase cloud Messaging registration token. The deletion is made asynchronously.
