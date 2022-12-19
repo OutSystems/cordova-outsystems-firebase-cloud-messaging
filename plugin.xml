@@ -53,6 +53,7 @@
     <source-file src="src/ios/Utils/FirebaseConfigurations.swift" />
     <source-file src="src/ios/Utils/FirebaseMessagingErrors.swift" />
     <source-file src="src/ios/Utils/FirebaseNotificationEventType.swift" />
+    <source-file src="src/ios/Utils/OSFCMTokenType.swift" />
 
     <source-file src="src/ios/FirebaseMessagingApplicationDelegate.swift" />
     <source-file src="src/ios/FirebaseMessagingController.swift" />
@@ -68,7 +69,7 @@
             <source url="https://cdn.cocoapods.org/"/>
         </config>
         <pods use-frameworks="true">
-            <pod name="Firebase/Messaging" spec="~> 8.6.0" />
+            <pod name="Firebase/Messaging" spec="8.6.1" />
             <pod name="OSCommonPluginLib" spec="1.0.0" />
         </pods>
     </podspec>
