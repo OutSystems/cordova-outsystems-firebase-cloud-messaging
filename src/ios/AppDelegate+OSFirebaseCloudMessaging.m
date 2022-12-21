@@ -8,6 +8,14 @@
     Method original = class_getInstanceMethod(self, @selector(application:didFinishLaunchingWithOptions:));
     Method swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingPluginDidFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(application:didReceiveRemoteNotification:fetchCompletionHandler:));
+    swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingDidReceiveRemoteNotification:fetchCompletionHandler:));
+    method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:));
+    swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:));
+    method_exchangeImplementations(original, swizzled);
 }
 
 - (BOOL)application:(UIApplication *)application firebaseCloudMessagingPluginDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -18,8 +26,16 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {    
+- (void)application:(UIApplication *)application firebaseCloudMessagingDidReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [self application:application firebaseCloudMessagingDidReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+    
     (void)[FirebaseMessagingApplicationDelegate.shared application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+
+- (void)application:(UIApplication *)application firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [self application:application firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    
+    (void)[FirebaseMessagingApplicationDelegate.shared application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 @end

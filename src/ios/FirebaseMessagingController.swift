@@ -58,9 +58,9 @@ open class FirebaseMessagingController: NSObject {
     }
     
     // MARK: Token Public Methods
-    public func getToken() async {
+    public func getToken(ofType type: OSFCMTokenType = .fcm) async {
         do {
-            let token = try await self.firebaseManager?.getToken() ?? ""
+            let token = try await self.firebaseManager?.getToken(of: type) ?? ""
             let topic = self.firebaseManager?.getGeneralTopic() ?? ""
             try await self.subscribe(topic, token: token)
         } catch let error as FirebaseMessagingErrors {
