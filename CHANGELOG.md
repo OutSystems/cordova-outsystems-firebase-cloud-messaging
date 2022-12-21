@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 21-12-2022
+- Fix: [Android] Fixes clicking a notification without deeplink, when app in foreground (https://outsystemsrd.atlassian.net/browse/RMET-2114)
+
 ## [Version 1.0.5]
 
 ### 08-11-2022
