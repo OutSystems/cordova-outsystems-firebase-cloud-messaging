@@ -8,6 +8,11 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 26-01-2023
+- Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
+
+## [Version 1.1.0]
+
 ### 21-12-2022
 - Fix: [Android] Fixes clicking a notification without deeplink, when app in foreground (https://outsystemsrd.atlassian.net/browse/RMET-2114)
 
