@@ -34,33 +34,11 @@
     </config-file>
 
 		<!-- iOS Source Files -->
-    <source-file src="src/ios/CoreDataManager/CoreDataManager.swift" />
-    <source-file src="src/ios/CoreDataManager/NotificationsModel.xcdatamodeld" />
-
-    <source-file src="src/ios/Extensions/Date+Extension.swift" />
-    <source-file src="src/ios/Extensions/Encodable+Extension.swift" />
-
-    <source-file src="src/ios/Managers/MessagingManager.swift" />
-    <source-file src="src/ios/Managers/NotificationManager.swift" />
-
-    <source-file src="src/ios/Model/OSFCMExtraData.swift" />
-    <source-file src="src/ios/Model/OSFCMNotification.swift" />
-
-    <source-file src="src/ios/Protocols/FirebaseMessagingProtocol.swift" />
-    <source-file src="src/ios/Protocols/MessagingProtocol.swift" />
-    <source-file src="src/ios/Protocols/UNUserNotificationCenterProtocol.swift" />
-
-    <source-file src="src/ios/Utils/FirebaseConfigurations.swift" />
-    <source-file src="src/ios/Utils/FirebaseMessagingErrors.swift" />
-    <source-file src="src/ios/Utils/FirebaseNotificationEventType.swift" />
-    <source-file src="src/ios/Utils/OSFCMTokenType.swift" />
-
-    <source-file src="src/ios/FirebaseMessagingApplicationDelegate.swift" />
-    <source-file src="src/ios/FirebaseMessagingController.swift" />
-
-		<source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
+    <source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
+
+    <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="true" custom="true" />
 
     <dependency id="cordova-plugin-add-swift-support" url="https://github.com/OutSystems/cordova-plugin-add-swift-support.git#2.0.3-OS1"/>
 

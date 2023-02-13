@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 10-02-2023
+- Feat: [iOS] Make library available as `xcframework` (https://outsystemsrd.atlassian.net/browse/RMET-2280).
+
 ### 26-01-2023
 - Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
 
