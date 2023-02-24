@@ -1,6 +1,7 @@
 #import "AppDelegate+OSFirebaseCloudMessaging.h"
 #import "OutSystems-Swift.h"
 #import <objc/runtime.h>
+#import <OSFirebaseMessagingLib/OSFirebaseMessagingLib-Swift.h>
 
 @implementation AppDelegate (OSFirebaseCloudMessaging)
 
@@ -18,15 +19,11 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application firebaseCloudMessagingDidReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [self application:application firebaseCloudMessagingDidReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-    
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     (void)[FirebaseMessagingApplicationDelegate.shared application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
-- (void)application:(UIApplication *)application firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [self application:application firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     (void)[FirebaseMessagingApplicationDelegate.shared application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 

@@ -5,7 +5,6 @@ import CoreData
 import FirebaseCore
 import FirebaseMessaging
 import Foundation
-import OSLocalNotificationsLib
 import Swift
 import UIKit
 import UserNotifications
@@ -90,6 +89,9 @@ public protocol FirebaseMessagingCallbackProtocol {
 public protocol FirebaseMessagingEventProtocol {
   func event(_ event: OSFirebaseMessagingLib.FirebaseEventType, data: Swift.String)
 }
+extension Swift.Encodable {
+  public func encode() -> Swift.String
+}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class FirebaseMessagingApplicationDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @_Concurrency.MainActor(unsafe) public var coreDataManager: OSFirebaseMessagingLib.CoreDataManager {
     get
@@ -114,33 +116,20 @@ public protocol UIApplicationProtocol {
   func getBadge() -> Swift.Int
   func setBadge(badge: Swift.Int)
   func getApplicationState() -> UIKit.UIApplication.State
-  func canRouteTo(_ url: Foundation.URL) -> Swift.Bool
-  func routeTo(_ url: Foundation.URL)
 }
 extension UIKit.UIApplication : OSFirebaseMessagingLib.UIApplicationProtocol {
   @_Concurrency.MainActor(unsafe) public func getBadge() -> Swift.Int
   @_Concurrency.MainActor(unsafe) public func setBadge(badge: Swift.Int)
   @_Concurrency.MainActor(unsafe) public func getApplicationState() -> UIKit.UIApplication.State
-  @_Concurrency.MainActor(unsafe) public func canRouteTo(_ url: Foundation.URL) -> Swift.Bool
-  @_Concurrency.MainActor(unsafe) public func routeTo(_ url: Foundation.URL)
 }
 public enum FirebaseEventType {
   case trigger(notification: OSFirebaseMessagingLib.FirebaseNotificationType)
-  case click(type: OSFirebaseMessagingLib.OSFCMClickableType)
+  case click
 }
 public enum FirebaseNotificationType {
   case defaultNotification
   case silentNotification
   public static func == (a: OSFirebaseMessagingLib.FirebaseNotificationType, b: OSFirebaseMessagingLib.FirebaseNotificationType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public enum OSFCMClickableType {
-  case notification
-  case action
-  public static func == (a: OSFirebaseMessagingLib.OSFCMClickableType, b: OSFirebaseMessagingLib.OSFCMClickableType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -170,9 +159,6 @@ public class MessagingManager : OSFirebaseMessagingLib.MessagingProtocol {
   #endif
 
   @objc deinit
-}
-extension Swift.Encodable {
-  public func encode() -> Swift.String
 }
 public protocol NotificationManagerProtocol {
   func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, Swift.Error>
@@ -306,5 +292,3 @@ extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.Hashable {}
 extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.RawRepresentable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Equatable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Hashable {}
-extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Equatable {}
-extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Hashable {}
