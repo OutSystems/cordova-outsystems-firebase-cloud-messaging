@@ -55,6 +55,15 @@ The changes documented here do not include those from the original repository.
 ### 26-01-2023
 - Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
 
+## 23-02-2023
+- Fix: Android - Add a guard to deal with cases when there's no data in the extras map (https://outsystemsrd.atlassian.net/browse/RMET-2312)
+
+### 10-02-2023
+- Feat: [iOS] Make library available as `xcframework` (https://outsystemsrd.atlassian.net/browse/RMET-2280).
+
+### 26-01-2023
+- Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
+
 ## [Version 1.1.0]
 
 ### 21-12-2022

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<plugin id="com.outsystems.firebase.cloudmessaging" version="1.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="com.outsystems.firebase.cloudmessaging" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>OSFirebaseCloudMessaging</name>
   <description>Outsystems plugin for Firebase Cloud Messaging</description>
   <author>OutSystems Inc</author>
@@ -34,41 +34,13 @@
     </config-file>
 
 		<!-- iOS Source Files -->
-    <source-file src="src/ios/CoreDataManager/CoreDataManager.swift" />
-    <source-file src="src/ios/CoreDataManager/NotificationsModel.xcdatamodeld" />
-
-    <source-file src="src/ios/Extensions/Date+Extension.swift" />
-    <source-file src="src/ios/Extensions/Encodable+Extension.swift" />
-
-    <source-file src="src/ios/Managers/MessagingManager.swift" />
-    <source-file src="src/ios/Managers/NotificationManager.swift" />
-
-    <source-file src="src/ios/Model/OSFCMExtraData.swift" />
-    <source-file src="src/ios/Model/OSFCMNotification.swift" />
-
-    <source-file src="src/ios/Protocols/FirebaseMessagingProtocol.swift" />
-    <source-file src="src/ios/Protocols/MessagingProtocol.swift" />
-    <source-file src="src/ios/Protocols/UNUserNotificationCenterProtocol.swift" />
-
-    <source-file src="src/ios/Utils/FirebaseConfigurations.swift" />
-    <source-file src="src/ios/Utils/FirebaseMessagingErrors.swift" />
-    <source-file src="src/ios/Utils/FirebaseNotificationEventType.swift" />
-    <source-file src="src/ios/Utils/OSFCMTokenType.swift" />
-
-    <source-file src="src/ios/FirebaseMessagingApplicationDelegate.swift" />
-    <source-file src="src/ios/FirebaseMessagingController.swift" />
-
-		<source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
+    <source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
 
     <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="true" custom="true" />
-    <framework src="src/ios/frameworks/OSLocalNotificationsLib.xcframework" embed="true" custom="true" />
 
     <dependency id="cordova-plugin-add-swift-support" url="https://github.com/OutSystems/cordova-plugin-add-swift-support.git#2.0.3-OS1"/>
-
-    <!-- Hooks -->
-    <hook type="after_prepare" src="hooks/ios/iOSCopyPreferences.js" />
 
     <podspec>
         <config>
@@ -85,8 +57,6 @@
   <platform name="android">
 
     <hook type="after_prepare" src="hooks/android/androidCopyChannelInfo.js" />
-
-    <hook type="before_plugin_install" src="hooks/android/sound/copySound.js" />
 
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="OSFirebaseCloudMessaging">
