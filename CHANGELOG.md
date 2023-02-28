@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 03-03-2023
+- Feat: [iOS] Use `OSLocalNotificationsLib` to trigger a local notification immediately (https://outsystemsrd.atlassian.net/browse/RMET-2311).
+
 ## 23-02-2023
 - Fix: Android - Add a guard to deal with cases when there's no data in the extras map (https://outsystemsrd.atlassian.net/browse/RMET-2312)
 
