@@ -8,14 +8,6 @@
     Method original = class_getInstanceMethod(self, @selector(application:didFinishLaunchingWithOptions:));
     Method swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingPluginDidFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
-    
-    original = class_getInstanceMethod(self, @selector(application:didReceiveRemoteNotification:fetchCompletionHandler:));
-    swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingDidReceiveRemoteNotification:fetchCompletionHandler:));
-    method_exchangeImplementations(original, swizzled);
-    
-    original = class_getInstanceMethod(self, @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:));
-    swizzled = class_getInstanceMethod(self, @selector(application:firebaseCloudMessagingdidRegisterForRemoteNotificationsWithDeviceToken:));
-    method_exchangeImplementations(original, swizzled);
 }
 
 - (BOOL)application:(UIApplication *)application firebaseCloudMessagingPluginDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

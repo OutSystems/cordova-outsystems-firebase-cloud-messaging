@@ -88,8 +88,8 @@ class OSFirebaseCloudMessaging: CDVPlugin {
         self.callbackId = command.callbackId
         guard
             let badge = command.arguments[0] as? Int,
-            let body = command.arguments[1] as? String,
-            let title = command.arguments[2] as? String
+            let title = command.arguments[1] as? String,
+            let body = command.arguments[2] as? String
         else {
             self.sendResult(result: "", error:FirebaseMessagingErrors.sendNotificationsError as NSError, callBackID: self.callbackId)
             return
