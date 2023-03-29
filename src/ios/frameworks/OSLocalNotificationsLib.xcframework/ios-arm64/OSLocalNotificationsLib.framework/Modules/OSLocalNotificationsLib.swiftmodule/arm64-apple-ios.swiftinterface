@@ -20,10 +20,11 @@ public enum OSLCNOError : Swift.Int, Foundation.CustomNSError, Foundation.Locali
 public struct OSLCNOFactory {
   public static func createUNWrapper() -> OSLocalNotificationsLib.OSLCNOActionDelegate
 }
+public typealias OSLCNOSound = Swift.String
 public protocol OSLCNOActionDelegate : AnyObject {
   
   #if compiler(>=5.3) && $AsyncAwait
-  func triggerNotification(with title: Swift.String, _ body: Swift.String?, and badge: Swift.Int?) async throws
+  func triggerNotification(with title: Swift.String, _ body: Swift.String?, _ badge: Swift.Int?, and sound: OSLocalNotificationsLib.OSLCNOSound?) async throws
   #endif
 
 }
