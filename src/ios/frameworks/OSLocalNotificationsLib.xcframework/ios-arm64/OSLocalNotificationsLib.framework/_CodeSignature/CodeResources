@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		Hx7di9nLl2Sy41YBGiDq6UYeVfA=
+		EEz4n8XK9RqdAbrG/WxeeUSI7Yo=
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		Rfmrt3DaT5kWA/Xa/MF2iUkM3IA=
+		ztWYnqGzP1BbKtEMtSFE0Uerf3g=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,14 +49,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WICqy8MgfHJEakbcOUG5gZISkDtEiD/qcXqD8LM9658=
+			hYHwqn5Fo/MLcDEqLazvdtLr0Zi6nra26h0OXddsPUw=
 			</data>
 		</dict>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EXdc+ehF5YeIG8hc7jg+y1ZR2PJcNMkVXUO8DOYBaAY=
+			AxTyhhdwaps9MXU46pcIabU+rFe1pneU4RAiglg6N/s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
