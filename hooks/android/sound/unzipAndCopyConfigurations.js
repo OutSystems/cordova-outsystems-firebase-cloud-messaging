@@ -56,7 +56,6 @@ module.exports = function(context) {
 
   console.log("filteredFiles: " + filteredFiles)
 
-  //percorrer os filteredFiles e copiar para a destFolderPath
   filteredFiles.forEach(function (f) {
     console.log("currentFile: " + f);
     var filePath = path.join(sourceFolderPath, f);
