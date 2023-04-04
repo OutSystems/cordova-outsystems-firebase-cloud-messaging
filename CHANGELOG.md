@@ -11,6 +11,9 @@ The changes documented here do not include those from the original repository.
 ## 04-04-2023
 - Feat: [Android] Add hook to copy sound files (https://outsystemsrd.atlassian.net/browse/RMET-2378).
 
+## 31-03-2023
+- Feat: [iOS] React to a triggered notification with custom sound enabled (https://outsystemsrd.atlassian.net/browse/RMET-2381).
+
 ## 07-03-2023
 - Feat: [Android] Use `OSLocalNotificationsLib` to trigger a local notification immediately (https://outsystemsrd.atlassian.net/browse/RMET-2310).
 
