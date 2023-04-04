@@ -13,7 +13,7 @@ var constants = {
     soundFileExtension: ".wav",
     soundFileName: "push_sound.wav",
     getSoundDestinationFolder: function() {
-      return "platforms/android/res/raw";
+      return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
       return "platforms/android/app/src/main/assets/www";

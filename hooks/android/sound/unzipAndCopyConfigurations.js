@@ -25,6 +25,11 @@ module.exports = function(context) {
   console.log("sourceFolderPath: " + sourceFolderPath);
   console.log("destFolderPath: " + destFolderPath);
 
+  if(!utils.checkIfFolderExists(destFolderPath)) {
+    console.log("creating folder bc it does not exist yet.")
+    utils.createOrCheckIfFolderExists(destFolderPath)
+  }
+
   var files = utils.getFilesFromPath(sourceFolderPath);
   if (!files) {
     utils.handleError("No directory found", defer);
@@ -43,22 +48,23 @@ module.exports = function(context) {
 
   console.log("passou files.find()");
 
-  /*
+  console.log("files: " + files);
 
-  if(!utils.checkIfFolderExists(destFilePath)){
-    utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
-  }
+  var filteredFiles = files.filter(function(file){
+    return file.endsWith(platformConfig.soundFileExtension) == true;
+  });
 
-  if (cordovaAbove7) {
-    var destPath = path.join(context.opts.projectRoot, "platforms", platform, "app");
-    if (utils.checkIfFolderExists(destPath)) {
-      var destFilePath = path.join(destPath, fileName);
-      if(!utils.checkIfFolderExists(destFilePath)){
-        utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
-      }
-    }
-  }
-  */
+  console.log("filteredFiles: " + filteredFiles)
+
+  //percorrer os filteredFiles e copiar para a destFolderPath
+  filteredFiles.forEach(function (f) {
+    console.log("currentFile: " + f);
+    var filePath = path.join(sourceFolderPath, f);
+    console.log("filePath: " + filePath);
+    var destFilePath = path.join(destFolderPath, f);
+    console.log("destFilePath: ", destFilePath)
+    utils.copyFromSourceToDestPath(defer, filePath, destFilePath);
+  });
       
   return defer.promise;
 }
