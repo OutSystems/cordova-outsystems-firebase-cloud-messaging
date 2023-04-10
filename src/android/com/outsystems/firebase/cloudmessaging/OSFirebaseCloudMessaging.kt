@@ -3,6 +3,8 @@ package com.outsystems.firebase.cloudmessaging;
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import androidx.core.content.PermissionChecker.PermissionResult
 import com.outsystems.osnotificationpermissions.OSNotificationPermissions
 import com.outsystems.plugins.firebasemessaging.controller.*
 import com.outsystems.plugins.firebasemessaging.model.FirebaseMessagingError
@@ -16,6 +18,7 @@ import org.apache.cordova.CordovaInterface
 import org.apache.cordova.CordovaWebView
 import org.json.JSONArray
 
+
 class OSFirebaseCloudMessaging : CordovaImplementation() {
 
     override var callbackContext: CallbackContext? = null
@@ -27,12 +30,15 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     private var deviceReady: Boolean = false
     private val eventQueue: MutableList<String> = mutableListOf()
     private var notificationPermission = OSNotificationPermissions()
+    // Using a stack so not notifications are lost.
+    private val localNotificationArgs = ArrayDeque<JSONArray>(listOf())
 
     companion object {
         private const val CHANNEL_NAME_KEY = "notification_channel_name"
         private const val CHANNEL_DESCRIPTION_KEY = "notification_channel_description"
         private const val ERROR_FORMAT_PREFIX = "OS-PLUG-FCMS-"
         private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 123123
+        private const val NOTIFICATION_PERMISSION_SEND_LOCAL_REQUEST_CODE = 987987
     }
 
     override fun initialize(cordova: CordovaInterface, webView: CordovaWebView) {
@@ -124,7 +130,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
                     clearNotifications()
                 }
                 "sendLocalNotification" -> {
-                    sendLocalNotification(args)
+                    sendLocalNotificationWithPermission(args)
                 }
                 "setBadge" -> {
                     setBadgeNumber()
@@ -153,6 +159,17 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
                     controller.registerDevice()
                 }
             }
+            NOTIFICATION_PERMISSION_SEND_LOCAL_REQUEST_CODE -> {
+                if(grantResults.size != 1 || grantResults[0] != PERMISSION_GRANTED) {
+                    localNotificationArgs.clear()
+                    return
+                }
+                CoroutineScope(IO).launch {
+                    while(localNotificationArgs.isNotEmpty()) {
+                        sendLocalNotification(localNotificationArgs.removeFirst())
+                    }
+                }
+            }
         }
     }
 
@@ -173,6 +190,19 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         else {
             notificationPermission
                 .requestNotificationPermission(this, NOTIFICATION_PERMISSION_REQUEST_CODE)
+        }
+    }
+
+    private fun sendLocalNotificationWithPermission(args : JSONArray) {
+        if(Build.VERSION.SDK_INT >= 33 &&
+            !notificationPermission.hasNotificationPermission(this)) {
+            localNotificationArgs.addLast(args)
+            notificationPermission.requestNotificationPermission(
+                this,
+                NOTIFICATION_PERMISSION_SEND_LOCAL_REQUEST_CODE)
+        }
+        else {
+            sendLocalNotification(args)
         }
     }
 
