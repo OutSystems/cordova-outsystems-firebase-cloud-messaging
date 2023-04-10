@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 10-04-2023
+- Fix: [Android] - Added POST_NOTIFICATION permission for Android >= 13. (https://outsystemsrd.atlassian.net/browse/RMET-2424)
+
 ## 29-03-2023
 - Fix: [Android] - Removed allowBackup property from android lib manifest. (https://outsystemsrd.atlassian.net/browse/RMET-2406)
 
