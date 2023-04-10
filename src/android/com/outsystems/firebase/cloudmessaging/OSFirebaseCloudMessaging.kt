@@ -164,10 +164,8 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
                     localNotificationArgs.clear()
                     return
                 }
-                CoroutineScope(IO).launch {
-                    while(localNotificationArgs.isNotEmpty()) {
-                        sendLocalNotification(localNotificationArgs.removeFirst())
-                    }
+                while(localNotificationArgs.isNotEmpty()) {
+                    sendLocalNotification(localNotificationArgs.removeFirst())
                 }
             }
         }
