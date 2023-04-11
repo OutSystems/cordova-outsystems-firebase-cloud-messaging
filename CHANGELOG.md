@@ -55,6 +55,8 @@ The changes documented here do not include those from the original repository.
 ### 26-01-2023
 - Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
 
+## [Version 1.1.3]
+
 ## 10-04-2023
 - Fix: [Android] - Added POST_NOTIFICATION permission for Android >= 13. (https://outsystemsrd.atlassian.net/browse/RMET-2424)
 
