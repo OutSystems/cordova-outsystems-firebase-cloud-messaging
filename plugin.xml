@@ -70,7 +70,7 @@
 
     <config-file parent="/*" target="AndroidManifest.xml">
       <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <config-file/>
+    </config-file>
 
     <config-file parent="/resources" target="res/values/strings.xml">
       <string name="notification_channel_name">Channel name</string>
