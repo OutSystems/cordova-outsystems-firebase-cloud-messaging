@@ -3,6 +3,8 @@ package com.outsystems.firebase.cloudmessaging;
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import androidx.core.content.PermissionChecker.PermissionResult
 import com.outsystems.osnotificationpermissions.OSNotificationPermissions
 import com.outsystems.plugins.firebasemessaging.controller.*
 import com.outsystems.plugins.firebasemessaging.model.FirebaseMessagingError
@@ -15,6 +17,7 @@ import org.apache.cordova.CallbackContext
 import org.apache.cordova.CordovaInterface
 import org.apache.cordova.CordovaWebView
 import org.json.JSONArray
+
 
 class OSFirebaseCloudMessaging : CordovaImplementation() {
 
@@ -33,6 +36,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         private const val CHANNEL_DESCRIPTION_KEY = "notification_channel_description"
         private const val ERROR_FORMAT_PREFIX = "OS-PLUG-FCMS-"
         private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 123123
+        private const val NOTIFICATION_PERMISSION_SEND_LOCAL_REQUEST_CODE = 987987
     }
 
     override fun initialize(cordova: CordovaInterface, webView: CordovaWebView) {
@@ -98,6 +102,15 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
             triggerEvent(event)
         }
         eventQueue.clear()
+
+        if(Build.VERSION.SDK_INT >= 33 &&
+            !notificationPermission.hasNotificationPermission(this)) {
+
+            notificationPermission.requestNotificationPermission(
+                this,
+                NOTIFICATION_PERMISSION_SEND_LOCAL_REQUEST_CODE)
+        }
+
     }
 
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
