@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 24-04-2023
+- Feat: [iOS] React to a triggered notification with a custom action configured (https://outsystemsrd.atlassian.net/browse/RMET-2382).
+
 ## 06-04-2023
 - Fix: [Android] Fix crash on notification click (https://outsystemsrd.atlassian.net/browse/RMET-2421).
 

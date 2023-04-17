@@ -90,9 +90,6 @@ public protocol FirebaseMessagingCallbackProtocol {
 public protocol FirebaseMessagingEventProtocol {
   func event(_ event: OSFirebaseMessagingLib.FirebaseEventType, data: Swift.String)
 }
-extension Swift.Encodable {
-  public func encode() -> Swift.String
-}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class FirebaseMessagingApplicationDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @_Concurrency.MainActor(unsafe) public var coreDataManager: OSFirebaseMessagingLib.CoreDataManager {
     get
@@ -160,6 +157,9 @@ public class MessagingManager : OSFirebaseMessagingLib.MessagingProtocol {
   #endif
 
   @objc deinit
+}
+extension Swift.Encodable {
+  public func encode() -> Swift.String
 }
 public protocol NotificationManagerProtocol {
   func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, Swift.Error>
@@ -239,6 +239,19 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
   public func saveContext() throws
   @objc override dynamic public init()
   @objc deinit
+}
+extension OSLocalNotificationsLib.OSLCNOActionTextField : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension OSLocalNotificationsLib.OSLCNOActionType : Swift.Decodable {
+}
+extension OSLocalNotificationsLib.OSLCNOActionEvent : Swift.Decodable {
+}
+extension OSLocalNotificationsLib.OSLCNORouteData : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension OSLocalNotificationsLib.OSLCNOAction : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
 }
 extension OSFirebaseMessagingLib.OSFCMExtraData {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMExtraData>
