@@ -12,6 +12,9 @@ The changes documented here do not include those from the original repository.
 ## 02-05-2023
 - Feat: [Android] Add action buttons (https://outsystemsrd.atlassian.net/browse/RMET-2387).
 
+## 28-04-2023
+- Feat: [ıOS] React to a notification action click (https://outsystemsrd.atlassian.net/browse/RMET-2383).
+
 ## 24-04-2023
 - Feat: [iOS] React to a triggered notification with a custom action configured (https://outsystemsrd.atlassian.net/browse/RMET-2382).
 
