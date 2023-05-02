@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 02-05-2023
+- Feat: [Android] Add action buttons (https://outsystemsrd.atlassian.net/browse/RMET-2387).
+
 ## 06-04-2023
 - Fix: [Android] Fix crash on notification click (https://outsystemsrd.atlassian.net/browse/RMET-2421).
 
