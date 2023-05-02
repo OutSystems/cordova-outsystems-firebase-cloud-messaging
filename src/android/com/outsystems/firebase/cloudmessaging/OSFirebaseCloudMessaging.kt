@@ -57,7 +57,13 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         val extras = intent.extras
         val extrasSize = extras?.size() ?: 0
         if(extrasSize > 0) {
-            FirebaseMessagingOnClickActivity.notifyClickNotification(intent)
+            val scheme = extras?.getString(FirebaseMessagingOnActionClickActivity.ACTION_DEEP_LINK_SCHEME)
+            if (scheme.isNullOrEmpty()) {
+                FirebaseMessagingOnClickActivity.notifyClickNotification(intent)
+            }
+            else {
+                FirebaseMessagingOnActionClickActivity.notifyClickAction(intent)
+            }
         }
     }
 
