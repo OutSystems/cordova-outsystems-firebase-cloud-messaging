@@ -208,9 +208,13 @@ extension OSFirebaseCloudMessaging: FirebaseMessagingCallbackProtocol {
 // MARK: - OSFirebaseMessagingLib's FirebaseMessagingEventProtocol Methods
 extension OSFirebaseCloudMessaging: FirebaseMessagingEventProtocol {
     func event(_ event: FirebaseEventType, data: String) {
-        var eventName = "notificationClick"
-        if case let .trigger(notification) = event {
-            eventName = notification == .silentNotification ? "silentNotification" : "defaultNotification"
+        var eventName = ""
+        
+        switch event {
+        case .click(type: let type):
+            eventName = type == .notification ? "notificationClick" : "internalRouteActionClick"
+        case .trigger(notification: let notification):
+            eventName = notification == .silentNotification ? "silentNotification" : "defaultNotification"        
         }
         
         self.trigger(event: eventName, data: data)

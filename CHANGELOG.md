@@ -8,6 +8,8 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 03-05-2023
+- Feat: [iOS] React to the Internal Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2388).
 
 ## 02-05-2023
 - Feat: [Android] Add action buttons (https://outsystemsrd.atlassian.net/browse/RMET-2387).
