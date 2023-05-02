@@ -27,14 +27,13 @@ public protocol OSLCNOActionDelegate : AnyObject {
   func triggerNotification(with title: Swift.String, _ body: Swift.String?, _ badge: Swift.Int?, _ sound: OSLocalNotificationsLib.OSLCNOSound?, _ actions: [OSLocalNotificationsLib.OSLCNOAction]?) async throws
   #endif
 
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  func clearNotificationCategory(with id: Swift.String) async
+  #endif
+
 }
-public struct OSLCNORouteData {
-  public init(deepLinkScheme: Swift.String, hostName: Swift.String?, parameterData: [Swift.String : Swift.String]?)
-}
-public struct OSLCNOActionTextField {
-  public init(placeholder: Swift.String)
-}
-public enum OSLCNOActionEvent : Swift.String {
+public enum OSLCNOActionEvent : Swift.String, Swift.Codable {
   case internalRoute
   case appRoute
   case webRoute
@@ -44,7 +43,18 @@ public enum OSLCNOActionEvent : Swift.String {
     get
   }
 }
-public enum OSLCNOActionType : Swift.String {
+public struct OSLCNORouteData : Swift.Codable {
+  public init(deepLinkScheme: Swift.String, hostName: Swift.String?, parameterData: [Swift.String : Swift.String]?)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct OSLCNOAction : Swift.Codable {
+  public let event: OSLocalNotificationsLib.OSLCNOActionEvent
+  public init(identifier: Swift.String, label: Swift.String, textField: OSLocalNotificationsLib.OSLCNOActionTextField?, type: OSLocalNotificationsLib.OSLCNOActionType, event: OSLocalNotificationsLib.OSLCNOActionEvent, routeData: OSLocalNotificationsLib.OSLCNORouteData)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum OSLCNOActionType : Swift.String, Swift.Codable {
   case standard
   case destructive
   public init?(rawValue: Swift.String)
@@ -53,8 +63,10 @@ public enum OSLCNOActionType : Swift.String {
     get
   }
 }
-public struct OSLCNOAction {
-  public init(identifier: Swift.String, label: Swift.String, textField: OSLocalNotificationsLib.OSLCNOActionTextField?, type: OSLocalNotificationsLib.OSLCNOActionType, event: OSLocalNotificationsLib.OSLCNOActionEvent, routeData: OSLocalNotificationsLib.OSLCNORouteData)
+public struct OSLCNOActionTextField : Swift.Codable {
+  public init(placeholder: Swift.String, inputTextKey: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 extension OSLocalNotificationsLib.OSLCNOError : Swift.Equatable {}
 extension OSLocalNotificationsLib.OSLCNOError : Swift.Hashable {}
