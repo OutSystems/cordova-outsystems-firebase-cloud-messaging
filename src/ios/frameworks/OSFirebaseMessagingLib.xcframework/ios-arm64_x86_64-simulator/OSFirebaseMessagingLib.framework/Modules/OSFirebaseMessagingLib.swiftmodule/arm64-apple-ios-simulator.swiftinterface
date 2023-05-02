@@ -127,6 +127,7 @@ public enum FirebaseEventType {
 public enum FirebaseNotificationType {
   case defaultNotification
   case silentNotification
+  case pushDataMessageNotification
   public static func == (a: OSFirebaseMessagingLib.FirebaseNotificationType, b: OSFirebaseMessagingLib.FirebaseNotificationType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
@@ -239,19 +240,6 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
   public func saveContext() throws
   @objc override dynamic public init()
   @objc deinit
-}
-extension OSLocalNotificationsLib.OSLCNOActionTextField : Swift.Decodable {
-  public init(from decoder: Swift.Decoder) throws
-}
-extension OSLocalNotificationsLib.OSLCNOActionType : Swift.Decodable {
-}
-extension OSLocalNotificationsLib.OSLCNOActionEvent : Swift.Decodable {
-}
-extension OSLocalNotificationsLib.OSLCNORouteData : Swift.Decodable {
-  public init(from decoder: Swift.Decoder) throws
-}
-extension OSLocalNotificationsLib.OSLCNOAction : Swift.Decodable {
-  public init(from decoder: Swift.Decoder) throws
 }
 extension OSFirebaseMessagingLib.OSFCMExtraData {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMExtraData>
