@@ -122,13 +122,21 @@ extension UIKit.UIApplication : OSFirebaseMessagingLib.UIApplicationProtocol {
 }
 public enum FirebaseEventType {
   case trigger(notification: OSFirebaseMessagingLib.FirebaseNotificationType)
-  case click
+  case click(type: OSFirebaseMessagingLib.OSFCMClickableType)
 }
 public enum FirebaseNotificationType {
   case defaultNotification
   case silentNotification
-  case pushDataMessageNotification
   public static func == (a: OSFirebaseMessagingLib.FirebaseNotificationType, b: OSFirebaseMessagingLib.FirebaseNotificationType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum OSFCMClickableType {
+  case notification
+  case action
+  public static func == (a: OSFirebaseMessagingLib.OSFCMClickableType, b: OSFirebaseMessagingLib.OSFCMClickableType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -294,3 +302,5 @@ extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.Hashable {}
 extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.RawRepresentable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Equatable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Hashable {}
+extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Equatable {}
+extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Hashable {}

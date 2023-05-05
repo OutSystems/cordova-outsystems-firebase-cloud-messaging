@@ -5,6 +5,27 @@ import Foundation
 import Swift
 import UserNotifications
 import _Concurrency
+public struct OSLCNOInternalEvent : Swift.Codable {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case screenName, parameterArray
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(screenName: Swift.String, parameterArray: [OSLocalNotificationsLib.OSLCNOParameter]?)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 public enum OSLCNOError : Swift.Int, Foundation.CustomNSError, Foundation.LocalizedError {
   case noTitle
   case triggerError
@@ -24,7 +45,7 @@ public typealias OSLCNOSound = Swift.String
 public protocol OSLCNOActionDelegate : AnyObject {
   
   #if compiler(>=5.3) && $AsyncAwait
-  func triggerNotification(with title: Swift.String, _ body: Swift.String?, _ badge: Swift.Int?, _ sound: OSLocalNotificationsLib.OSLCNOSound?, _ actions: [OSLocalNotificationsLib.OSLCNOAction]?) async throws
+  func triggerNotification(with title: Swift.String, _ body: Swift.String?, _ badge: Swift.Int?, sound: OSLocalNotificationsLib.OSLCNOSound?, actions: [OSLocalNotificationsLib.OSLCNOAction]?, and internalEvent: OSLocalNotificationsLib.OSLCNOInternalEvent?) async throws
   #endif
 
   
@@ -32,6 +53,11 @@ public protocol OSLCNOActionDelegate : AnyObject {
   func clearNotificationCategory(with id: Swift.String) async
   #endif
 
+}
+public struct OSLCNOParameter : Swift.Codable {
+  public init(key: Swift.String, value: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum OSLCNOActionEvent : Swift.String, Swift.Codable {
   case internalRoute
@@ -49,10 +75,19 @@ public struct OSLCNORouteData : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
 }
 public struct OSLCNOAction : Swift.Codable {
-  public let event: OSLocalNotificationsLib.OSLCNOActionEvent
   public init(identifier: Swift.String, label: Swift.String, textField: OSLocalNotificationsLib.OSLCNOActionTextField?, type: OSLocalNotificationsLib.OSLCNOActionType, event: OSLocalNotificationsLib.OSLCNOActionEvent, routeData: OSLocalNotificationsLib.OSLCNORouteData)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+extension OSLocalNotificationsLib.OSLCNOAction {
+  public func getParameterData(withUserText userText: Swift.String?) throws -> [Swift.String : Swift.String]?
+  
+  #if compiler(>=5.3) && $EffectfulProp
+  public var internalScreenName: Swift.String {
+    get throws
+  }
+  #endif
+
 }
 public enum OSLCNOActionType : Swift.String, Swift.Codable {
   case standard
@@ -68,6 +103,9 @@ public struct OSLCNOActionTextField : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+extension OSLocalNotificationsLib.OSLCNOInternalEvent.CodingKeys : Swift.Equatable {}
+extension OSLocalNotificationsLib.OSLCNOInternalEvent.CodingKeys : Swift.Hashable {}
+extension OSLocalNotificationsLib.OSLCNOInternalEvent.CodingKeys : Swift.RawRepresentable {}
 extension OSLocalNotificationsLib.OSLCNOError : Swift.Equatable {}
 extension OSLocalNotificationsLib.OSLCNOError : Swift.Hashable {}
 extension OSLocalNotificationsLib.OSLCNOError : Swift.RawRepresentable {}
