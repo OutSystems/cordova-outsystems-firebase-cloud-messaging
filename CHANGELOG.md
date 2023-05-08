@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 08-05-2023
+- Feat: [Android] Fix hook for sounds (https://outsystemsrd.atlassian.net/browse/RMET-2215).
+
 ## 03-05-2023
 - Feat: [iOS] React to the Internal Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2388).
 

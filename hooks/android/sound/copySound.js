@@ -40,6 +40,4 @@ module.exports = function(context) {
       utils.copyFromSourceToDestPath(defer, filePath, destFilePath);
     });
   }
-      
-  return defer.promise;
 }
