@@ -70,7 +70,7 @@ public enum OSLCNOActionEvent : Swift.String, Swift.Codable {
   }
 }
 public struct OSLCNORouteData : Swift.Codable {
-  public init(deepLinkScheme: Swift.String, hostName: Swift.String?, parameterData: [Swift.String : Swift.String]?)
+  public init(deepLinkScheme: Swift.String, identifier: Swift.String?, parameterData: [Swift.String : Swift.String]?)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -88,6 +88,9 @@ extension OSLocalNotificationsLib.OSLCNOAction {
   }
   #endif
 
+}
+extension OSLocalNotificationsLib.OSLCNOAction {
+  public func getRouteURL(withUserText userText: Swift.String?) throws -> Foundation.URL?
 }
 public enum OSLCNOActionType : Swift.String, Swift.Codable {
   case standard
