@@ -114,11 +114,15 @@ public protocol UIApplicationProtocol {
   func getBadge() -> Swift.Int
   func setBadge(badge: Swift.Int)
   func getApplicationState() -> UIKit.UIApplication.State
+  func canRouteTo(_ url: Foundation.URL) -> Swift.Bool
+  func routeTo(_ url: Foundation.URL)
 }
 extension UIKit.UIApplication : OSFirebaseMessagingLib.UIApplicationProtocol {
   @_Concurrency.MainActor(unsafe) public func getBadge() -> Swift.Int
   @_Concurrency.MainActor(unsafe) public func setBadge(badge: Swift.Int)
   @_Concurrency.MainActor(unsafe) public func getApplicationState() -> UIKit.UIApplication.State
+  @_Concurrency.MainActor(unsafe) public func canRouteTo(_ url: Foundation.URL) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func routeTo(_ url: Foundation.URL)
 }
 public enum FirebaseEventType {
   case trigger(notification: OSFirebaseMessagingLib.FirebaseNotificationType)
