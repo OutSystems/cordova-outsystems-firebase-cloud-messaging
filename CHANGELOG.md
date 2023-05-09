@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 10-05-2023
+- Feat: [iOS] React to the App Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2392).
+
 ## 08-05-2023
 - Feat: [iOS] External App Authorisation (https://outsystemsrd.atlassian.net/browse/RMET-2390).
 - Feat: [iOS] React to the Web Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2394).
