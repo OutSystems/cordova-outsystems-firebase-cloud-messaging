@@ -22,7 +22,7 @@ public struct OSLCNOInternalEvent : Swift.Codable {
       get
     }
   }
-  public init(screenName: Swift.String, parameterArray: [OSLocalNotificationsLib.OSLCNOParameter]?)
+  public init(screenName: Swift.String, parameterArray: [OSLocalNotificationsLib.OSLCNOParameter]? = nil)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -69,13 +69,15 @@ public enum OSLCNOActionEvent : Swift.String, Swift.Codable {
     get
   }
 }
-public struct OSLCNORouteData : Swift.Codable {
-  public init(deepLinkScheme: Swift.String, identifier: Swift.String?, parameterData: [Swift.String : Swift.String]?)
-  public func encode(to encoder: Swift.Encoder) throws
+public struct OSLCNORouteData {
+  public init(deepLinkScheme: Swift.String, identifier: Swift.String? = nil, parameterData: [Swift.String : Swift.String]? = nil, fallbackUrl: Swift.String? = nil)
+}
+extension OSLocalNotificationsLib.OSLCNORouteData : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public struct OSLCNOAction : Swift.Codable {
-  public init(identifier: Swift.String, label: Swift.String, textField: OSLocalNotificationsLib.OSLCNOActionTextField?, type: OSLocalNotificationsLib.OSLCNOActionType, event: OSLocalNotificationsLib.OSLCNOActionEvent, routeData: OSLocalNotificationsLib.OSLCNORouteData)
+  public init(identifier: Swift.String, label: Swift.String, textField: OSLocalNotificationsLib.OSLCNOActionTextField? = nil, type: OSLocalNotificationsLib.OSLCNOActionType, event: OSLocalNotificationsLib.OSLCNOActionEvent, routeData: OSLocalNotificationsLib.OSLCNORouteData)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -91,6 +93,13 @@ extension OSLocalNotificationsLib.OSLCNOAction {
 }
 extension OSLocalNotificationsLib.OSLCNOAction {
   public func getRouteURL(withUserText userText: Swift.String?) throws -> Foundation.URL?
+  
+  #if compiler(>=5.3) && $EffectfulProp
+  public var fallbackURL: Foundation.URL? {
+    get throws
+  }
+  #endif
+
 }
 public enum OSLCNOActionType : Swift.String, Swift.Codable {
   case standard
