@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		e400f01cKV6LE+V0PfZmx1JQUEY=
+		JfSurHQTmT997s/8osYiRCPlavU=
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		foYp0KEO5vFFOI6T2/m1cSzYQYs=
+		AhyI4iviSRhl5sylhVCxLlHvRPg=
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		v+DOOhAIgWglMfjZTP2Nas6yBVI=
+		J1psTrRCAtWprNeDf4HeB8KmMPk=
 		</data>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Q8gv7EXdVkmFY9DDbfLPE6pm0QQ=
+		1vy6VE25Ypc68vvRAp+8fvEJL1A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,14 +61,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ArrqpbtAFrp+MJagRzPbC6wP3U4hYxAVzUUAJg7Dkno=
+			daO8hGEWLn4QkfaP8pj1AsuGSBqKyp7AjA5arg8xsT0=
 			</data>
 		</dict>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZkNODFor9mh7cj0jYggEAbJzwuKHdpDEoJUZnDDXORo=
+			Lt6oUk4fMhpMksCTCUqWF2vIlZ50TmN15jphEbeZ8K0=
 			</data>
 		</dict>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -82,14 +82,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			C5UVy61Ft0TTdnOtta2//inblk7qdYCXz9VGACOBeCQ=
+			1aygOHPaiJXkyPzloxb3zSNaE0saC/+sc8PiTnRfg/k=
 			</data>
 		</dict>
 		<key>Modules/OSLocalNotificationsLib.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			knNatASjHAEmznOoUU7ZxPK/aDS2gyG5QA8eG6kA9Tw=
+			5bVu6cv7wBOe/0tdizkT/XKkPJVVFJSg7GM//q5/+Qw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
