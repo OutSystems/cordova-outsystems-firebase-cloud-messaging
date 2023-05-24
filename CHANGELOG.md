@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 23-05-2023
+- Feat: Update Error Codes Messages (https://outsystemsrd.atlassian.net/browse/RMET-2555).
+
 ## 10-05-2023
 - Feat: [iOS] React to the App Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2392).
 
