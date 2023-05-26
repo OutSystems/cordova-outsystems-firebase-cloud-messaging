@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
-## [Unreleased]
+## [Version 1.2.0]
 
 ## 23-05-2023
 - Feat: Update Error Codes Messages (https://outsystemsrd.atlassian.net/browse/RMET-2555).
