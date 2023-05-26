@@ -6,68 +6,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
-## [Version 2.0.0]
-- Feat: update sound hook to unzip sound files, for both iOS and Android (https://outsystemsrd.atlassian.net/browse/RMET-2464).
-- Feat: update firebase core version (https://outsystemsrd.atlassian.net/browse/RMET-2451).
-
 ## [Version 1.2.0]
 
-## 23-05-2023
+### 23-05-2023
 - Feat: Update Error Codes Messages (https://outsystemsrd.atlassian.net/browse/RMET-2555).
 
-## 10-05-2023
+### 10-05-2023
 - Feat: [iOS] React to the App Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2392).
 
-## 08-05-2023
+### 08-05-2023
 - Feat: [iOS] External App Authorisation (https://outsystemsrd.atlassian.net/browse/RMET-2390).
 - Feat: [iOS] React to the Web Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2394).
 - Feat: [Android] Fix hook for sounds (https://outsystemsrd.atlassian.net/browse/RMET-2215).
 
-## 03-05-2023
+### 03-05-2023
 - Feat: [iOS] React to the Internal Route Event (https://outsystemsrd.atlassian.net/browse/RMET-2388).
 
-## 02-05-2023
+### 02-05-2023
 - Feat: [Android] Add action buttons (https://outsystemsrd.atlassian.net/browse/RMET-2387).
 
-## 28-04-2023
+### 28-04-2023
 - Feat: [ıOS] React to a notification action click (https://outsystemsrd.atlassian.net/browse/RMET-2383).
 
-## 24-04-2023
+### 24-04-2023
 - Feat: [iOS] React to a triggered notification with a custom action configured (https://outsystemsrd.atlassian.net/browse/RMET-2382).
 
-## 06-04-2023
+### 06-04-2023
 - Fix: [Android] Fix crash on notification click (https://outsystemsrd.atlassian.net/browse/RMET-2421).
 
-## 04-04-2023
+### 04-04-2023
 - Feat: [Android] Add hook to copy sound files (https://outsystemsrd.atlassian.net/browse/RMET-2378).
 
-## 31-03-2023
+### 31-03-2023
 - Feat: [iOS] React to a triggered notification with custom sound enabled (https://outsystemsrd.atlassian.net/browse/RMET-2381).
 
-## 07-03-2023
+### 07-03-2023
 - Feat: [Android] Use `OSLocalNotificationsLib` to trigger a local notification immediately (https://outsystemsrd.atlassian.net/browse/RMET-2310).
 
-## 03-03-2023
+### 03-03-2023
 - Feat: [iOS] Use `OSLocalNotificationsLib` to trigger a local notification immediately (https://outsystemsrd.atlassian.net/browse/RMET-2311).
-
-## 23-02-2023
-- Fix: Android - Add a guard to deal with cases when there's no data in the extras map (https://outsystemsrd.atlassian.net/browse/RMET-2312)
-
-### 10-02-2023
-- Feat: [iOS] Make library available as `xcframework` (https://outsystemsrd.atlassian.net/browse/RMET-2280).
-
-### 26-01-2023
-- Fix: [iOS] Silent Notifications not being triggered. (https://outsystemsrd.atlassian.net/browse/RPM-3590).
 
 ## [Version 1.1.3]
 
-## 10-04-2023
+### 10-04-2023
 - Fix: [Android] - Added POST_NOTIFICATION permission for Android >= 13. (https://outsystemsrd.atlassian.net/browse/RMET-2424)
 
-## 29-03-2023
+### 29-03-2023
 - Fix: [Android] - Removed allowBackup property from android lib manifest. (https://outsystemsrd.atlassian.net/browse/RMET-2406)
 
-## 23-02-2023
+### 23-02-2023
 - Fix: [Android] - Add a guard to deal with cases when there's no data in the extras map (https://outsystemsrd.atlassian.net/browse/RMET-2312)
 
 ### 10-02-2023
