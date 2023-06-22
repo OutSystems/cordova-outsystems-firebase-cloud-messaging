@@ -13,7 +13,7 @@ var constants = {
       return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
-      return "platforms/android/app/src/main/assets/www";
+      return "www";
     }
   },
   ios: {
