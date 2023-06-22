@@ -21,10 +21,10 @@ var constants = {
     wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
-      return "platforms/iOS/www";
+      return "www";
     },
     getSoundSourceFolder: function() {
-      return "platforms/iOS/www";
+      return "www";
     }
   }
 };
