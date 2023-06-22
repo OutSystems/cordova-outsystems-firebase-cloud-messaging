@@ -13,7 +13,7 @@ var constants = {
       return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
-      return "platforms/android/app/src/main/assets/www";
+      return "www";
     }
   },
   ios: {
@@ -21,10 +21,10 @@ var constants = {
     wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
-      return "platforms/iOS/www";
+      return "www";
     },
     getSoundSourceFolder: function() {
-      return "platforms/iOS/www";
+      return "www";
     }
   }
 };
@@ -34,8 +34,12 @@ function handleError(errorMessage, defer) {
   defer.reject();
 }
 
-function checkIfFolderExists(path) {
+function checkIfFileOrFolderExists(path) {
   return fs.existsSync(path);
+}
+
+function removeFile(path){
+  fs.unlinkSync(path)
 }
 
 function getFilesFromPath(path) {
@@ -58,7 +62,6 @@ function getPlatformConfigs(platform) {
 
 function isCordovaAbove(context, version) {
   let cordovaVersion = context.opts.cordova.version;
-  console.log(cordovaVersion);
   let sp = cordovaVersion.split('.');
   return parseInt(sp[0]) >= version;
 }
@@ -75,6 +78,10 @@ function copyFromSourceToDestPath(defer, sourcePath, destPath) {
   });
 }
 
+function isAndroid(platform){
+  return platform === constants.android.platform
+}
+
 module.exports = {
   isCordovaAbove,
   handleError,
@@ -82,5 +89,7 @@ module.exports = {
   copyFromSourceToDestPath,
   getFilesFromPath,
   createOrCheckIfFolderExists,
-  checkIfFolderExists
+  checkIfFileOrFolderExists,
+  removeFile,
+  isAndroid
 };
