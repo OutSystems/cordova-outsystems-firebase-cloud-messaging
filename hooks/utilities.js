@@ -3,8 +3,6 @@
 var path = require("path");
 var fs = require("fs");
 
-var utils = require("./utils");
-
 var constants = {
   platforms: "platforms",
   android: {
@@ -15,7 +13,18 @@ var constants = {
       return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
-      return "platforms/android/app/src/main/assets/www";
+      return "www";
+    }
+  },
+  ios: {
+    platform: "ios",
+    wwwFolder: "www",
+    soundFileExtension: ".wav",
+    getSoundDestinationFolder: function() {
+      return "www";
+    },
+    getSoundSourceFolder: function() {
+      return "www";
     }
   }
 };
