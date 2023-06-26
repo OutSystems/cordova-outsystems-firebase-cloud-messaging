@@ -72,15 +72,12 @@ module.exports = function(context) {
     if(!utils.checkIfFileOrFolderExists(zipFolder)){
       if(utils.isAndroid(platform))
         copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
-      utils.removeFile(soundZipFile);
-      return
+    } else {
+      var files = utils.getFilesFromPath(zipFolder); 
+      copyFiles(files, zipFolder, soundFolderPath, defer)  
     }
-
-    var files = utils.getFilesFromPath(zipFolder); 
-    copyFiles(files, zipFolder, soundFolderPath, defer)
+    
     utils.removeFile(soundZipFile);
-    
-    
   }
 
 }
