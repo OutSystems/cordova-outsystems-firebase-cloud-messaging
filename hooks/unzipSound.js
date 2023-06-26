@@ -80,7 +80,6 @@ module.exports = function(context) {
 
     utils.removeFile(soundZipFile);
     
-  } 
-  
+  }
 
 }

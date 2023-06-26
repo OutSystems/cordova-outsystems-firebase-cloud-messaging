@@ -34,6 +34,7 @@ function handleError(errorMessage, defer) {
   defer.reject();
 }
 
+
 function checkIfFileOrFolderExists(path) {
   return fs.existsSync(path);
 }
