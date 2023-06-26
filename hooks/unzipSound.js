@@ -78,7 +78,7 @@ module.exports = function(context) {
 
     var files = utils.getFilesFromPath(zipFolder); 
     copyFiles(files, zipFolder, soundFolderPath, defer)
-    utils.removeFolder(soundZipFile);
+    utils.removeFile(soundZipFile);
     
     
   }
