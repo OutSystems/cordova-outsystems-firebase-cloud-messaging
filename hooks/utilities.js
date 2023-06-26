@@ -43,6 +43,10 @@ function removeFile(path){
   fs.unlinkSync(path)
 }
 
+function removeFolder(path){
+  fs.rmdirSync(path)
+}
+
 function getFilesFromPath(path) {
   return fs.readdirSync(path);
 }
@@ -92,5 +96,6 @@ module.exports = {
   createOrCheckIfFolderExists,
   checkIfFileOrFolderExists,
   removeFile,
+  removeFolder,
   isAndroid
 };
