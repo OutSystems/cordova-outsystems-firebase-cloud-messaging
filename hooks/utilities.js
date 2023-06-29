@@ -13,7 +13,7 @@ var constants = {
       return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
-      return "www";
+      return "platforms/android/app/src/main/assets/www";
     }
   },
   ios: {
@@ -21,10 +21,10 @@ var constants = {
     wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
-      return "www";
+      return "platforms/ios/www";
     },
     getSoundSourceFolder: function() {
-      return "www";
+      return "platforms/ios/www";
     }
   }
 };

@@ -44,7 +44,7 @@ module.exports = function(context) {
     defer = context.requireCordovaModule("q").defer();
   }
   
-  var platform = context.opts.plugin.platform;
+  var platform = context.opts.platforms[0];
   var platformConfig = utils.getPlatformConfigs(platform);
   if (!platformConfig) {
     utils.handleError("Invalid platform", defer);
