@@ -44,7 +44,7 @@ function removeFile(path){
 }
 
 function removeFolder(path){
-  fs.rmdirSync(path, { recursive: true })
+  fs.rmSync(path, { recursive: true })
 }
 
 function getFilesFromPath(path) {

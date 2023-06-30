@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
-- Fix: change sounds hook order execution, for both iOS and Android (https://outsystemsrd.atlassian.net/browse/RMET-2695)
 - Feat: update sound hook to unzip sound files, for both iOS and Android (https://outsystemsrd.atlassian.net/browse/RMET-2464).
 - Feat: update firebase core version (https://outsystemsrd.atlassian.net/browse/RMET-2451).
 
