@@ -39,7 +39,7 @@ module.exports = function(context) {
 
         utils.copyFromSourceToDestPath(defer, soundZipFile, destFilePath);
     } else {
-      console.log("No sounds.zip file found. Procceding without it.")
+      console.log("No sounds.zip file found. Proceeding without it.")
       return
     }
   }
