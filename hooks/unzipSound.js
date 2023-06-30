@@ -15,6 +15,7 @@ function copyWavFiles(platformConfig, source, dest, defer) {
     return file.endsWith(platformConfig.soundFileExtension) == true;
   });
   
+  console.log("Nr of sound files in zip: ", filteredFiles.length)
   copyFiles(filteredFiles, source, dest, defer)
 }
 
@@ -60,7 +61,6 @@ module.exports = function(context) {
     zip.extractAllTo(sourcePath, true);
     
     var entriesNr = zip.getEntries().length;
-    console.log("Number of entries in zip file: ", entriesNr);
     
     if(entriesNr == 0) {
       utils.handleError("Sound zip file is empty, either delete it or add one or more files", defer);
@@ -72,9 +72,8 @@ module.exports = function(context) {
     if(!utils.checkIfFileOrFolderExists(zipFolder)){
       if(utils.isAndroid(platform))
         copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
-    } else {
-      var files = utils.getFilesFromPath(zipFolder); 
-      copyFiles(files, zipFolder, soundFolderPath, defer)  
+    } else { 
+      copyWavFiles(platformConfig, zipFolder, soundFolderPath, defer)  
     }
     
     utils.removeFile(soundZipFile);
