@@ -7,13 +7,13 @@ var constants = {
   platforms: "platforms",
   android: {
     platform: "android",
-    wwwFolder: "assets/www",
+    wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
       return "platforms/android/app/src/main/res/raw";
     },
     getSoundSourceFolder: function() {
-      return "platforms/android/app/src/main/assets/www";
+      return "platforms/android/www";
     }
   },
   ios: {
