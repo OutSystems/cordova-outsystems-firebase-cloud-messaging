@@ -12,8 +12,8 @@ var constants = {
     getSoundDestinationFolder: function() {
       return "platforms/android/app/src/main/res/raw";
     },
-    getSoundSourceFolder: function() {
-      return "platforms/android/www";
+    getWWWFolder: function() {
+      return "www";
     }
   },
   ios: {
@@ -23,7 +23,7 @@ var constants = {
     getSoundDestinationFolder: function() {
       return "platforms/ios/www";
     },
-    getSoundSourceFolder: function() {
+    getWWWFolder: function() {
       return "platforms/ios/www";
     }
   }
@@ -65,6 +65,24 @@ function getPlatformConfigs(platform) {
   }
 }
 
+function getPlatformSoundPath(context, platformConfig){
+  let projectRoot = context.opts.projectRoot;
+  let platformPath;
+
+  if(platformConfig === constants.android){
+      platformPath = path.join(projectRoot, `platforms/android/www`);
+  } else {
+      let appName = getAppName(context)
+      platformPath = path.join(projectRoot, `platforms/ios/${appName}/Resources/www`);   
+  }
+      
+  if(!fs.existsSync(platformPath)){
+      platformPath = path.join(projectRoot, platformConfig.getWWWFolder());
+  }
+  
+  return platformPath
+}
+
 function isCordovaAbove(context, version) {
   let cordovaVersion = context.opts.cordova.version;
   let sp = cordovaVersion.split('.');
@@ -87,6 +105,12 @@ function isAndroid(platform){
   return platform === constants.android.platform
 }
 
+function getAppName(context) {
+  let ConfigParser = context.requireCordovaModule("cordova-lib").configparser;
+  let config = new ConfigParser("config.xml");
+  return config.name();
+}
+
 module.exports = {
   isCordovaAbove,
   handleError,
@@ -97,5 +121,7 @@ module.exports = {
   checkIfFileOrFolderExists,
   removeFile,
   removeFolder,
-  isAndroid
+  isAndroid,
+  getAppName,
+  getPlatformSoundPath
 };

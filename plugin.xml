@@ -9,7 +9,7 @@
 
   <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git#2.0.0"/>
   
-  <hook type="before_plugin_install" src="hooks/verifySound.js" />
+  
   <hook type="after_prepare" src="hooks/unzipSound.js" />
   <hook type="after_prepare" src="hooks/cleanUp.js" />
 

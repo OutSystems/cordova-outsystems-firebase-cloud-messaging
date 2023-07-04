@@ -1,6 +1,6 @@
 "use strict";
 
-var path = require("path");
+let path = require("path");
 var utils = require("./utilities");
 var AdmZip = require("adm-zip");
 
@@ -29,49 +29,48 @@ function copyFiles(files, source, dest, defer){
     utils.createOrCheckIfFolderExists(dest);
   }
 
-  for(var i = 0; i < files.length; i++) {
-    var filePath = path.join(source, files[i]);
-    var destFilePath = path.join(dest, files[i]);
+  for(const element of files) {
+    let filePath = path.join(source, element);
+    let destFilePath = path.join(dest, element);
     utils.copyFromSourceToDestPath(defer, filePath, destFilePath);
   }
 }
 
 module.exports = function(context) {
-  var cordovaAbove8 = utils.isCordovaAbove(context, 8);
-  var defer;
+  let cordovaAbove8 = utils.isCordovaAbove(context, 8);
+  let defer;
   if (cordovaAbove8) {
     defer = require("q").defer();
   } else {
     defer = context.requireCordovaModule("q").defer();
   }
   
-  var platform = context.opts.platforms[0];
-  var platformConfig = utils.getPlatformConfigs(platform);
+  let platform = context.opts.platforms[0];
+  let platformConfig = utils.getPlatformConfigs(platform);
   if (!platformConfig) {
     utils.handleError("Invalid platform", defer);
   }
 
-  var sourcePath = platformConfig.getSoundSourceFolder();
-  var soundFolderPath = platformConfig.getSoundDestinationFolder();
+  let sourcePath = utils.getPlatformSoundPath(context, platformConfig)
+  let soundFolderPath = platformConfig.getSoundDestinationFolder();
   
-  var soundZipFile = path.join(sourcePath, constants.soundZipFile);
+  let soundZipFile = path.join(sourcePath, constants.soundZipFile);
 
   if(utils.checkIfFileOrFolderExists(soundZipFile)){
-    var zip = new AdmZip(soundZipFile);
+    let zip = new AdmZip(soundZipFile);
     zip.extractAllTo(sourcePath, true);
     
-    var entriesNr = zip.getEntries().length;
+    let entriesNr = zip.getEntries().length;
     
     if(entriesNr == 0) {
       utils.handleError("Sound zip file is empty, either delete it or add one or more files", defer);
       return
     }
 
-    var zipFolder = sourcePath + "/sounds"
+    let zipFolder = sourcePath + "/sounds"
 
     if(!utils.checkIfFileOrFolderExists(zipFolder)){
-      if(utils.isAndroid(platform))
-        copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
+      copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
     } else { 
       copyWavFiles(platformConfig, zipFolder, soundFolderPath, defer)  
     }
