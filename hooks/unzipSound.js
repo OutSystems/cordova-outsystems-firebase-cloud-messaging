@@ -75,7 +75,7 @@ module.exports = function(context) {
       copyWavFiles(platformConfig, zipFolder, soundFolderPath, defer)  
     }
     
-    utils.removeFile(soundZipFile);
+    //utils.removeFile(soundZipFile);
   }
 
 }
