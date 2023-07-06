@@ -7,12 +7,12 @@ var constants = {
   platforms: "platforms",
   android: {
     platform: "android",
-    wwwFolder: "assets/www",
+    wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
       return "platforms/android/app/src/main/res/raw";
     },
-    getSoundSourceFolder: function() {
+    getWWWFolder: function() {
       return "www";
     }
   },
@@ -21,10 +21,10 @@ var constants = {
     wwwFolder: "www",
     soundFileExtension: ".wav",
     getSoundDestinationFolder: function() {
-      return "www";
+      return "platforms/ios/www";
     },
-    getSoundSourceFolder: function() {
-      return "www";
+    getWWWFolder: function() {
+      return "platforms/ios/www";
     }
   }
 };
@@ -44,7 +44,7 @@ function removeFile(path){
 }
 
 function removeFolder(path){
-  fs.rmdirSync(path, { recursive: true })
+  fs.rmSync(path, { recursive: true })
 }
 
 function getFilesFromPath(path) {
@@ -63,6 +63,24 @@ function getPlatformConfigs(platform) {
   } else if (platform === constants.ios.platform) {
     return constants.ios;
   }
+}
+
+function getPlatformSoundPath(context, platformConfig){
+  let projectRoot = context.opts.projectRoot;
+  let platformPath;
+
+  if(platformConfig === constants.android){
+      platformPath = path.join(projectRoot, `platforms/android/www`);
+  } else {
+      let appName = getAppName(context)
+      platformPath = path.join(projectRoot, `platforms/ios/${appName}/Resources/www`);   
+  }
+      
+  if(!fs.existsSync(platformPath)){
+      platformPath = path.join(projectRoot, platformConfig.getWWWFolder());
+  }
+  
+  return platformPath
 }
 
 function isCordovaAbove(context, version) {
@@ -87,6 +105,12 @@ function isAndroid(platform){
   return platform === constants.android.platform
 }
 
+function getAppName(context) {
+  let ConfigParser = context.requireCordovaModule("cordova-lib").configparser;
+  let config = new ConfigParser("config.xml");
+  return config.name();
+}
+
 module.exports = {
   isCordovaAbove,
   handleError,
@@ -97,5 +121,7 @@ module.exports = {
   checkIfFileOrFolderExists,
   removeFile,
   removeFolder,
-  isAndroid
+  isAndroid,
+  getAppName,
+  getPlatformSoundPath
 };

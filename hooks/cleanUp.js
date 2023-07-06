@@ -8,14 +8,23 @@ var constants = {
 };
 
 module.exports = function(context) {
-  var platform = context.opts.plugin.platform;
-  var platformConfig = utils.getPlatformConfigs(platform);
+  let cordovaAbove8 = utils.isCordovaAbove(context, 8);
+  let defer;
+  if (cordovaAbove8) {
+    defer = require("q").defer();
+  } else {
+    defer = context.requireCordovaModule("q").defer();
+  }
+
+  let platform = context.opts.platforms[0];
+  let platformConfig = utils.getPlatformConfigs(platform);
+
   if (!platformConfig) {
     utils.handleError("Invalid platform", defer);
   }
 
-  var sourcePath = platformConfig.getSoundSourceFolder();
-  var soundFolderPath = path.join(sourcePath, constants.soundFolder);
+  let sourcePath = utils.getPlatformSoundPath(context, platformConfig)
+  let soundFolderPath = path.join(sourcePath, constants.soundFolder);
 
   if(utils.checkIfFileOrFolderExists(soundFolderPath)){
     utils.removeFolder(soundFolderPath);
