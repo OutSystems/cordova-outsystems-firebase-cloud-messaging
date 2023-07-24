@@ -212,9 +212,11 @@ extension OSFirebaseCloudMessaging: FirebaseMessagingEventProtocol {
         
         switch event {
         case .click(type: let type):
-            eventName = type == .notification ? "notificationClick" : "internalRouteActionClick"
+            eventName = type.description
         case .trigger(notification: let notification):
-            eventName = notification == .silentNotification ? "silentNotification" : "defaultNotification"        
+            eventName = notification.description
+        @unknown default:
+            preconditionFailure("Not supposed to get here")
         }
         
         self.trigger(event: eventName, data: data)
