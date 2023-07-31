@@ -38,6 +38,7 @@
     </config-file>
 
 		<!-- iOS Source Files -->
+    <source-file src="src/ios/OSFCMEventExtensions.swift" />
     <source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
