@@ -10,7 +10,7 @@ extension OSFCMClickableType: CustomStringConvertible {
                 result += "V2"
             }
         case .action:
-            result = "interalRouteActionClick"
+            result = "internalRouteActionClick"
         @unknown default:
             preconditionFailure("Not supposed to get here")
         }
