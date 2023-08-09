@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		MXz5tY3ESsQk7S/3CQXkHhDTYbo=
+		K9K5UnnHqm1ZsfScekwRDVKMHRE=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		vdhLYnwVfn+6c5gka5MSvccYlok=
+		YGWlAD+4hM7edzrj5ebwIJzHo54=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -114,7 +114,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jYF/iabm+9mpkefkjUwCDTzBRq9WZm4FO/A7fZRkgJ0=
+			fWFpr41W6kUdLZ+wbseOZGLcA6eODTEhYXNdiuVotkg=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -149,7 +149,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iyROspMzsE6R5/NXgPxTrZ80IcqKPzLXzIQ9hsRsVpw=
+			yeWh5v677L/dhOp+CWFWYfKcSZcoLkQ1BAidMx8TPAw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
