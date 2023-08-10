@@ -72,7 +72,7 @@ module.exports = function(context) {
       /**to deal with the following case:
        * iOS + one file in zip + O11
       **/
-      if(sourcePath == soundFolderPath)
+      if(sourcePath != soundFolderPath)
         copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
     } else { 
       copyWavFiles(platformConfig, zipFolder, soundFolderPath, defer)  
