@@ -52,7 +52,8 @@ module.exports = function(context) {
 
   let sourcePath = utils.getPlatformSoundPath(context, platformConfig)
   let soundFolderPath = platformConfig.getSoundDestinationFolder();
-  
+  soundFolderPath = path.join(context.opts.projectRoot, soundFolderPath);
+
   let soundZipFile = path.join(sourcePath, constants.soundZipFile);
 
   if(utils.checkIfFileOrFolderExists(soundZipFile)){
