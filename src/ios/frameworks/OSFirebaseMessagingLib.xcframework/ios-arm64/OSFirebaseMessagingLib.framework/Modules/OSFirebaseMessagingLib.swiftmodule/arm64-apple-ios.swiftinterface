@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OSFirebaseMessagingLib
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import CoreData
 import FirebaseCore
 import FirebaseMessaging
@@ -10,6 +11,7 @@ import Swift
 import UIKit
 import UserNotifications
 import _Concurrency
+import _StringProcessing
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OSFCMExtraData) public class OSFCMExtraData : CoreData.NSManagedObject, Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   required convenience public init(from decoder: Swift.Decoder) throws
@@ -58,26 +60,18 @@ public enum FirebaseMessagingErrors : Swift.Int, Foundation.CustomNSError, Found
 }
 public protocol MessagingProtocol {
   func getGeneralTopic() -> Swift.String
-  
   #if compiler(>=5.3) && $AsyncAwait
   func getToken(of type: OSFirebaseMessagingLib.OSFCMTokenType) async throws -> Swift.String
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   func deleteToken() async throws
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   func subscribe(toTopic topic: Swift.String) async throws
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   func unsubscribe(fromTopic topic: Swift.String) async throws
   #endif
-
 }
 public class FirebaseConfiguration {
   public init(fileName: Swift.String = "GoogleService-Info", bundle: Foundation.Bundle = Bundle.main)
@@ -138,37 +132,24 @@ public enum FirebaseNotificationType {
   }
 }
 public enum OSFCMClickableType {
-  case notification
+  case notification(latestVersion: Swift.Bool)
   case action
-  public static func == (a: OSFirebaseMessagingLib.OSFCMClickableType, b: OSFirebaseMessagingLib.OSFCMClickableType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
 }
 public class MessagingManager : OSFirebaseMessagingLib.MessagingProtocol {
   public init()
   public func getGeneralTopic() -> Swift.String
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func getToken(of type: OSFirebaseMessagingLib.OSFCMTokenType) async throws -> Swift.String
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func deleteToken() async throws
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func subscribe(toTopic topic: Swift.String) async throws
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func unsubscribe(fromTopic topic: Swift.String) async throws
   #endif
-
   @objc deinit
 }
 extension Swift.Encodable {
@@ -177,11 +158,9 @@ extension Swift.Encodable {
 public protocol NotificationManagerProtocol {
   func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, Swift.Error>
   func fetchNotifications() -> Swift.Result<[OSFirebaseMessagingLib.OSFCMNotification], Swift.Error>
-  
   #if compiler(>=5.3) && $AsyncAwait
   func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async -> Swift.Result<Swift.Bool, Swift.Error>
   #endif
-
 }
 @objc @_hasMissingDesignatedInitializers final public class NotificationManager : ObjectiveC.NSObject {
   convenience public init(coreDataManager: OSFirebaseMessagingLib.CoreDataManager = CoreDataManager())
@@ -189,55 +168,39 @@ public protocol NotificationManagerProtocol {
   @objc deinit
 }
 extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.NotificationManagerProtocol {
-  
   #if compiler(>=5.3) && $AsyncAwait
   final public func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async -> Swift.Result<Swift.Bool, Swift.Error>
   #endif
-
   final public func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, Swift.Error>
   final public func fetchNotifications() -> Swift.Result<[OSFirebaseMessagingLib.OSFCMNotification], Swift.Error>
 }
 @objc @_hasMissingDesignatedInitializers open class FirebaseMessagingController : ObjectiveC.NSObject {
   convenience public init(delegate: OSFirebaseMessagingLib.FirebaseMessagingCallbackProtocol, firebaseManager: OSFirebaseMessagingLib.MessagingManager = MessagingManager(), coreDataManager: OSFirebaseMessagingLib.CoreDataManager = CoreDataManager())
   public func getPendingNotifications(clearFromDatabase: Swift.Bool = false)
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func getToken(ofType type: OSFirebaseMessagingLib.OSFCMTokenType = .fcm) async
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func deleteToken() async
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func subscribe(_ topic: Swift.String, token: Swift.String = "") async throws
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func unsubscribe(fromTopic topic: Swift.String) async throws
   #endif
-
   public func clearNotifications()
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async
   #endif
-
   public func setBadge(badge: Swift.Int)
   public func getBadge()
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func registerDevice() async
   #endif
-
-  
   #if compiler(>=5.3) && $AsyncAwait
   public func unregisterDevice() async
   #endif
-
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class CoreDataManager : ObjectiveC.NSObject {
@@ -306,5 +269,3 @@ extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.Hashable {}
 extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.RawRepresentable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Equatable {}
 extension OSFirebaseMessagingLib.FirebaseNotificationType : Swift.Hashable {}
-extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Equatable {}
-extension OSFirebaseMessagingLib.OSFCMClickableType : Swift.Hashable {}
