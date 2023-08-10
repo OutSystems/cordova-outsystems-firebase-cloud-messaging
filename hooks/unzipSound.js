@@ -1,21 +1,20 @@
 "use strict";
 
 let path = require("path");
-var utils = require("./utilities");
-var AdmZip = require("adm-zip");
+let utils = require("./utilities");
+let AdmZip = require("adm-zip");
 
-var constants = {
+let constants = {
   soundZipFile: "sounds.zip"
 };
 
 function copyWavFiles(platformConfig, source, dest, defer) {
-  var files = utils.getFilesFromPath(source);
+  let files = utils.getFilesFromPath(source);
 
   let filteredFiles = files.filter(function(file){
     return file.endsWith(platformConfig.soundFileExtension) == true;
   });
   
-  console.log("Nr of sound files in zip: ", filteredFiles.length)
   copyFiles(filteredFiles, source, dest, defer)
 }
 
@@ -66,16 +65,17 @@ module.exports = function(context) {
       utils.handleError("Sound zip file is empty, either delete it or add one or more files", defer);
       return
     }
-
+  
     let zipFolder = sourcePath + "/sounds"
 
     if(!utils.checkIfFileOrFolderExists(zipFolder)){
-      copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
+      /**to deal with the following case:
+       * iOS + one file in zip + O11
+      **/
+      if(sourcePath == soundFolderPath)
+        copyWavFiles(platformConfig, sourcePath, soundFolderPath, defer)
     } else { 
       copyWavFiles(platformConfig, zipFolder, soundFolderPath, defer)  
     }
-    
-    //utils.removeFile(soundZipFile);
   }
-
 }
