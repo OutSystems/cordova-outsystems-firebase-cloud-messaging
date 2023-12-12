@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<plugin id="com.outsystems.firebase.cloudmessaging" version="1.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="com.outsystems.firebase.cloudmessaging" version="2.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>OSFirebaseCloudMessaging</name>
   <description>Outsystems plugin for Firebase Cloud Messaging</description>
   <author>OutSystems Inc</author>
@@ -7,8 +7,11 @@
     <clobbers target="cordova.plugins.OSFirebaseCloudMessaging"/>
   </js-module>
 
-  <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git#1.0.0"/>
+  <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git#2.0.0"/>
   
+  <hook type="after_prepare" src="hooks/unzipSound.js" />
+  <hook type="after_prepare" src="hooks/cleanUp.js" />
+
   <platform name="ios">
 
     <config-file parent="/*" target="config.xml">
@@ -34,6 +37,7 @@
     </config-file>
 
 		<!-- iOS Source Files -->
+    <source-file src="src/ios/OSFCMEventExtensions.swift" />
     <source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
@@ -61,9 +65,6 @@
   <platform name="android">
 
     <hook type="after_prepare" src="hooks/android/androidCopyChannelInfo.js" />
-
-    <hook type="before_plugin_install" src="hooks/android/sound/copySound.js" />
-
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="OSFirebaseCloudMessaging">
         <param name="android-package" value="com.outsystems.firebase.cloudmessaging.OSFirebaseCloudMessaging"/>
