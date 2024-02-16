@@ -55,7 +55,7 @@
             <source url="https://cdn.cocoapods.org/"/>
         </config>
         <pods use-frameworks="true">
-            <pod name="Firebase/Messaging" spec="8.6.1" />
+            <pod name="Firebase/Messaging" spec="8.15.0" />
             <pod name="OSCommonPluginLib" spec="1.0.0" />
         </pods>
     </podspec>

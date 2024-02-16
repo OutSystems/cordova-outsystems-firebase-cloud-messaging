@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [Unreleased]
+- Chore: Update Firebase/Messaging pod to version 8.15.0. (https://outsystemsrd.atlassian.net/browse/RMET-3141)
+
 ## [Version 2.0.1]
 - Fix: Only deal with intents from the plugin  (https://outsystemsrd.atlassian.net/browse/RMET-3013)
 
