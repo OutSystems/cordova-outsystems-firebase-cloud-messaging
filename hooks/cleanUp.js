@@ -20,7 +20,8 @@ module.exports = function(context) {
   let platformConfig = utils.getPlatformConfigs(platform);
 
   if (!platformConfig) {
-    utils.handleError("Invalid platform", defer);
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was problem
+    detecting the platform configuration.`)
   }
 
   let sourcePath = utils.getPlatformSoundPath(context, platformConfig)
