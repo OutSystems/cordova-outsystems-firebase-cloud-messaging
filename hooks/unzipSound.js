@@ -20,8 +20,7 @@ function copyWavFiles(platformConfig, source, dest, defer) {
 
 function copyFiles(files, source, dest, defer){
   if(!files){
-    utils.handleError("Something went wrong when trying to unzip sounds.zip, no files were found", defer);
-    return
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when trying to unzip sounds.zip - no files were found`);
   }
   
   if(!utils.checkIfFileOrFolderExists(dest)) {
@@ -47,7 +46,7 @@ module.exports = function(context) {
   let platform = context.opts.platforms[0];
   let platformConfig = utils.getPlatformConfigs(platform);
   if (!platformConfig) {
-    utils.handleError("Invalid platform", defer);
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was a problem detecting the platform configuration.`)
   }
 
   let sourcePath = utils.getPlatformSoundPath(context, platformConfig)
@@ -61,10 +60,8 @@ module.exports = function(context) {
     zip.extractAllTo(sourcePath, true);
     
     let entriesNr = zip.getEntries().length;
-    
     if(entriesNr == 0) {
-      utils.handleError("Sound zip file is empty, either delete it or add one or more files", defer);
-      return
+      throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Sound zip file is empty, either delete it or add one or more files.`)
     }
   
     let zipFolder = sourcePath + "/sounds"
