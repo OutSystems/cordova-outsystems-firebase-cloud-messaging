@@ -20,8 +20,7 @@ function copyWavFiles(platformConfig, source, dest, defer) {
 
 function copyFiles(files, source, dest, defer){
   if(!files){
-    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when 
-    trying to unzip sounds.zip - no files were found`);
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when trying to unzip sounds.zip - no files were found`);
   }
   
   if(!utils.checkIfFileOrFolderExists(dest)) {
@@ -47,8 +46,7 @@ module.exports = function(context) {
   let platform = context.opts.platforms[0];
   let platformConfig = utils.getPlatformConfigs(platform);
   if (!platformConfig) {
-    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was problem
-    detecting the platform configuration.`)
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was a problem detecting the platform configuration.`)
   }
 
   let sourcePath = utils.getPlatformSoundPath(context, platformConfig)

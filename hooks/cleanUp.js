@@ -20,7 +20,7 @@ module.exports = function(context) {
   let platformConfig = utils.getPlatformConfigs(platform);
 
   if (!platformConfig) {
-    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was problem
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Error occurred on ${context.hook} because there was a problem
     detecting the platform configuration.`)
   }
 
