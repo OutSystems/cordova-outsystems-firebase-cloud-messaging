@@ -29,12 +29,6 @@ var constants = {
   }
 };
 
-function handleError(errorMessage, defer) {
-  console.log(errorMessage);
-  defer.reject();
-}
-
-
 function checkIfFileOrFolderExists(path) {
   return fs.existsSync(path);
 }
@@ -97,7 +91,7 @@ function copyFromSourceToDestPath(defer, sourcePath, destPath) {
   })
   .on("error", function (err) {
     console.log(err);
-    defer.reject();
+    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when trying to copy sounds files. Please check the logs for more information.`);
   });
 }
 
@@ -113,7 +107,6 @@ function getAppName(context) {
 
 module.exports = {
   isCordovaAbove,
-  handleError,
   getPlatformConfigs,
   copyFromSourceToDestPath,
   getFilesFromPath,
