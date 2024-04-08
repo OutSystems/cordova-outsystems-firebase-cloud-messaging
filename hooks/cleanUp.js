@@ -28,6 +28,7 @@ module.exports = function(context) {
   let soundFolderPath = path.join(sourcePath, constants.soundFolder);
 
   if(utils.checkIfFileOrFolderExists(soundFolderPath)){
+    console.log(`FCM_LOG: Deleting sounds folder @ ${soundFolderPath} `)
     utils.removeFolder(soundFolderPath);
   } 
 
