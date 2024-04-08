@@ -16,6 +16,6 @@
   },
   "engines": [],
   "dependencies": {
-    "adm-zip": "0.5.2"
+    "adm-zip": "0.5.12"
   } 
 }
