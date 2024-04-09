@@ -69,22 +69,7 @@ function getPlatformConfigs(platform) {
 
 function getPlatformSoundPath(context, platformConfig){
   let projectRoot = context.opts.projectRoot;
-  let platformPath;
-
-  /**
-  if(platformConfig === constants.android){
-    platformPath = path.join(projectRoot, `platforms/android/www`);
-  } else {
-    let appName = getAppName(context)
-    platformPath = path.join(projectRoot, `platforms/ios/${appName}/Resources/www`);   
-  }
-      
-  if(!fs.existsSync(platformPath)){
-     */
-    platformPath = path.join(projectRoot, platformConfig.getWWWFolder());
- // }
-  
-  return platformPath
+  return  path.join(projectRoot, platformConfig.getWWWFolder());
 }
 
 function isCordovaAbove(context, version) {
