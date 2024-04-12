@@ -6,10 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
-## Unreleased
-
-- Feat: Deal with `sounds` as a resource in ODC. (https://outsystemsrd.atlassian.net/browse/RMET-3315)
-
 ## 2.1.0
 
 - Fix: Make `cleanUp` hook only run after all sound files are copied successfully. (https://outsystemsrd.atlassian.net/browse/RMET-3326)
