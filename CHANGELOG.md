@@ -9,7 +9,7 @@ The changes documented here do not include those from the original repository.
 ## Unreleased
 
 ### 17-04-2024
-- Fix: Properly serialize data objects with annotoation (https://outsystemsrd.atlassian.net/browse/RMET-3109).
+- Fix: Properly serialize data objects with annotation (https://outsystemsrd.atlassian.net/browse/RMET-3109).
 
 - Feat: Deal with `sounds` as a resource in ODC. (https://outsystemsrd.atlassian.net/browse/RMET-3315)
 
