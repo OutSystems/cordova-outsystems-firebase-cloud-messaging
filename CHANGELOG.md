@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
-## [Unreleased]
+## [Version 2.2.0]
 
 ### 15-05-2024
 - Feat: Update dependency to OSFirebaseMessagingLib-Android, making `FirebaseMessagingReceiveService` an open class so it can be extended (https://outsystemsrd.atlassian.net/browse/RMET-3407).
