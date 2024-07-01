@@ -243,8 +243,6 @@ extension OSFirebaseCloudMessaging: FirebaseMessagingEventProtocol {
             eventName = type.description
         case .trigger(notification: let notification):
             eventName = notification.description
-        @unknown default:
-            preconditionFailure("Not supposed to get here")
         }
         
         self.trigger(event: eventName, data: data)
