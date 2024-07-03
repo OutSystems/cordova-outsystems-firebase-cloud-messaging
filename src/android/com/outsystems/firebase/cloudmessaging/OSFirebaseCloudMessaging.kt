@@ -168,6 +168,14 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
                         controller.getPendingNotifications(clearFromDatabase)
                     }
                 }
+                "setDeliveryMetricsExportToBigQuery" -> {
+                    args.getJSONObject(0).getBoolean("enable").let {
+                        controller.setDeliveryMetricsExportToBigQuery(it)
+                    }
+                }
+                "deliveryMetricsExportToBigQueryEnabled" -> {
+                    controller.deliveryMetricsExportToBigQueryEnabled()
+                }
                 else -> false
             }
             true
