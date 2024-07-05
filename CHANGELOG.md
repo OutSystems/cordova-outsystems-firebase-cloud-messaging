@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [Unreleased]
+
+### Features
+- Enable message delivery metrics exportation to BigQuery (https://outsystemsrd.atlassian.net/browse/RMET-3511).
+
 ## [Version 2.2.1]
 
 ### 03-06-2024
