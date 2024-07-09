@@ -11,6 +11,9 @@ The changes documented here do not include those from the original repository.
 ### Features
 - Enable message delivery metrics exportation to BigQuery (https://outsystemsrd.atlassian.net/browse/RMET-3511).
 
+### Fixes
+- Remove the main thread blocking (https://outsystemsrd.atlassian.net/browse/RMET-3508).
+
 ## [Version 2.2.1]
 
 ### 03-06-2024
