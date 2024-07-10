@@ -1,5 +1,6 @@
 package com.outsystems.firebase.cloudmessaging
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -44,7 +45,6 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 123123
         const val FCM_EXPLICIT_NOTIFICATION = "com.outsystems.fcm.notification"
         const val GOOGLE_MESSAGE_ID = "google.message_id"
-        const val POST_NOTIFICATIONS_PERMISSION = "android.permission.POST_NOTIFICATIONS"
     }
 
     override fun initialize(cordova: CordovaInterface, webView: CordovaWebView) {
@@ -259,11 +259,11 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         flow = MutableSharedFlow(replay = 1)
 
         // if it doesn't have permission, request it
-        val hasPermission = checkPermission(POST_NOTIFICATIONS_PERMISSION)
+        val hasPermission = checkPermission(Manifest.permission.POST_NOTIFICATIONS)
         if (hasPermission) {
             flow?.emit(OSFCMPermissionEvents.Granted)
         } else {
-            requestPermission(NOTIFICATION_PERMISSION_REQUEST_CODE, POST_NOTIFICATIONS_PERMISSION)
+            requestPermission(NOTIFICATION_PERMISSION_REQUEST_CODE, Manifest.permission.POST_NOTIFICATIONS)
         }
 
         flow?.collect {
