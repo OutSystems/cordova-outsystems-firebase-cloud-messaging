@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.outsystems.plugins.firebasemessaging.controller.*
@@ -258,8 +259,10 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     private suspend fun registerDevice(callbackContext: CallbackContext) {
         flow = MutableSharedFlow(replay = 1)
 
-        // if it doesn't have permission, request it
-        val hasPermission = checkPermission(Manifest.permission.POST_NOTIFICATIONS)
+        // for build versions from Tiramisu, if it doesn't have permission, request it
+        // for older build versions, the permission is given by default
+        val hasPermission = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+                checkPermission(Manifest.permission.POST_NOTIFICATIONS)
         if (hasPermission) {
             flow?.emit(OSFCMPermissionEvents.Granted)
         } else {
