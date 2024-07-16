@@ -13,6 +13,7 @@ The changes documented here do not include those from the original repository.
 
 ### Fixes
 - Remove the main thread blocking (https://outsystemsrd.atlassian.net/browse/RMET-3508).
+- Update `oscordova` dependency (https://outsystemsrd.atlassian.net/browse/RMET-3540)
 
 ## [Version 2.2.1]
 

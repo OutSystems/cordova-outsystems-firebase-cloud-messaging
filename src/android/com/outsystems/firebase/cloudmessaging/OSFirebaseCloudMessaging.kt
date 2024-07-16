@@ -66,6 +66,10 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         handleIntent(intent)
     }
 
+    override fun onResume(multitasking: Boolean) {
+        // Not used in this project.
+    }
+
     private fun handleIntent(intent: Intent) {
         val extras = intent.extras
         val extrasSize = extras?.size() ?: 0
