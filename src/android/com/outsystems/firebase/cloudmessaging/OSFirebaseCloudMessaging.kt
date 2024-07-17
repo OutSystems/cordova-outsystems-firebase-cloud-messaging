@@ -237,8 +237,8 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
         pendingNotificationNullableList?.let { pendingNotificationList ->
             gson.toJson(pendingNotificationList)?.let { jsonString ->
                 sendSuccess(callbackContext, jsonString)
-            } ?: errorCallback
-        } ?: errorCallback
+            } ?: errorCallback()
+        } ?: errorCallback()
     }
 
     override fun onRequestPermissionResult(requestCode: Int,
