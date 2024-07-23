@@ -10,11 +10,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		AyNLgPrWjY61YNgr8S+z3zn1eK4=
+		kSqkXFsYQniDxQ7uEKhjeRE0OAE=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		sytRlgW1w5Rs+NynKN8lotzjpAY=
+		chJt2Nrf5OGhLla+Rl2k0214OGo=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		sytRlgW1w5Rs+NynKN8lotzjpAY=
+		chJt2Nrf5OGhLla+Rl2k0214OGo=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -86,7 +86,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YgpzXxVS0KOqZXJPdwDKUSjj/qvKSdrrdjckRa7X4SA=
+			u9Fuaa4XPgL+O8EiHR1GR4gatMtLEPznLJtwUS/cV5U=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -121,7 +121,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YgpzXxVS0KOqZXJPdwDKUSjj/qvKSdrrdjckRa7X4SA=
+			u9Fuaa4XPgL+O8EiHR1GR4gatMtLEPznLJtwUS/cV5U=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>

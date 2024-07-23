@@ -6362,7 +6362,7 @@
       "kind": "StringLiteral",
       "offset": 2440,
       "length": 81,
-      "value": "\"Couldn't retrieve the valur for exporting message delivery metrics to BigQuery.\""
+      "value": "\"Couldn't retrieve the value for exporting message delivery metrics to BigQuery.\""
     },
     {
       "filePath": "\/Users\/rcj\/Documents\/Projects\/OSFirebaseMessagingLib-iOS\/OSFirebaseMessagingLib\/Utils\/FirebaseMessagingErrors.swift",
