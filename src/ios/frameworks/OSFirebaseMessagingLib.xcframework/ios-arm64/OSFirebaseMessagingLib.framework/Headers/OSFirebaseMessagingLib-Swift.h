@@ -377,6 +377,7 @@ SWIFT_CLASS("_TtC22OSFirebaseMessagingLib27FirebaseMessagingController")
 @end
 
 
+
 /// Manages notification sending and storage on Core Data
 SWIFT_CLASS("_TtC22OSFirebaseMessagingLib19NotificationManager")
 @interface NotificationManager : NSObject

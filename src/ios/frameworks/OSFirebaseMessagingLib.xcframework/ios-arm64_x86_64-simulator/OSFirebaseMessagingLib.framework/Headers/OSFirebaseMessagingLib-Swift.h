@@ -377,6 +377,7 @@ SWIFT_CLASS("_TtC22OSFirebaseMessagingLib27FirebaseMessagingController")
 @end
 
 
+
 /// Manages notification sending and storage on Core Data
 SWIFT_CLASS("_TtC22OSFirebaseMessagingLib19NotificationManager")
 @interface NotificationManager : NSObject
@@ -827,6 +828,7 @@ SWIFT_CLASS("_TtC22OSFirebaseMessagingLib27FirebaseMessagingController")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 /// Manages notification sending and storage on Core Data

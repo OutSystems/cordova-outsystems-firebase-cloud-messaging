@@ -18,6 +18,10 @@ import _SwiftConcurrencyShims
   required convenience public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
+public enum OSFCMSubscriptionTopic {
+  case general
+  case specific(name: Swift.String)
+}
 public enum OSFCMTokenType {
   case fcm
   case apns
@@ -47,7 +51,7 @@ public enum FirebaseMessagingErrors : Swift.Int, Foundation.CustomNSError, Found
   case deleteNotificationsError
   case obtainSilentNotificationsError
   case setDeliveryMetricsExportToBigQueryError
-  case getDeliveryMetricsExportToBigQueryError
+  case gettingBadgeNumberError
   case requestPermissionsError
   public var description: Swift.String {
     get
@@ -62,7 +66,6 @@ public enum FirebaseMessagingErrors : Swift.Int, Foundation.CustomNSError, Found
   }
 }
 public protocol MessagingProtocol {
-  func getGeneralTopic() -> Swift.String
   #if compiler(>=5.3) && $AsyncAwait
   func getToken(of type: OSFirebaseMessagingLib.OSFCMTokenType) async throws -> Swift.String
   #endif
@@ -81,10 +84,7 @@ public class FirebaseConfiguration {
   public func getGoogleServicesPath() -> Swift.String?
   @objc deinit
 }
-public protocol FirebaseMessagingCallbackProtocol {
-  func callback(result: Swift.String?, error: OSFirebaseMessagingLib.FirebaseMessagingErrors?)
-}
-public protocol FirebaseMessagingEventProtocol {
+public protocol FirebaseMessagingEventProtocol : AnyObject {
   func event(_ event: OSFirebaseMessagingLib.FirebaseEventType, data: Swift.String)
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class FirebaseMessagingApplicationDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
@@ -97,7 +97,7 @@ public protocol FirebaseMessagingEventProtocol {
     set
   }
   @objc @_Concurrency.MainActor(unsafe) public static let shared: OSFirebaseMessagingLib.FirebaseMessagingApplicationDelegate
-  @_Concurrency.MainActor(unsafe) public var eventDelegate: (any OSFirebaseMessagingLib.FirebaseMessagingEventProtocol)?
+  @_Concurrency.MainActor(unsafe) weak public var eventDelegate: (any OSFirebaseMessagingLib.FirebaseMessagingEventProtocol)?
   @_Concurrency.MainActor(unsafe) public var deliveryMetricsExportToBigQueryEnabled: Swift.Bool {
     get
     set
@@ -144,7 +144,6 @@ public enum OSFCMClickableType {
 }
 public class MessagingManager : OSFirebaseMessagingLib.MessagingProtocol {
   public init()
-  public func getGeneralTopic() -> Swift.String
   #if compiler(>=5.3) && $AsyncAwait
   public func getToken(of type: OSFirebaseMessagingLib.OSFCMTokenType) async throws -> Swift.String
   #endif
@@ -182,31 +181,31 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
   final public func fetchNotifications() -> Swift.Result<[OSFirebaseMessagingLib.OSFCMNotification], any Swift.Error>
 }
 @objc @_hasMissingDesignatedInitializers open class FirebaseMessagingController : ObjectiveC.NSObject {
-  convenience public init(delegate: any OSFirebaseMessagingLib.FirebaseMessagingCallbackProtocol, firebaseManager: OSFirebaseMessagingLib.MessagingManager = MessagingManager(), coreDataManager: OSFirebaseMessagingLib.CoreDataManager = CoreDataManager())
-  public func getPendingNotifications(clearFromDatabase: Swift.Bool = false)
+  public var badgeNumber: Swift.Int {
+    get
+    set
+  }
+  convenience public init(firebaseManager: OSFirebaseMessagingLib.MessagingManager = MessagingManager(), coreDataManager: OSFirebaseMessagingLib.CoreDataManager = CoreDataManager(), generalTopic: Swift.String = "-general-topic-ios")
+  public func getPendingNotifications() throws -> [OSFirebaseMessagingLib.OSFCMNotification]
+  public func delete(pendingNotifications: [OSFirebaseMessagingLib.OSFCMNotification]) throws
   #if compiler(>=5.3) && $AsyncAwait
-  public func getToken(ofType type: OSFirebaseMessagingLib.OSFCMTokenType = .fcm) async
+  public func getToken(ofType type: OSFirebaseMessagingLib.OSFCMTokenType = .fcm) async throws -> Swift.String
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  public func deleteToken() async
+  public func deleteToken() async throws
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  public func subscribe(_ topic: Swift.String, token: Swift.String = "") async throws
+  public func subscribe(toTopic topic: OSFirebaseMessagingLib.OSFCMSubscriptionTopic) async throws
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  public func unsubscribe(fromTopic topic: Swift.String) async throws
+  public func unsubscribe(fromTopic topic: OSFirebaseMessagingLib.OSFCMSubscriptionTopic) async throws
   #endif
   public func clearNotifications()
   #if compiler(>=5.3) && $AsyncAwait
-  public func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async
-  #endif
-  public func setBadge(badge: Swift.Int)
-  public func getBadge()
-  #if compiler(>=5.3) && $AsyncAwait
-  public func registerDevice() async
+  public func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async throws
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  public func unregisterDevice() async
+  public func requestAuthorisation() async throws -> Swift.Bool
   #endif
   @objc deinit
 }
