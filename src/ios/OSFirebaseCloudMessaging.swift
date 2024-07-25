@@ -1,30 +1,26 @@
 import Foundation
-import OSCommonPluginLib
 import OSFirebaseMessagingLib
 
 @objc(OSFirebaseCloudMessaging)
 class OSFirebaseCloudMessaging: CDVPlugin {
-
     private var plugin: FirebaseMessagingController?
-    private var callbackId: String = ""
-    private weak var firebaseAppDelegate: FirebaseMessagingApplicationDelegate? = .shared
+    private var firebaseAppDelegate: FirebaseMessagingApplicationDelegate = .shared
     
     private var deviceReady: Bool = false
     private var eventQueue: [String]?
     
     override func pluginInitialize() {
-        self.plugin = FirebaseMessagingController(delegate: self)
-        self.firebaseAppDelegate?.eventDelegate = self
+        self.plugin = FirebaseMessagingController()
+        self.firebaseAppDelegate.eventDelegate = self
     }
     
     @objc(ready:)
     func ready(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
         self.deviceReady = true
         
         if let eventQueue = self.eventQueue {
             self.commandDelegate.run { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 
                 for js in eventQueue {
                     self.commandDelegate.evalJs(js)
@@ -36,145 +32,197 @@ class OSFirebaseCloudMessaging: CDVPlugin {
     
     @objc(registerDevice:)
     func registerDevice(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        Task {
-            await self.plugin?.registerDevice()
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                do {
+                    if try await self.plugin?.requestAuthorisation() == true {
+                        try await self.plugin?.subscribe(toTopic: .general)
+                        self.sendSuccess(callbackId: command.callbackId)
+                    } else {
+                        self.send(error: .notificationsPermissionsDeniedError, callbackId: command.callbackId)
+                    }
+                } catch let error as FirebaseMessagingErrors {
+                    self.send(error: error == .requestPermissionsError ? .registrationPermissionsError : error, callbackId: command.callbackId)
+                } catch {
+                    self.send(error: .registrationError, callbackId: command.callbackId)
+                }
+            }
         }
     }
     
     @objc(getPendingNotifications:)
     func getPendingNotifications(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-
-        guard let clearFromDatabase = command.arguments[0] as? Bool else {
-            self.sendResult(result: "", error:FirebaseMessagingErrors.obtainSilentNotificationsError as NSError, callBackID: self.callbackId)
-            return
+        guard let clearFromDatabase = command.argument(at: 0) as? Bool else {
+            return self.send(error: .obtainSilentNotificationsError, callbackId: command.callbackId)
         }
         
-        self.plugin?.getPendingNotifications(clearFromDatabase: clearFromDatabase)
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            do {
+                let notificationArray = try self.plugin?.getPendingNotifications()
+                let result = notificationArray?.encode()    // this is done here as notifications might be clean with the next if statement.
+                if clearFromDatabase, notificationArray?.isEmpty == false, let notificationArray {
+                    do {
+                        try self.plugin?.delete(pendingNotifications: notificationArray)
+                    } catch {
+                        throw FirebaseMessagingErrors.deleteNotificationsError
+                    }
+                }
+                self.sendSuccess(result: result, callbackId: command.callbackId)
+            } catch {
+                self.send(error: error as? FirebaseMessagingErrors ?? .obtainSilentNotificationsError, callbackId: command.callbackId)
+            }
+        }
     }
     
     @objc(unregisterDevice:)
     func unregisterDevice(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        Task {
-            await self.plugin?.unregisterDevice()
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                do {
+                    try await self.plugin?.deleteToken()
+                } catch {
+                    return self.send(error: .unregistrationDeleteTokenError, callbackId: command.callbackId)
+                }
+                
+                do {
+                    try await self.plugin?.unsubscribe(fromTopic: .general)
+                    self.sendSuccess(callbackId: command.callbackId)
+                } catch {
+                    self.send(error: .unregistrationError, callbackId: command.callbackId)
+                }
+            }
         }
     }
     
     @objc(getToken:)
     func getToken(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        Task {
-            await self.plugin?.getToken(ofType: .fcm)
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                guard let token = try? await self.plugin?.getToken()
+                else { return self.send(error: .obtainingTokenError, callbackId: command.callbackId) }
+                
+                do {
+                    try await self.plugin?.subscribe(toTopic: .general)
+                    self.sendSuccess(result: token, callbackId: command.callbackId)
+                } catch {
+                    self.send(error: .subscriptionError, callbackId: command.callbackId)
+                }
+            }
         }
     }
 
     @objc(getAPNsToken:)
     func getAPNsToken(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        Task {
-            await self.plugin?.getToken(ofType: .apns)
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                guard let token = try? await self.plugin?.getToken(ofType: .apns)
+                else { return self.send(error: .obtainingTokenError, callbackId: command.callbackId) }
+                
+                self.sendSuccess(result: token, callbackId: command.callbackId)
+            }
         }
     }
     
     @objc(clearNotifications:)
     func clearNotifications(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        self.plugin?.clearNotifications()
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            self.plugin?.clearNotifications()
+            self.sendSuccess(callbackId: command.callbackId)
+        }
     }
     
     @objc(sendLocalNotification:)
     func sendLocalNotification(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
         guard
-            let badge = command.arguments[0] as? Int,
-            let title = command.arguments[1] as? String,
-            let body = command.arguments[2] as? String
-        else {
-            self.sendResult(result: "", error:FirebaseMessagingErrors.sendNotificationsError as NSError, callBackID: self.callbackId)
-            return
-        }
+            let badge = command.argument(at: 0) as? Int,
+            let title = command.argument(at: 1) as? String,
+            let body = command.argument(at: 2) as? String
+        else { return self.send(error: .sendNotificationsError, callbackId: command.callbackId) }
 
-        Task {
-            await self.plugin?.sendLocalNotification(title: title, body: body, badge: badge)
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                do {
+                    try await self.plugin?.sendLocalNotification(title: title, body: body, badge: badge)
+                    self.sendSuccess(callbackId: command.callbackId)
+                } catch {
+                    self.send(error: .sendNotificationsError, callbackId: command.callbackId)
+                }
+            }
         }
     }
     
     @objc(getBadge:)
     func getBadge(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        self.plugin?.getBadge()
+        DispatchQueue.main.async {
+            guard let badgeNumber = self.plugin?.badgeNumber
+            else { return self.send(error: .gettingBadgeNumberError, callbackId: command.callbackId)}
+            
+            self.sendSuccess(result: String(badgeNumber), callbackId: command.callbackId)
+        }
     }
     
     @objc(setBadge:)
     func setBadge(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
+        guard let newBadgeNumber = command.argument(at: 0) as? Int
+        else { return self.send(error: .settingBadgeNumberError, callbackId: command.callbackId) }
         
-        guard
-            let badge = command.arguments[0] as? Int
-        else {
-            self.sendResult(result: "", error:FirebaseMessagingErrors.settingBadgeNumberError as NSError, callBackID: self.callbackId)
-            return
+        DispatchQueue.main.async {
+            self.plugin?.badgeNumber = newBadgeNumber
+            self.sendSuccess(callbackId: command.callbackId)
         }
-        
-        self.plugin?.setBadge(badge:badge)
     }
     
     @objc(subscribe:)
     func subscribe(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        
-        guard
-            let topic = command.arguments[0] as? String
-        else {
-            self.sendResult(result: "", error:FirebaseMessagingErrors.subscriptionError as NSError, callBackID: self.callbackId)
-            return
-        }
-        
-        Task {
-            do {
-                try await self.plugin?.subscribe(topic)
-            } catch {
-                self.sendResult(result: "", error:FirebaseMessagingErrors.subscriptionError as NSError, callBackID: self.callbackId)
-            }
-        }
+        self.perform(
+            operation: { [plugin] topicName in
+                try await plugin?.subscribe(toTopic: .specific(name: topicName))
+            },
+            forTopic: command.argument(at: 0) as? String,
+            with: command.callbackId,
+            error: .subscriptionError
+        )
     }
     
     @objc(unsubscribe:)
     func unsubscribe(command: CDVInvokedUrlCommand) {
-        self.callbackId = command.callbackId
-        
-        guard
-            let topic = command.arguments[0] as? String
-        else {
-            self.sendResult(result: "", error:FirebaseMessagingErrors.unsubscriptionError as NSError, callBackID: self.callbackId)
-            return
-        }
-        
-        Task {
-            do {
-                try await self.plugin?.unsubscribe(fromTopic: topic)
-            } catch {
-                self.sendResult(result: "", error:FirebaseMessagingErrors.unsubscriptionError as NSError, callBackID: self.callbackId)
-            }
-        }
+        self.perform(
+            operation: { [plugin] topicName in
+                try await plugin?.unsubscribe(fromTopic: .specific(name: topicName))
+            },
+            forTopic: command.argument(at: 0) as? String,
+            with: command.callbackId,
+            error: .unsubscriptionError
+        )
     }
     
     @objc(setDeliveryMetricsExportToBigQuery:)
     func setDeliveryMetricsExportToBigQuery(command: CDVInvokedUrlCommand) {
+        guard
+            let parameterDictionary = command.arguments.first as? [String: Any],
+            let newValue = parameterDictionary["enable"] as? Bool
+        else { return self.send(error: .setDeliveryMetricsExportToBigQueryError, callbackId: command.callbackId) }
+        
         self.commandDelegate.run { [weak self] in
             guard let self else { return }
             
-            guard 
-                let parameterDictionary = command.arguments.first as? [String: Any],
-                let newValue = parameterDictionary["enable"] as? Bool
-            else { return self.sendResult(result: "", error: FirebaseMessagingErrors.setDeliveryMetricsExportToBigQueryError as NSError, callBackID: command.callbackId) }
-            
-            self.firebaseAppDelegate?.deliveryMetricsExportToBigQueryEnabled = newValue
-            self.sendResult(result: "", error: nil, callBackID: command.callbackId)
+            self.firebaseAppDelegate.deliveryMetricsExportToBigQueryEnabled = newValue
+            self.sendSuccess(callbackId: command.callbackId)
         }
-        
     }
     
     @objc(deliveryMetricsExportToBigQueryEnabled:)
@@ -182,29 +230,41 @@ class OSFirebaseCloudMessaging: CDVPlugin {
         self.commandDelegate.run { [weak self] in
             guard let self else { return }
             
-            guard let returnValue = self.firebaseAppDelegate?.deliveryMetricsExportToBigQueryEnabled
-            else { return self.sendResult(result: "", error: FirebaseMessagingErrors.getDeliveryMetricsExportToBigQueryError as NSError, callBackID: command.callbackId) }
-            
-            self.sendResult(result: String(returnValue), error: nil, callBackID: command.callbackId)
+            self.sendSuccess(result: String(self.firebaseAppDelegate.deliveryMetricsExportToBigQueryEnabled), callbackId: command.callbackId)
         }
     }
 }
 
-// MARK: - OSCommonPluginLib's PlatformProtocol Methods
-extension OSFirebaseCloudMessaging: PlatformProtocol {
-    func sendResult(result: String?, error: NSError?, callBackID: String) {
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+private extension OSFirebaseCloudMessaging {
+    func perform(operation: @escaping (String) async throws -> Void, forTopic topicName: String?, with callbackId: String, error fcmError: FirebaseMessagingErrors) {
+        guard let topicName
+        else { return self.send(error: fcmError, callbackId: callbackId) }
         
-        if let error = error, !error.localizedDescription.isEmpty {
-            let errorCode = "OS-PLUG-FCMS-\(String(format: "%04d", error.code))"
-            let errorMessage = error.localizedDescription
-            let errorDict = ["code": errorCode, "message": errorMessage]
-            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: errorDict);
-        } else if let result = result {
-            pluginResult = result.isEmpty ? CDVPluginResult(status: CDVCommandStatus_OK) : CDVPluginResult(status: CDVCommandStatus_OK, messageAs: result)
+        self.commandDelegate.run { [weak self] in
+            guard let self else { return }
+            
+            Task {
+                do {
+                    try await operation(topicName)
+                    self.sendSuccess(callbackId: callbackId)
+                } catch {
+                    self.send(error: fcmError, callbackId: callbackId)
+                }
+            }
         }
-        
-        self.commandDelegate.send(pluginResult, callbackId: callBackID);
+    }
+
+    func sendSuccess(result: String? = nil, callbackId: String) {
+        let pluginResult = CDVPluginResult(status: .ok, messageAs: result)
+        self.commandDelegate.send(pluginResult, callbackId: callbackId)
+    }
+    
+    func send(error: FirebaseMessagingErrors, callbackId: String) {
+        let pluginResult = CDVPluginResult(status: .error, messageAs: [
+            "code": "OS-PLUG-FCMS-\(String(format: "%04d", error.rawValue))",
+            "message": error.description
+        ])
+        self.commandDelegate.send(pluginResult, callbackId: callbackId)
     }
     
     func trigger(event: String, data: String) {
@@ -212,23 +272,8 @@ extension OSFirebaseCloudMessaging: PlatformProtocol {
         
         if self.deviceReady {
             self.commandDelegate.evalJs(js)
-        } else if self.eventQueue != nil {
-            self.eventQueue?.append(js)
         } else {
-            self.eventQueue = [js]
-        }
-    }
-}
-
-// MARK: - OSFirebaseMessagingLib's FirebaseMessagingCallbackProtocol Methods
-extension OSFirebaseCloudMessaging: FirebaseMessagingCallbackProtocol {
-    func callback(result: String?, error: FirebaseMessagingErrors?) {
-        if let error = error {
-            self.sendResult(result: nil, error: error as NSError, callBackID: self.callbackId)
-        } else {
-            if let result = result {
-                self.sendResult(result: result, error: nil, callBackID: self.callbackId)
-            }
+            self.eventQueue = (self.eventQueue ?? []) + [js]
         }
     }
 }
@@ -236,15 +281,15 @@ extension OSFirebaseCloudMessaging: FirebaseMessagingCallbackProtocol {
 // MARK: - OSFirebaseMessagingLib's FirebaseMessagingEventProtocol Methods
 extension OSFirebaseCloudMessaging: FirebaseMessagingEventProtocol {
     func event(_ event: FirebaseEventType, data: String) {
-        var eventName = ""
-        
-        switch event {
+        let eventName: CustomStringConvertible = switch event {
         case .click(type: let type):
-            eventName = type.description
+            type
         case .trigger(notification: let notification):
-            eventName = notification.description
+            notification
+        @unknown default:
+            preconditionFailure("Not supposed to get here")
         }
         
-        self.trigger(event: eventName, data: data)
+        self.trigger(event: eventName.description, data: data)
     }
 }
