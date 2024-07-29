@@ -11,6 +11,9 @@ The changes documented here do not include those from the original repository.
 ### Fixes
 - Remove return by callbacks, eliminating the disalignment with the threads where the methods are being called (https://outsystemsrd.atlassian.net/browse/RMET-3554).
 
+### Chores:
+- Update `firebaseMessaging` iOS pod to version `10.29.0`.
+
 ## [Version 2.3.0]
 
 ### Features
