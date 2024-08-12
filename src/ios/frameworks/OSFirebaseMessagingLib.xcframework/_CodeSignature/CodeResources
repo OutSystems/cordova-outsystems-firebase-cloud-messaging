@@ -10,7 +10,7 @@
 		</data>
 		<key>ios-arm64/OSFirebaseMessagingLib.framework/Info.plist</key>
 		<data>
-		5MiiBobnuscjMYAgacyY1vOxgNA=
+		sWwyshmz1mWW7d1lq1OqrBhF1ME=
 		</data>
 		<key>ios-arm64/OSFirebaseMessagingLib.framework/Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/Info.plist</key>
 		<data>
-		kSqkXFsYQniDxQ7uEKhjeRE0OAE=
+		IXr7wYcw9VP+61SmKVG4G0gveU8=
 		</data>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -114,11 +114,11 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/OSFirebaseMessagingLib</key>
 		<data>
-		pp5pHFZIoXwtyOsVh84VEL0SblY=
+		W467EZcKOy1qlPzeTA0U5K+4BOo=
 		</data>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/_CodeSignature/CodeResources</key>
 		<data>
-		MvNU31YHRoeKFIhZ+QRS1w947Cg=
+		WXiuG1zs12HkGmZwpHi/mul6hfM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -138,11 +138,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5MiiBobnuscjMYAgacyY1vOxgNA=
+			sWwyshmz1mWW7d1lq1OqrBhF1ME=
 			</data>
 			<key>hash2</key>
 			<data>
-			l494Emw21tblZQbwe34WxSaxgFpU9WFPrkme/JYG8Fg=
+			Zp0tsqMu1xtk206NPQloM4xlhZfGaedbmjOVQlBG3F8=
 			</data>
 		</dict>
 		<key>ios-arm64/OSFirebaseMessagingLib.framework/Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -270,11 +270,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kSqkXFsYQniDxQ7uEKhjeRE0OAE=
+			IXr7wYcw9VP+61SmKVG4G0gveU8=
 			</data>
 			<key>hash2</key>
 			<data>
-			qEWRwqZF3iwpXEufvEEu4xa0OxRE5IdsJlaX3xTXSKo=
+			+NBcKFrRNqlQSmG3Et0c/3Tv9Jr/2k2LuciTpLR3fzY=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -424,22 +424,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pp5pHFZIoXwtyOsVh84VEL0SblY=
+			W467EZcKOy1qlPzeTA0U5K+4BOo=
 			</data>
 			<key>hash2</key>
 			<data>
-			HdhIIDh1Bby+IlQ5wc8Xw2Qnek7DfJEYM8JpOcyOfWU=
+			TICbw/9f6tTKS5Ah6+MXEndn9bAASrj7Wi9IAuFGBs0=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/OSFirebaseMessagingLib.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MvNU31YHRoeKFIhZ+QRS1w947Cg=
+			WXiuG1zs12HkGmZwpHi/mul6hfM=
 			</data>
 			<key>hash2</key>
 			<data>
-			xmiDJwl4k4Aa0h5+jPQizjPPjhNKmJOddPlYZNg0INI=
+			nzvU6hsqjuCyf9etznluLTdmhWzYQShLmkzN0hFuujw=
 			</data>
 		</dict>
 	</dict>
