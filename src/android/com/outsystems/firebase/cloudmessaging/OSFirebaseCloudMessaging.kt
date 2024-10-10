@@ -275,7 +275,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
 
         flow?.collect {
             if (it == OSFCMPermissionEvents.Granted) {
-                if (controller.registerDevice()) {
+                if (controller.registerDevice(this.getPackageAppName())) {
                     sendSuccess(callbackContext)
                 } else {
                     sendError(callbackContext, FirebaseMessagingError.REGISTRATION_ERROR)
@@ -287,7 +287,7 @@ class OSFirebaseCloudMessaging : CordovaImplementation() {
     }
 
     private suspend fun unregisterDevice(callbackContext: CallbackContext) {
-        if (controller.unregisterDevice()) {
+        if (controller.unregisterDevice(this.getPackageAppName())) {
             sendSuccess(callbackContext)
         } else {
             sendError(callbackContext, FirebaseMessagingError.UNREGISTRATION_ERROR)
