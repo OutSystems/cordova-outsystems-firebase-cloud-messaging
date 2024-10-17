@@ -20,6 +20,7 @@ import _SwiftConcurrencyShims
 }
 public enum OSFCMSubscriptionTopic {
   case general
+  case appGeneral
   case specific(name: Swift.String)
 }
 public enum OSFCMTokenType {

@@ -28,8 +28,8 @@ exports.getBadge = function (success, error) {
     exec(success, error, 'OSFirebaseCloudMessaging', 'getBadge');
 };
 
-exports.sendLocalNotification = function (badge, title, body, channelName, channelDescription, success, error) {
-    exec(success, error, 'OSFirebaseCloudMessaging', 'sendLocalNotification', [badge, title, body, channelName, channelDescription]);
+exports.sendLocalNotification = function (badge, title, body, channelName, channelDescription, color, icon, success, error) {
+    exec(success, error, 'OSFirebaseCloudMessaging', 'sendLocalNotification', [badge, title, body, channelName, channelDescription, color, icon]);
 };
 
 exports.registerDevice = function (success, error) {

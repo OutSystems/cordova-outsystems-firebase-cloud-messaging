@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [Version 2.4.0]
+
+### Features
+- (android) Subscribes and unsubscribes from `appGeneralTopic` - `appIdentifier-general-topic-android` when registering and unregistering the device. (https://outsystemsrd.atlassian.net/browse/RMET-2948).
+- (ios) Subscribes and unsubscribes from `appGeneralTopic` - `appIdentifier-general-topic-ios` when registering and unregistering the device. (https://outsystemsrd.atlassian.net/browse/RMET-2947).
+- (android) Handle icon and color parameters in setupNotificationBuilder for Android 12+ compatibility.
+
+### Fix
+- (ios) `NotificationClickedV2` not being triggered when deep link property is not set (https://outsystemsrd.atlassian.net/browse/RMET-3695).
+
 ## [Version 2.3.2]
 
 ### Features

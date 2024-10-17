@@ -39,6 +39,7 @@ class OSFirebaseCloudMessaging: CDVPlugin {
                 do {
                     if try await self.plugin?.requestAuthorisation() == true {
                         try await self.plugin?.subscribe(toTopic: .general)
+                        try await self.plugin?.subscribe(toTopic: .appGeneral)
                         self.sendSuccess(callbackId: command.callbackId)
                     } else {
                         self.send(error: .notificationsPermissionsDeniedError, callbackId: command.callbackId)
@@ -92,6 +93,7 @@ class OSFirebaseCloudMessaging: CDVPlugin {
                 
                 do {
                     try await self.plugin?.unsubscribe(fromTopic: .general)
+                    try await self.plugin?.unsubscribe(fromTopic: .appGeneral)
                     self.sendSuccess(callbackId: command.callbackId)
                 } catch {
                     self.send(error: .unregistrationError, callbackId: command.callbackId)
