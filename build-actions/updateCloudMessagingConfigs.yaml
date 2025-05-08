@@ -8,10 +8,11 @@ variables:
 
 platforms:
   android:
-    manifest:
-      - file: app/res/values/strings.xml
+    xml:
+      - resFile: values/strings.xml
         target: resources
-        inject: |
-          <string name="notification_channel_name">$NOTIFICATION_CHANNEL_DEFAULT_NAME</string>
-          <string name="notification_channel_description">$NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION</string>
-  
+        merge: |
+          <resources>
+            <string name="notification_channel_name">$NOTIFICATION_CHANNEL_DEFAULT_NAME</string>
+            <string name="notification_channel_description">$NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION</string>
+          </resources>
