@@ -1,0 +1,17 @@
+variables:
+  NOTIFICATION_CHANNEL_DEFAULT_NAME:
+    type: string
+    default: "Channel name"
+  NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION:
+    type: string
+    default: "Channel description"
+
+platforms:
+  android:
+    manifest:
+      - file: app/res/values/strings.xml
+        target: resources
+        inject: |
+          <string name="notification_channel_name">$NOTIFICATION_CHANNEL_DEFAULT_NAME</string>
+          <string name="notification_channel_description">$NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION</string>
+  
