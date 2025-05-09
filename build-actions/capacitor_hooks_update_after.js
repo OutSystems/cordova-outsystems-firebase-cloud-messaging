@@ -9,36 +9,12 @@ const projectDirPath = process.env.CAPACITOR_ROOT_DIR;
 const webDirPath = process.env.CAPACITOR_WEB_DIR;
 
 if (platform == 'android') {
-    fixAndroidKaptGradleCapacitor();
     const androidResDir = path.resolve(projectDirPath, 'android', 'app', 'src', 'main', 'res', 'raw');
     copySounds(androidResDir, webDirPath, platform);
 } else if (platform == 'ios') {
     // TODO confirm this works for iOS
     const iosResDir = path.resolve(projectDirPath, 'ios', 'dist');
     copySounds(iosResDir, webDirPath, platform);
-}
-
-function fixAndroidKaptGradleCapacitor() {
-    const gradleFilePath = path.resolve(projectDirPath, 'android/app/build.gradle'); // change this path
-    const kaptPluginLong = 'org.jetbrains.kotlin.kapt';
-    const kaptPluginShort = 'kotlin-kapt';
-    const linesToPrepend = `
-// region Kapt Plugin
-// The lines inside this region were added via the Firebase Cloud Messaging Plugin to ensure kapt works in a Capacitor app.
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-// endregion
-`.trimStart();
-
-    let gradleContent = fs.readFileSync(gradleFilePath, 'utf8');
-
-    if (gradleContent.includes(kaptPluginLong) || gradleContent.includes(kaptPluginShort)) {
-        console.log('\t[SKIPPED] Kotlin Gradle plugin already defined. Skipping update.');
-    } else {
-        const updatedContent = `${linesToPrepend}\n${gradleContent}`;
-        fs.writeFileSync(gradleFilePath, updatedContent, 'utf8');
-        console.log('\t[SUCCESS] Prepended Kotlin Kapt plugin to build.gradle');
-    }
 }
 
 function copySounds(nativeResourceDirectory, zipDirectory, platform) {
