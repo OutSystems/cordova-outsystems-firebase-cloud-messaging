@@ -25,10 +25,8 @@ function fixAndroidKaptGradleCapacitor() {
     const linesToPrepend = `
 // region Kapt Plugin
 // The lines inside this region were added via the Firebase Cloud Messaging Plugin to ensure kapt works in a Capacitor app.
-plugins {
-    id "org.jetbrains.kotlin.kapt" version "1.9.25"
-}
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 // endregion
 `.trimStart();
 
