@@ -16,9 +16,3 @@ platforms:
             <string name="notification_channel_name">$NOTIFICATION_CHANNEL_DEFAULT_NAME</string>
             <string name="notification_channel_description">$NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION</string>
           </resources>
-    gradle: 
-      - file: app/build.gradle
-        target:
-        insert: |
-          apply plugin: 'kotlin-android'
-          apply plugin: 'kotlin-kapt'
