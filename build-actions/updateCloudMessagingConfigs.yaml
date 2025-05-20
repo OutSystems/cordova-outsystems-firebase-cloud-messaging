@@ -5,8 +5,6 @@ variables:
   NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION:
     type: string
     default: "Channel description"
-  APPLICATION_SCHEMES:
-    type: array
 
 platforms:
   android:
@@ -29,9 +27,6 @@ platforms:
             entries:
               - UIBackgroundModes:
                 - remote-notification
-        plist:
-          - entries:
-            - LSApplicationQueriesSchemes: $APPLICATION_SCHEMES
 
       Release:
         entitlements:
@@ -42,6 +37,3 @@ platforms:
             entries:
               - UIBackgroundModes:
                 - remote-notification
-        plist:
-          - entries:
-            - LSApplicationQueriesSchemes: $APPLICATION_SCHEMES
