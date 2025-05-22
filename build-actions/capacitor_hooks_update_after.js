@@ -13,8 +13,7 @@ if (platform == 'android') {
     const androidResDir = path.resolve(projectDirPath, 'android', 'app', 'src', 'main', 'res', 'raw');
     copySounds(androidResDir, webDirPath, platform);
 } else if (platform == 'ios') {
-    // TODO confirm this works for iOS
-    const iosResDir = path.resolve(projectDirPath, 'ios', 'dist');
+    const iosResDir = path.resolve(projectDirPath, 'ios', 'App', 'App', 'public');
     copySounds(iosResDir, webDirPath, platform);
 }
 
