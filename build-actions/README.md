@@ -5,9 +5,18 @@ This folder contains a .yaml file for configuring build actions to use in a plug
 
 ## Contents
 
-The file [updateCloudMessagingConfigs.yaml](./updateCloudMessagingConfigs.yaml) contains ????????????????????? build actions:
+The file [updateCloudMessagingConfigs.yaml](./updateCloudMessagingConfigs.yaml) contains 3 build actions:
 
-1. Android specific. 
+1. Android specific. Set the notification channel name in `strings.xml`.
+2. iOS specific. Updates the entitlements file to include `aps-environment`.
+3. iOS specific. Adds `remote-notification` to `UIBackgroundModes` in `Info.plist`.
+
+We also have a [exampleBuildActionsIOSApp.yaml], that allows to set `LSApplicationQueriesSchemes` for custom url schemes. This one isn't used by the OutSystems Plugin, but can be set by apps that use the plugin.
+
+Furthermore, there are changes that can't be accomplished with build actions, and we used [Capacitor hooks](https://capacitorjs.com/docs/cli/hooks) for this. We have two JavaScript files for hooks:
+
+- `capacitor_hooks_copy_before.js` -> iOS specific. Sets `handleApplicationNotifications` to false for the `capacitor.config.json` file, to allow custom handling of Push notifications (e.g. silent notifications) in a capacitor app.
+- `capacitor_hooks_update_after.js` -> Copies the custom audio files inside `sounds.zip` to the application-specific directory. For iOS, adds code to the `AppDelegate.swift` to integrate with the FCM iOS native library. This is needed because while the cordova Plugin has code for this, it does not get invoked in a Capacitor App because the code is added a Pod, instead of in the app directly.
 
 
 ## Outsystems' Usage
