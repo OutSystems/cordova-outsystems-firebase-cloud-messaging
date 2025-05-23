@@ -141,7 +141,7 @@ function updateAppDelegate(filePath) {
               !sound.hasPrefix("public/") else {
             return userInfo
         }
-        notificationDict["sound"] = "public/\(sound)"
+        notificationDict["sound"] = "public/\\(sound)"
         if let updatedData = try? JSONSerialization.data(withJSONObject: notificationDict, options: []),
            let updatedString = String(data: updatedData, encoding: .utf8) {
             newInfo["notification"] = updatedString
