@@ -14,7 +14,9 @@ if (platform == 'android') {
     copySounds(androidResDir, webDirPath, platform);
 } else if (platform == 'ios') {
     const iosResDir = path.resolve(projectDirPath, 'ios', 'App', 'App', 'public');
+    const iosAppDelegateDir = path.resolve(projectDirPath, 'ios', 'App', 'App', 'AppDelegate.swift');
     copySounds(iosResDir, webDirPath, platform);
+    updateAppDelegate(iosAppDelegateDir);
 }
 
 function fixAndroidKaptGradleCapacitor() {
@@ -83,4 +85,77 @@ function copySounds(nativeResourceDirectory, zipDirectory, platform) {
 
     fs.rmSync(tmpDir, { recursive: true, force: true });
     console.log('\t[FINISH] Temporary files cleaned up.');
+}
+
+function updateAppDelegate(filePath) {
+
+    const fs = require('fs');
+    const path = require('path');
+
+    if (!fs.existsSync(filePath)) {
+        console.error('\t[ERROR] AppDelegate.swift file was not found at:', filePath);
+        process.exit(1);
+    }
+
+    let content = fs.readFileSync(filePath, 'utf8');
+
+    // Add imports if missing
+    if (!content.includes('import FirebaseCore')) {
+        content = content.replace('import Capacitor', 'import Capacitor\nimport FirebaseCore');
+    }
+    if (!content.includes('import OSFirebaseMessagingLib')) {
+        content = content.replace('import FirebaseCore', 'import FirebaseCore\nimport OSFirebaseMessagingLib');
+    }
+
+    // Inject FirebaseMessagingApplicationDelegate call into didFinishLaunchingWithOptions if not present
+    content = content.replace(
+        /(func application\(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: \[UIApplication\.LaunchOptionsKey: Any\]\?\) -> Bool \{)([\s\S]*?)(\n\s*return\s+true)/,
+        (match, start, middle, end) => {
+        if (middle.includes("FirebaseMessagingApplicationDelegate.shared.application")) {
+            return match; // Already injected
+        }
+        return `${start}${middle}\n        FirebaseMessagingApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)${end}`;
+        }
+    );
+
+    // Add the FirebaseMessagingApplicationDelegate for Firebase methods and fixSoundPath if not already present
+    if (!content.includes('func application(_ application: UIApplication, didReceiveRemoteNotification')) {
+        const insertion = `
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // sounds from OutSystems capacitor builds go to a specific directory, we should ensure the sound path is correct
+        let updatedUserInfo = fixSoundPath(userInfo)
+        FirebaseMessagingApplicationDelegate.shared.application(application, didReceiveRemoteNotification: updatedUserInfo, fetchCompletionHandler: completionHandler)
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        FirebaseMessagingApplicationDelegate.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+
+    private func fixSoundPath(_ userInfo: [AnyHashable : Any]) -> [AnyHashable : Any] {
+        guard var newInfo = userInfo as? [String: Any],
+              let notificationString = newInfo["notification"] as? String,
+              let notificationData = notificationString.data(using: .utf8),
+              var notificationDict = try? JSONSerialization.jsonObject(with: notificationData) as? [String: Any],
+              let sound = notificationDict["sound"] as? String,
+              !sound.hasPrefix("public/") else {
+            return userInfo
+        }
+        notificationDict["sound"] = "public/\(sound)"
+        if let updatedData = try? JSONSerialization.data(withJSONObject: notificationDict, options: []),
+           let updatedString = String(data: updatedData, encoding: .utf8) {
+            newInfo["notification"] = updatedString
+        } else {
+            return userInfo
+        }
+        return newInfo
+    }
+`;
+        // Add before last closing brace of the class
+        content = content.replace(/\n\}/, `${insertion}\n}`);
+    }
+
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log('\t[SUCCESS] AppDelegate.swift updated successfully.');
+
 }
