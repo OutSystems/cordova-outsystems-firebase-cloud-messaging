@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const et = require('elementtree');
+const { DOMParser, XMLSerializer } = require('xmldom');
 const { ConfigParser } = require('cordova-common');
 
 module.exports = function (context) {
@@ -14,6 +15,7 @@ module.exports = function (context) {
     var stringsXmlContents = fs.readFileSync(stringsXmlPath).toString();
     var etreeStrings = et.parse(stringsXmlContents);
 
+    /*
     var dataTags = etreeStrings.findall('./string[@name="notification_channel_name"]');
     for (var i = 0; i < dataTags.length; i++) {
         var data = dataTags[i];
@@ -25,7 +27,37 @@ module.exports = function (context) {
         var data = dataTagsSecond[i];
         data.text = channelDescription;
     }
-    
+
     var resultXmlStrings = etreeStrings.write();
     fs.writeFileSync(stringsXmlPath, resultXmlStrings);
+
+    */
+
+    // Parse the XML
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(stringsXmlContents, "application/xml");
+
+    // Remove all existing strings with the same name
+    const strings = xmlDoc.getElementsByTagName("string");
+    const toRemove = [];
+
+    for (let i = 0; i < strings.length; i++) {
+        if (strings[i].getAttribute("name") === targetName) {
+            toRemove.push(strings[i]);
+    }
+    }
+    toRemove.forEach(el => el.parentNode.removeChild(el));
+
+    // Create and append the new string
+    const newString = xmlDoc.createElement("string");
+    newString.setAttribute("name", targetName);
+    newString.textContent = newValue;
+    xmlDoc.documentElement.appendChild(channelName);
+
+    // Serialize back to string
+    const serializer = new XMLSerializer();
+    const updatedXmlString = serializer.serializeToString(xmlDoc);
+    
+    // Write it back to the file
+    fs.writeFileSync(stringsXmlPath, updatedXmlString);
 };
