@@ -50,9 +50,9 @@ module.exports = function (context) {
 
     // Create and append the new string
     const newString = xmlDoc.createElement("string");
-    newString.setAttribute("name", targetName);
-    newString.textContent = newValue;
-    xmlDoc.documentElement.appendChild(channelName);
+    newString.setAttribute("name", notification_channel_name);
+    newString.textContent = channelName;
+    xmlDoc.documentElement.appendChild(newString);
 
     // Serialize back to string
     const serializer = new XMLSerializer();
