@@ -50,7 +50,7 @@ module.exports = function (context) {
 
     // Create and append the new string
     const newString = xmlDoc.createElement("string");
-    newString.setAttribute("name", notification_channel_name);
+    newString.setAttribute("name", "notification_channel_name");
     newString.textContent = channelName;
     xmlDoc.documentElement.appendChild(newString);
 
