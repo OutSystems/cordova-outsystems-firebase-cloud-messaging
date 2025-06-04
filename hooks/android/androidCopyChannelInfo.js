@@ -42,7 +42,7 @@ module.exports = function (context) {
     const toRemove = [];
 
     for (let i = 0; i < strings.length; i++) {
-        if (strings[i].getAttribute("name") === targetName) {
+        if (strings[i].getAttribute("name") === "notification_channel_name") {
             toRemove.push(strings[i]);
     }
     }
