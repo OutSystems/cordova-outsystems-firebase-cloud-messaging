@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const et = require('elementtree');
+//const et = require('elementtree');
 const { DOMParser, XMLSerializer } = require('xmldom');
 const { ConfigParser } = require('cordova-common');
 
@@ -13,7 +13,8 @@ module.exports = function (context) {
 
     var stringsXmlPath = path.join(projectRoot, 'platforms/android/app/src/main/res/values/strings.xml');
     var stringsXmlContents = fs.readFileSync(stringsXmlPath).toString();
-    var etreeStrings = et.parse(stringsXmlContents);
+    
+    //var etreeStrings = et.parse(stringsXmlContents);
 
     /*
     var dataTags = etreeStrings.findall('./string[@name="notification_channel_name"]');
@@ -37,22 +38,27 @@ module.exports = function (context) {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(stringsXmlContents, "application/xml");
 
-    // Remove all existing strings with the same name
-    const strings = xmlDoc.getElementsByTagName("string");
-    const toRemove = [];
+    // Define target strings and their new values
+    const replacements = {
+        notification_channel_name: channelName,
+        notification_channel_description: channelDescription,
+    };
 
-    for (let i = 0; i < strings.length; i++) {
-        if (strings[i].getAttribute("name") === "notification_channel_name") {
-            toRemove.push(strings[i]);
+    // Remove duplicates for each key
+    const allStrings = Array.from(xmlDoc.getElementsByTagName('string'));
+    for (const name of Object.keys(replacements)) {
+        allStrings
+            .filter(el => el.getAttribute('name') === name)
+            .forEach(el => el.parentNode.removeChild(el));
     }
-    }
-    toRemove.forEach(el => el.parentNode.removeChild(el));
 
-    // Create and append the new string
-    const newString = xmlDoc.createElement("string");
-    newString.setAttribute("name", "notification_channel_name");
-    newString.textContent = channelName;
-    xmlDoc.documentElement.appendChild(newString);
+    // Add new <string> elements
+    for (const [name, value] of Object.entries(replacements)) {
+        const newString = xmlDoc.createElement('string');
+        newString.setAttribute('name', name);
+        newString.appendChild(xmlDoc.createTextNode(value));
+        xmlDoc.documentElement.appendChild(newString);
+    }
 
     // Serialize back to string
     const serializer = new XMLSerializer();
