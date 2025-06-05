@@ -13,7 +13,7 @@ module.exports = function (context) {
 
     // load strings.xml using DOMParser
     var stringsXmlPath = path.join(projectRoot, 'platforms/android/app/src/main/res/values/strings.xml');
-    var stringsXmlContents = fs.readFileSync(stringsXmlPath).toString();
+    var stringsXmlContents = fs.readFileSync(stringsXmlPath, 'utf-8').toString();
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(stringsXmlContents, "application/xml");
 
