@@ -23,21 +23,33 @@ module.exports = function (context) {
         notification_channel_description: channelDescription,
     };
 
-    // remove duplicates for each key
-    // this is necessary for builds where the hook runs more than once, to avoid duplicate <string> entries
+    // get all <string> elements
     const allStrings = Array.from(xmlDoc.getElementsByTagName('string'));
-    for (const name of Object.keys(replacements)) {
-        allStrings
-            .filter(el => el.getAttribute('name') === name)
-            .forEach(el => el.parentNode.removeChild(el));
-    }
 
-    // add new <string> elements for channelName and channelDescription, using replacements object
-    for (const [name, value] of Object.entries(replacements)) {
-        const newString = xmlDoc.createElement('string');
-        newString.setAttribute('name', name);
-        newString.appendChild(xmlDoc.createTextNode(value));
-        xmlDoc.documentElement.appendChild(newString);
+    for (const [name, newValue] of Object.entries(replacements)) {
+
+        // find all strings with the given name
+        const matchingElements = allStrings.filter(el => el.getAttribute('name') === name);
+
+        if (matchingElements.length > 0) {
+
+            // if multiple found, remove all except the first
+            for (let i = 1; i < matchingElements.length; i++) {
+                matchingElements[i].parentNode.removeChild(matchingElements[i]);
+            }
+
+            const element = matchingElements[0];
+            if (element.textContent !== newValue) {
+                element.textContent = newValue;
+            }
+        } else {
+
+            // Not found, so create and append new <string>
+            const newString = xmlDoc.createElement('string');
+            newString.setAttribute('name', name);
+            newString.appendChild(xmlDoc.createTextNode(newValue));
+            xmlDoc.documentElement.appendChild(newString);
+        }
     }
 
     // write back to strings.xml file
