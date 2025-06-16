@@ -15,7 +15,6 @@ We also have a [exampleBuildActionsIOSApp.yaml], that allows to set `LSApplicati
 
 Furthermore, there are changes that can't be accomplished with build actions, and we used [Capacitor hooks](https://capacitorjs.com/docs/cli/hooks) for this. We have two JavaScript files for hooks:
 
-- `capacitor_hooks_copy_before.js` -> iOS specific. Sets `handleApplicationNotifications` to false for the `capacitor.config.json` file, to allow custom handling of Push notifications (e.g. silent notifications) in a capacitor app.
 - `capacitor_hooks_update_after.js` -> Copies the custom audio files inside `sounds.zip` to the application-specific directory. For iOS, adds code to the `AppDelegate.swift` to integrate with the FCM iOS native library. This is needed because while the cordova Plugin has code for this, it does not get invoked in a Capacitor App because the code is added a Pod, instead of in the app directly. Also fr iOS, sets `handleApplicationNotifications` to false for the `capacitor.config.json` file, to allow custom handling of Push notifications (e.g. silent notifications) in a capacitor app, and also to make sure notifications are sent when the app is open. For Android, adds kapt plugin to app's `build.gradle` (without this, all builds would fail), and the Azure repo (where the camera native library currently is) to the root `build.gradle` (with this, release builds would fail).
 
 
