@@ -7,8 +7,6 @@
   <js-module name="OSFirebaseCloudMessaging" src="www/OSFirebaseCloudMessaging.js">
     <clobbers target="cordova.plugins.OSFirebaseCloudMessaging"/>
   </js-module>
-
-  <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git#2.0.0"/>
   
   <hook type="after_prepare" src="hooks/unzipSound.js" />
   <hook type="after_prepare" src="hooks/cleanUp.js" />

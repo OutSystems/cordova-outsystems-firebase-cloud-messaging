@@ -14,6 +14,9 @@
       "android"
     ]
   },
+  "scripts": {
+    "capacitor:update:after": "node build-actions/capacitor_hooks_update_after.js"
+  },
   "engines": [],
   "dependencies": {
     "adm-zip": "0.5.12",
