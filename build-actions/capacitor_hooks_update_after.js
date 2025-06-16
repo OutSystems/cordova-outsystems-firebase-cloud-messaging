@@ -16,6 +16,8 @@ if (platform == 'android') {
 } else if (platform == 'ios') {
     const iosResDir = path.resolve(projectDirPath, 'ios', 'App', 'App', 'public');
     const iosAppDelegateDir = path.resolve(projectDirPath, 'ios', 'App', 'App', 'AppDelegate.swift');
+    const iosCapacitorConfig = path.resolve(projectDirPath, 'ios', 'App', 'App', 'capacitor.config.json');
+    updateCapacitorConfig(iosCapacitorConfig);
     copySounds(iosResDir, webDirPath, platform);
     updateAppDelegate(iosAppDelegateDir);
 }
@@ -91,6 +93,31 @@ function fixAndroidAzureRepository() {
         fs.writeFileSync(gradleFilePath, updatedContent, 'utf8');
         console.log('\t[SUCCESS] Added Azure repository maven block to the root build.gradle.');
     }
+}
+
+function updateCapacitorConfig(configPath) {
+    // read the existing config json
+    let config = {};
+    try {
+        const fileContent = fs.readFileSync(configPath, 'utf-8');
+        config = JSON.parse(fileContent);
+    } catch (e) {
+        console.error('\t[ERROR] - Invalid JSON reading and parse - ' + e);
+        process.exit(1);
+    }
+    // merge the new content with the existing json
+    const newConfig = {
+        ios: {
+            handleApplicationNotifications: false
+        }
+    };
+    config.ios = {
+        ...config.ios,
+        ...newConfig.ios
+    };
+    // Write back to config.json
+    fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
+    console.log('\t[SUCCESS] capacitor.config.json updated successfully.');
 }
 
 function copySounds(nativeResourceDirectory, zipDirectory, platform) {
