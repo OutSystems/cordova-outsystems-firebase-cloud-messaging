@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [Version 2.5.0]
+
+### Feature
+
+- Support for Capacitor, including build actions and new hooks (https://outsystemsrd.atlassian.net/browse/RMET-3639).
+
+### Fix
+- (android) Updates hook to avoid duplicates in `strings.xml` (https://outsystemsrd.atlassian.net/browse/RMET-4025).
+
+### Chore
+
+- Chore: Remove depenency on `cordova-outsystems-firebase-core` (https://outsystemsrd.atlassian.net/browse/RMET-3639).
+
 ## [Version 2.4.0]
 
 ### Features
