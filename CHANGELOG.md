@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [Unreleased]
+
+### Fix
+
+- (ios) Updates hook to avoid duplicates in `.plist` (https://outsystemsrd.atlassian.net/browse/RMET-4277).
+
 ## [Version 2.5.0]
 
 ### Feature
