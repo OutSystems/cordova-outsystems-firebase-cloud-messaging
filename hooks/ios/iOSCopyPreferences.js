@@ -29,7 +29,7 @@ module.exports = function (context) {
         if (currentValue != null && currentValue.length > 0) {
             applicationQueriesSchemes = currentValue.concat(applicationQueriesSchemes);
         }
-        infoPlist['LSApplicationQueriesSchemes'] = applicationQueriesSchemes;
+        infoPlist['LSApplicationQueriesSchemes'] = [...new Set(applicationQueriesSchemes)];
 
         fs.writeFileSync(infoPlistPath, plist.build(infoPlist, { indent: '\t' }));
     }
