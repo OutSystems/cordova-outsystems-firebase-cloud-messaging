@@ -10,6 +10,7 @@ The changes documented here do not include those from the original repository.
 
 ### Fix
 
+- (android) Include notification extras in click event even if there is no deeplink (https://outsystemsrd.atlassian.net/browse/RMET-4397).
 - (ios) Updates hook to avoid duplicates in `.plist` (https://outsystemsrd.atlassian.net/browse/RMET-4277).
 
 ## [Version 2.5.0]
