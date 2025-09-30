@@ -16,6 +16,13 @@ platforms:
             <string name="notification_channel_name">$NOTIFICATION_CHANNEL_DEFAULT_NAME</string>
             <string name="notification_channel_description">$NOTIFICATION_CHANNEL_DEFAULT_DESCRIPTION</string>
           </resources>
+    gradle:
+    - file: build.gradle
+      target:
+        buildscript:
+          dependencies:
+      insert:
+        - classpath: "'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.25'"
   ios:
     builds:
       Debug:
