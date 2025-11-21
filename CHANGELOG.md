@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+### [2.5.3]
+
+### Fixes
+
+- (android) Fixes missing strings.xml on target project (https://outsystemsrd.atlassian.net/browse/RMET-4774)
+
 ### [2.5.2]
 
 ### Fixes
