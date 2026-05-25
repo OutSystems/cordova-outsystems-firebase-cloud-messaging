@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
-// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name OSFirebaseMessagingLib
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name OSFirebaseMessagingLib
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 import CoreData
 import FirebaseCore
 import FirebaseMessaging
@@ -57,10 +57,14 @@ public enum FirebaseMessagingErrors : Swift.Int, Foundation.CustomNSError, Found
   public var description: Swift.String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var errorDescription: Swift.String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -74,7 +78,9 @@ public protocol MessagingProtocol {
 }
 public class FirebaseConfiguration {
   public init(fileName: Swift.String = "GoogleService-Info", bundle: Foundation.Bundle = Bundle.main)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func getGoogleServicesPath() -> Swift.String?
+  #endif
   @objc deinit
 }
 public protocol FirebaseMessagingEventProtocol : AnyObject {
@@ -95,7 +101,9 @@ public protocol FirebaseMessagingEventProtocol : AnyObject {
     get
     set
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
   @objc deinit
@@ -147,19 +155,33 @@ extension Swift.Encodable {
   public func encode() -> Swift.String
 }
 public protocol NotificationManagerProtocol {
+  #if compiler(>=5.3) && $NonescapableTypes
   func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, any Swift.Error>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func fetchNotifications() -> Swift.Result<[OSFirebaseMessagingLib.OSFCMNotification], any Swift.Error>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async -> Swift.Result<Swift.Bool, any Swift.Error>
+  #endif
 }
 @objc @_hasMissingDesignatedInitializers final public class NotificationManager : ObjectiveC.NSObject {
   convenience public init(coreDataManager: OSFirebaseMessagingLib.CoreDataManager = CoreDataManager())
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func deletePendingNotifications(_ notifications: [OSFirebaseMessagingLib.OSFCMNotification]) -> Swift.Result<Swift.Bool, any Swift.Error>
+  #endif
   @objc deinit
 }
 extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.NotificationManagerProtocol {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func sendLocalNotification(title: Swift.String, body: Swift.String, badge: Swift.Int) async -> Swift.Result<Swift.Bool, any Swift.Error>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func insertNotification(notificationDict: [Swift.String : Any]) -> Swift.Result<Swift.Bool, any Swift.Error>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func fetchNotifications() -> Swift.Result<[OSFirebaseMessagingLib.OSFCMNotification], any Swift.Error>
+  #endif
 }
 @objc @_hasMissingDesignatedInitializers open class FirebaseMessagingController : ObjectiveC.NSObject {
   public var badgeNumber: Swift.Int {
@@ -194,18 +216,24 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
 public typealias OSFCMExtraDataCoreDataPropertiesSet = Foundation.NSSet
 extension OSFirebaseMessagingLib.OSFCMExtraData {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMExtraData>
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var key: Swift.String? {
     @objc get
     @objc set
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var value: Swift.String? {
     @objc get
     @objc set
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var notification: OSFirebaseMessagingLib.OSFCMNotification? {
     @objc get
     @objc set
   }
+  #endif
 }
 extension OSFirebaseMessagingLib.OSFCMExtraData : Swift.Identifiable {
   public typealias ID = Swift.ObjectIdentifier
@@ -213,22 +241,28 @@ extension OSFirebaseMessagingLib.OSFCMExtraData : Swift.Identifiable {
 public typealias OSFCMNotificationCoreDataPropertiesSet = Foundation.NSSet
 extension OSFirebaseMessagingLib.OSFCMNotification {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMNotification>
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var messageID: Swift.String? {
     @objc get
     @objc set
   }
+  #endif
   @objc @NSManaged nonisolated dynamic public var timeStamp: Swift.Double {
     @objc get
     @objc set
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var timeToLive: Swift.String? {
     @objc get
     @objc set
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var extraDataList: Foundation.NSSet? {
     @objc get
     @objc set
   }
+  #endif
 }
 extension OSFirebaseMessagingLib.OSFCMNotification {
   @objc(addExtraDataListObject:) @NSManaged nonisolated dynamic public func addToExtraDataList(_ value: OSFirebaseMessagingLib.OSFCMExtraData)
