@@ -40,7 +40,7 @@
     <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
     <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
 
-    <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="true" custom="true" />
+    <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="false" custom="true" />
     <framework src="src/ios/frameworks/OSLocalNotificationsLib.xcframework" embed="true" custom="true" />
 
     <!-- Hooks -->
