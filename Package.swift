@@ -55,7 +55,7 @@ let package = Package(
                 "AppDelegate+OSFirebaseCloudMessaging.m"
             ],
             resources: [
-                .process("NotificationsModel.momd")
+                .copy("NotificationsModel.momd")
             ],
             publicHeadersPath: ".")
     ]
