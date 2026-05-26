@@ -202,6 +202,7 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
 }
 @_inheritsConvenienceInitializers @objc open class CoreDataManager : ObjectiveC.NSObject {
   public static let modelName: Swift.String
+  public static var resourceBundle: Foundation.Bundle
   public static let model: CoreData.NSManagedObjectModel
   public var storeContainer: CoreData.NSPersistentContainer {
     get
