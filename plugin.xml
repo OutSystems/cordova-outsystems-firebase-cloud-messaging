@@ -42,6 +42,7 @@
 
     <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="false" custom="true" />
     <framework src="src/ios/frameworks/OSLocalNotificationsLib.xcframework" embed="true" custom="true" />
+    <resource-file src="src/ios/NotificationsModel.momd" target="NotificationsModel.momd" />
 
     <!-- Hooks -->
     <hook type="after_prepare" src="hooks/ios/iOSCopyPreferences.js" />
