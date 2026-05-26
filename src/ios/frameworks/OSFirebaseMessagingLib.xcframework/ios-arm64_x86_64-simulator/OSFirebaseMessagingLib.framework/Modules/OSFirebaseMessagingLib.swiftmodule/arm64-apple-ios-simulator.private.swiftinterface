@@ -14,6 +14,24 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OSFCMExtraData) nonisolated public class OSFCMExtraData : CoreData.NSManagedObject, Swift.Codable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var key: Swift.String? {
+    @objc get
+    @objc set
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var value: Swift.String? {
+    @objc get
+    @objc set
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var notification: OSFirebaseMessagingLib.OSFCMNotification? {
+    @objc get
+    @objc set
+  }
+  #endif
   nonisolated public func encode(to encoder: any Swift.Encoder) throws
   required convenience nonisolated public init(from decoder: any Swift.Decoder) throws
   @objc deinit
@@ -33,6 +51,25 @@ public enum OSFCMTokenType {
   }
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OSFCMNotification) nonisolated public class OSFCMNotification : CoreData.NSManagedObject, Swift.Codable {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMNotification>
+  @objc @NSManaged nonisolated dynamic public var messageID: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged nonisolated dynamic public var timeStamp: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged nonisolated dynamic public var timeToLive: Swift.String {
+    @objc get
+    @objc set
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var extraDataList: Foundation.NSSet? {
+    @objc get
+    @objc set
+  }
+  #endif
   nonisolated public func encode(to encoder: any Swift.Encoder) throws
   required convenience nonisolated public init(from decoder: any Swift.Decoder) throws
   @objc deinit
@@ -214,68 +251,6 @@ extension OSFirebaseMessagingLib.NotificationManager : OSFirebaseMessagingLib.No
   @objc override dynamic public init()
   @objc deinit
 }
-public typealias OSFCMExtraDataCoreDataPropertiesSet = Foundation.NSSet
-extension OSFirebaseMessagingLib.OSFCMExtraData {
-  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMExtraData>
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var key: Swift.String? {
-    @objc get
-    @objc set
-  }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var value: Swift.String? {
-    @objc get
-    @objc set
-  }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var notification: OSFirebaseMessagingLib.OSFCMNotification? {
-    @objc get
-    @objc set
-  }
-  #endif
-}
-extension OSFirebaseMessagingLib.OSFCMExtraData : Swift.Identifiable {
-  public typealias ID = Swift.ObjectIdentifier
-}
-public typealias OSFCMNotificationCoreDataPropertiesSet = Foundation.NSSet
-extension OSFirebaseMessagingLib.OSFCMNotification {
-  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMNotification>
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var messageID: Swift.String? {
-    @objc get
-    @objc set
-  }
-  #endif
-  @objc @NSManaged nonisolated dynamic public var timeStamp: Swift.Double {
-    @objc get
-    @objc set
-  }
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var timeToLive: Swift.String? {
-    @objc get
-    @objc set
-  }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc @NSManaged nonisolated dynamic public var extraDataList: Foundation.NSSet? {
-    @objc get
-    @objc set
-  }
-  #endif
-}
-extension OSFirebaseMessagingLib.OSFCMNotification {
-  @objc(addExtraDataListObject:) @NSManaged nonisolated dynamic public func addToExtraDataList(_ value: OSFirebaseMessagingLib.OSFCMExtraData)
-  @objc(removeExtraDataListObject:) @NSManaged nonisolated dynamic public func removeFromExtraDataList(_ value: OSFirebaseMessagingLib.OSFCMExtraData)
-  @objc(addExtraDataList:) @NSManaged nonisolated dynamic public func addToExtraDataList(_ values: Foundation.NSSet)
-  @objc(removeExtraDataList:) @NSManaged nonisolated dynamic public func removeFromExtraDataList(_ values: Foundation.NSSet)
-}
-extension OSFirebaseMessagingLib.OSFCMNotification : Swift.Identifiable {
-  public typealias ID = Swift.ObjectIdentifier
-}
-public typealias NotificationsModelFoundationFrameworkSet = Foundation.NSSet
-public typealias NotificationsModelCoreDataFrameworkManagedObject = CoreData.NSManagedObject
 extension OSFirebaseMessagingLib.OSFCMTokenType : Swift.Equatable {}
 extension OSFirebaseMessagingLib.OSFCMTokenType : Swift.Hashable {}
 extension OSFirebaseMessagingLib.FirebaseMessagingErrors : Swift.Equatable {}

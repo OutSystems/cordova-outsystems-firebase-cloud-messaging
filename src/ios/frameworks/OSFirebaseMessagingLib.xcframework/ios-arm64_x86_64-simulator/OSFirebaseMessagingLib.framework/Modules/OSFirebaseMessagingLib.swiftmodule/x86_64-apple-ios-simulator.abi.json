@@ -17,6 +17,310 @@
         "printedName": "OSFCMExtraData",
         "children": [
           {
+            "kind": "Var",
+            "name": "key",
+            "printedName": "key",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)key",
+            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)key",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setKey:",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "value",
+            "printedName": "value",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)value",
+            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)value",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setValue:",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "notification",
+            "printedName": "notification",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OSFCMNotification",
+                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
+                    "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)notification",
+            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OSFCMNotification",
+                        "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
+                        "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)notification",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OSFCMNotification",
+                        "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
+                        "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setNotification:",
+                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "encode",
             "printedName": "encode(to:)",
@@ -76,350 +380,6 @@
             ],
             "throwing": true,
             "init_kind": "Convenience"
-          },
-          {
-            "kind": "Function",
-            "name": "fetchRequest",
-            "printedName": "fetchRequest()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "NSFetchRequest",
-                "printedName": "CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMExtraData>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OSFCMExtraData",
-                    "printedName": "OSFirebaseMessagingLib.OSFCMExtraData",
-                    "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData"
-                  }
-                ],
-                "usr": "c:objc(cs)NSFetchRequest"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:22OSFirebaseMessagingLib14OSFCMExtraDataC12fetchRequestSo07NSFetchG0CyACGyFZ",
-            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12fetchRequestSo07NSFetchG0CyACGyFZ",
-            "moduleName": "OSFirebaseMessagingLib",
-            "static": true,
-            "declAttributes": [
-              "AccessControl",
-              "NonObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "key",
-            "printedName": "key",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)key",
-            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)key",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setKey:",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC3keySSSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "value",
-            "printedName": "value",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)value",
-            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)value",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setValue:",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC5valueSSSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "notification",
-            "printedName": "notification",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OSFCMNotification",
-                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
-                    "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(py)notification",
-            "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OSFCMNotification",
-                        "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
-                        "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)notification",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OSFCMNotification",
-                        "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
-                        "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData(im)setNotification:",
-                "mangledName": "$s22OSFirebaseMessagingLib14OSFCMExtraDataC12notificationAA17OSFCMNotificationCSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
           }
         ],
         "declKind": "Class",
@@ -553,28 +513,6 @@
             "printedName": "SendableMetatype",
             "usr": "s:s16SendableMetatypeP",
             "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Identifiable",
-            "printedName": "Identifiable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "ID",
-                "printedName": "ID",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ObjectIdentifier",
-                    "printedName": "Swift.ObjectIdentifier",
-                    "usr": "s:SO"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s12IdentifiableP",
-            "mangledName": "$ss12IdentifiableP"
           }
         ]
       },
@@ -968,6 +906,370 @@
         "children": [
           {
             "kind": "Function",
+            "name": "fetchRequest",
+            "printedName": "fetchRequest()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NSFetchRequest",
+                "printedName": "CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMNotification>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OSFCMNotification",
+                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
+                    "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
+                  }
+                ],
+                "usr": "c:objc(cs)NSFetchRequest"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22OSFirebaseMessagingLib17OSFCMNotificationC12fetchRequestSo07NSFetchF0CyACGyFZ",
+            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC12fetchRequestSo07NSFetchF0CyACGyFZ",
+            "moduleName": "OSFirebaseMessagingLib",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "messageID",
+            "printedName": "messageID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)messageID",
+            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)messageID",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setMessageID:",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeStamp",
+            "printedName": "timeStamp",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)timeStamp",
+            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)timeStamp",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setTimeStamp:",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeToLive",
+            "printedName": "timeToLive",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)timeToLive",
+            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)timeToLive",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setTimeToLive:",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "extraDataList",
+            "printedName": "extraDataList",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSSet?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSSet",
+                    "printedName": "Foundation.NSSet",
+                    "usr": "c:objc(cs)NSSet"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)extraDataList",
+            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvp",
+            "moduleName": "OSFirebaseMessagingLib",
+            "declAttributes": [
+              "Dynamic",
+              "Nonisolated",
+              "AccessControl",
+              "NSManaged",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSSet?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSSet",
+                        "printedName": "Foundation.NSSet",
+                        "usr": "c:objc(cs)NSSet"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)extraDataList",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvg",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSSet?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSSet",
+                        "printedName": "Foundation.NSSet",
+                        "usr": "c:objc(cs)NSSet"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setExtraDataList:",
+                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvs",
+                "moduleName": "OSFirebaseMessagingLib",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
             "name": "encode",
             "printedName": "encode(to:)",
             "children": [
@@ -1026,558 +1328,6 @@
             ],
             "throwing": true,
             "init_kind": "Convenience"
-          },
-          {
-            "kind": "Function",
-            "name": "fetchRequest",
-            "printedName": "fetchRequest()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "NSFetchRequest",
-                "printedName": "CoreData.NSFetchRequest<OSFirebaseMessagingLib.OSFCMNotification>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OSFCMNotification",
-                    "printedName": "OSFirebaseMessagingLib.OSFCMNotification",
-                    "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMNotification"
-                  }
-                ],
-                "usr": "c:objc(cs)NSFetchRequest"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:22OSFirebaseMessagingLib17OSFCMNotificationC12fetchRequestSo07NSFetchF0CyACGyFZ",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC12fetchRequestSo07NSFetchF0CyACGyFZ",
-            "moduleName": "OSFirebaseMessagingLib",
-            "static": true,
-            "declAttributes": [
-              "AccessControl",
-              "NonObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "messageID",
-            "printedName": "messageID",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)messageID",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)messageID",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setMessageID:",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9messageIDSSSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "timeStamp",
-            "printedName": "timeStamp",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)timeStamp",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)timeStamp",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setTimeStamp:",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC9timeStampSdvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "timeToLive",
-            "printedName": "timeToLive",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)timeToLive",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)timeToLive",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setTimeToLive:",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC10timeToLiveSSSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "extraDataList",
-            "printedName": "extraDataList",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Foundation.NSSet?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSSet",
-                    "printedName": "Foundation.NSSet",
-                    "usr": "c:objc(cs)NSSet"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(py)extraDataList",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvp",
-            "moduleName": "OSFirebaseMessagingLib",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Foundation.NSSet?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "NSSet",
-                        "printedName": "Foundation.NSSet",
-                        "usr": "c:objc(cs)NSSet"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)extraDataList",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvg",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Foundation.NSSet?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "NSSet",
-                        "printedName": "Foundation.NSSet",
-                        "usr": "c:objc(cs)NSSet"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)setExtraDataList:",
-                "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC13extraDataListSo5NSSetCSgvs",
-                "moduleName": "OSFirebaseMessagingLib",
-                "implicit": true,
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "isFromExtension": true,
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "addToExtraDataList",
-            "printedName": "addToExtraDataList(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "OSFCMExtraData",
-                "printedName": "OSFirebaseMessagingLib.OSFCMExtraData",
-                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)addExtraDataListObject:",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC18addToExtraDataListyyAA010OSFCMExtraH0CF",
-            "moduleName": "OSFirebaseMessagingLib",
-            "objc_name": "addExtraDataListObject:",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "removeFromExtraDataList",
-            "printedName": "removeFromExtraDataList(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "OSFCMExtraData",
-                "printedName": "OSFirebaseMessagingLib.OSFCMExtraData",
-                "usr": "c:@M@OSFirebaseMessagingLib@objc(cs)OSFCMExtraData"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)removeExtraDataListObject:",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC23removeFromExtraDataListyyAA010OSFCMExtraH0CF",
-            "moduleName": "OSFirebaseMessagingLib",
-            "objc_name": "removeExtraDataListObject:",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "addToExtraDataList",
-            "printedName": "addToExtraDataList(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "NSSet",
-                "printedName": "Foundation.NSSet",
-                "usr": "c:objc(cs)NSSet"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)addExtraDataList:",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC18addToExtraDataListyySo5NSSetCF",
-            "moduleName": "OSFirebaseMessagingLib",
-            "objc_name": "addExtraDataList:",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "removeFromExtraDataList",
-            "printedName": "removeFromExtraDataList(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "NSSet",
-                "printedName": "Foundation.NSSet",
-                "usr": "c:objc(cs)NSSet"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@OSFirebaseMessagingLib@objc(cs)OSFCMNotification(im)removeExtraDataList:",
-            "mangledName": "$s22OSFirebaseMessagingLib17OSFCMNotificationC23removeFromExtraDataListyySo5NSSetCF",
-            "moduleName": "OSFirebaseMessagingLib",
-            "objc_name": "removeExtraDataList:",
-            "declAttributes": [
-              "Dynamic",
-              "Nonisolated",
-              "AccessControl",
-              "NSManaged",
-              "ObjC"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -1711,28 +1461,6 @@
             "printedName": "SendableMetatype",
             "usr": "s:s16SendableMetatypeP",
             "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Identifiable",
-            "printedName": "Identifiable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "ID",
-                "printedName": "ID",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ObjectIdentifier",
-                    "printedName": "Swift.ObjectIdentifier",
-                    "usr": "s:SO"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s12IdentifiableP",
-            "mangledName": "$ss12IdentifiableP"
           }
         ]
       },
@@ -6261,69 +5989,6 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "CoreData",
-        "printedName": "CoreData",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "CoreData",
-        "printedName": "CoreData",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "CoreData",
-        "printedName": "CoreData",
-        "declKind": "Import",
-        "moduleName": "OSFirebaseMessagingLib",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
         "kind": "TypeDecl",
         "name": "UNUserNotificationCenter",
         "printedName": "UNUserNotificationCenter",
@@ -6709,7 +6374,7 @@
     {
       "filePath": "\/Users\/pedrobilro\/Desktop\/client_projects\/outsystems\/source_codes\/cordova_plugins_ios\/OSFirebaseMessagingLib-iOS\/OSFirebaseMessagingLib\/Model\/OSFCMNotification.swift",
       "kind": "StringLiteral",
-      "offset": 3335,
+      "offset": 4032,
       "length": 22,
       "value": "\"managedObjectContext\""
     },
