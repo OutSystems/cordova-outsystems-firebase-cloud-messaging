@@ -34,7 +34,8 @@ let package = Package(
                     "frameworks/OSFirebaseMessagingLib.xcframework",
                     "frameworks/OSLocalNotificationsLib.xcframework",
                     "OSFCMEventExtensions.swift",
-                    "OSFirebaseCloudMessaging.swift"
+                    "OSFirebaseCloudMessaging.swift",
+                    "NotificationsModel.momd"
                 ],
                 publicHeadersPath: "."),
         .target(
@@ -52,6 +53,9 @@ let package = Package(
                 "frameworks/OSLocalNotificationsLib.xcframework",
                 "AppDelegate+OSFirebaseCloudMessaging.h",
                 "AppDelegate+OSFirebaseCloudMessaging.m"
+            ],
+            resources: [
+                .process("NotificationsModel.momd")
             ],
             publicHeadersPath: ".")
     ]
