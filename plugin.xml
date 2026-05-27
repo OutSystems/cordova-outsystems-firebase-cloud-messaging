@@ -68,6 +68,7 @@
       <preference name="GradlePluginKotlinEnabled" value="true" />
       <preference name="GradlePluginKotlinCodeStyle" value="official" />
       <preference name="AndroidXEnabled" value="true"/>
+      <preference name="GradlePluginGoogleServicesEnabled" value="true" />
     </config-file>
 
     <config-file parent="/*" target="AndroidManifest.xml">
