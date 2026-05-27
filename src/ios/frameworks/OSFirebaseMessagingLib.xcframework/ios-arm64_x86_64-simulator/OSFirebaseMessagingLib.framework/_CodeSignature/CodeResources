@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/OSFirebaseMessagingLib-Swift.h</key>
 		<data>
-		mnREyRN/lR0kyLRp+iRS9I9/PwI=
+		bbDv6Usk+A2ItYF/4o+cU/KN6XI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8zyD23U+VKHhC4D+kUqhtf/knDw=
+		XlsqBwAyZoXdYyBB4Zt37zfH7bM=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ghafBI1l51IO/Fg96hQztkfMwkg=
+		rxoL4OCRYYYkf0DujS1UJw7IWSo=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		3i7OTlTBkfp+sLprLiVxI4IzojA=
+		dHsnx/sGPGKGV97Noi1fj0b9M6o=
 		</data>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
@@ -79,11 +79,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mnREyRN/lR0kyLRp+iRS9I9/PwI=
+			bbDv6Usk+A2ItYF/4o+cU/KN6XI=
 			</data>
 			<key>hash2</key>
 			<data>
-			6mdw2y1RPFZuV1hApsN2s0wN/2gtx43NF9SitePqzbg=
+			MGgi5Yh2qo52f6MhOGvADCk43HfI0DsC1Dnrh2AzAR8=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -112,11 +112,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ghafBI1l51IO/Fg96hQztkfMwkg=
+			rxoL4OCRYYYkf0DujS1UJw7IWSo=
 			</data>
 			<key>hash2</key>
 			<data>
-			DExgzRKgg4pjX+yEnifJg7fxqWMTV03+gesi1f9+1vQ=
+			xovT+7MjkMPuYZxloMgoZ3G3nsNbbPqbjGiDO65OGWc=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
@@ -167,11 +167,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3i7OTlTBkfp+sLprLiVxI4IzojA=
+			dHsnx/sGPGKGV97Noi1fj0b9M6o=
 			</data>
 			<key>hash2</key>
 			<data>
-			FN/Tx2EFdB66cs+crHpC4DYyYsa1785bHYym/5T7hog=
+			8caNzGH7FkX7vuLR4tc1Jz/0dfSZ0qVmx97N+YXpU9Y=
 			</data>
 		</dict>
 		<key>Modules/OSFirebaseMessagingLib.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>

@@ -391,14 +391,14 @@ SWIFT_CLASS("_TtC22OSFirebaseMessagingLib19NotificationManager")
 /// Core Data Model that stores the dynamic properties associated with a specific Notification.
 SWIFT_CLASS_NAMED("OSFCMExtraData")
 @interface OSFCMExtraData : NSManagedObject
+@property (nonatomic, copy) NSString * _Nullable key;
+@property (nonatomic, copy) NSString * _Nullable value;
+@property (nonatomic, strong) OSFCMNotification * _Nullable notification;
 /// Constructor method inherited from <code>NSManagedObject</code>.
 /// \param entity A description of an entity in Core Data.
 ///
 /// \param context An object space to manipulate and track changes to managed objects.
 ///
-@property (nonatomic, copy) NSString * _Nullable key;
-@property (nonatomic, copy) NSString * _Nullable value;
-@property (nonatomic, strong) OSFCMNotification * _Nullable notification;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context SWIFT_UNAVAILABLE;
 @end
 
@@ -410,6 +410,11 @@ SWIFT_CLASS_NAMED("OSFCMNotification")
 @property (nonatomic) double timeStamp;
 @property (nonatomic, copy) NSString * _Nonnull timeToLive;
 @property (nonatomic, strong) NSSet * _Nullable extraDataList;
+/// Constructor method inherited from <code>NSManagedObject</code>.
+/// \param entity A description of an entity in Core Data.
+///
+/// \param context An object space to manipulate and track changes to managed objects.
+///
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context SWIFT_UNAVAILABLE;
 @end
 
@@ -814,14 +819,14 @@ SWIFT_CLASS("_TtC22OSFirebaseMessagingLib19NotificationManager")
 /// Core Data Model that stores the dynamic properties associated with a specific Notification.
 SWIFT_CLASS_NAMED("OSFCMExtraData")
 @interface OSFCMExtraData : NSManagedObject
+@property (nonatomic, copy) NSString * _Nullable key;
+@property (nonatomic, copy) NSString * _Nullable value;
+@property (nonatomic, strong) OSFCMNotification * _Nullable notification;
 /// Constructor method inherited from <code>NSManagedObject</code>.
 /// \param entity A description of an entity in Core Data.
 ///
 /// \param context An object space to manipulate and track changes to managed objects.
 ///
-@property (nonatomic, copy) NSString * _Nullable key;
-@property (nonatomic, copy) NSString * _Nullable value;
-@property (nonatomic, strong) OSFCMNotification * _Nullable notification;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context SWIFT_UNAVAILABLE;
 @end
 
@@ -833,6 +838,11 @@ SWIFT_CLASS_NAMED("OSFCMNotification")
 @property (nonatomic) double timeStamp;
 @property (nonatomic, copy) NSString * _Nonnull timeToLive;
 @property (nonatomic, strong) NSSet * _Nullable extraDataList;
+/// Constructor method inherited from <code>NSManagedObject</code>.
+/// \param entity A description of an entity in Core Data.
+///
+/// \param context An object space to manipulate and track changes to managed objects.
+///
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context SWIFT_UNAVAILABLE;
 @end
 
