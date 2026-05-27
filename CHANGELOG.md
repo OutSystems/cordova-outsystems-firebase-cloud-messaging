@@ -8,6 +8,10 @@ The changes documented here do not include those from the original repository.
 
 ### [2.5.7]
 
+### Features
+
+- (ios) Support for Swift Package Manager (https://outsystemsrd.atlassian.net/browse/RMET-5137)
+
 ### Fixes
 
 - (android) Avoid overwriting other plugins' `ext.postBuildExtras` Gradle configuration (https://outsystemsrd.atlassian.net/browse/RMET-5211)
