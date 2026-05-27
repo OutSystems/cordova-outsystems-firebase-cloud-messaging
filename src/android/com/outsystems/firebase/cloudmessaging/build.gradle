@@ -6,6 +6,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath 'com.google.gms:google-services:4.3.14'
     }
 }
 
@@ -32,4 +33,11 @@ dependencies {
     def roomVersion = "2.4.2"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+cdvPluginPostBuildExtras.add {
+    if (project.extensions.findByName('googleServices') == null) {
+        apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
+        googleServices.disableVersionCheck = true
+    }
 }
