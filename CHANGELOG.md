@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The changes documented here do not include those from the original repository.
 
+## [2.6.1]
+
+### Chores
+
+- chore: update dependency to OSFirebaseMessagingLib-Android (#139)
+
 ## [2.6.0]
 
 ### Features
