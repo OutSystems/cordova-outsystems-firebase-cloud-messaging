@@ -51,8 +51,8 @@ let package = Package(
             exclude: [
                 "frameworks/OSFirebaseMessagingLib.xcframework",
                 "frameworks/OSLocalNotificationsLib.xcframework",
-                "AppDelegate+OSFirebaseCloudMessaging.h",
-                "AppDelegate+OSFirebaseCloudMessaging.m"
+                "OSFCMAppDelegateSwizzler.h",
+                "UIApplication+OSFirebaseCloudMessaging.m"
             ],
             resources: [
                 .copy("NotificationsModel.momd")

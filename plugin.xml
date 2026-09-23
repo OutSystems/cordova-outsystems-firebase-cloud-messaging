@@ -37,8 +37,8 @@
 		<!-- iOS Source Files -->
     <source-file src="src/ios/OSFCMEventExtensions.swift" />
     <source-file src="src/ios/OSFirebaseCloudMessaging.swift" />
-    <header-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.h" />
-    <source-file src="src/ios/AppDelegate+OSFirebaseCloudMessaging.m" />
+    <header-file src="src/ios/OSFCMAppDelegateSwizzler.h" />
+    <source-file src="src/ios/UIApplication+OSFirebaseCloudMessaging.m" />
 
     <framework src="src/ios/frameworks/OSFirebaseMessagingLib.xcframework" embed="false" custom="true" />
     <framework src="src/ios/frameworks/OSLocalNotificationsLib.xcframework" embed="true" custom="true" />

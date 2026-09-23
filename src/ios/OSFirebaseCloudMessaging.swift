@@ -1,6 +1,9 @@
 #if canImport(Cordova)
 import Cordova
 #endif
+#if SWIFT_PACKAGE
+import OSCloudMessagingObjectiveC
+#endif
 
 import Foundation
 import OSFirebaseMessagingLib
@@ -20,6 +23,9 @@ class OSFirebaseCloudMessaging: CDVPlugin {
         // it up on first access (static let model is lazily initialised).
         CoreDataManager.resourceBundle = Bundle.module
         #endif
+        // Forces the linker to keep UIApplication+OSFirebaseCloudMessaging.m's +load-based
+        // AppDelegate swizzling in the binary - see OSFCMAppDelegateSwizzler.h for why.
+        OSFCMAppDelegateSwizzler.activate()
         self.plugin = FirebaseMessagingController()
         self.firebaseAppDelegate.eventDelegate = self
     }
