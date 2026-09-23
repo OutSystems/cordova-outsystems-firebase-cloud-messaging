@@ -273,15 +273,25 @@ private extension OSFirebaseCloudMessaging {
     }
 
     func sendSuccess(result: String? = nil, callbackId: String) {
-        let pluginResult = CDVPluginResult(status: .ok, messageAs: result)
+        // CDVPluginResult's initializer is failable on Cordova iOS 8+ and no longer accepts an
+        // optional String directly for messageAs: - branch and explicitly type as optional so
+        // this compiles against both Cordova iOS 7 (non-failable) and 8 (failable).
+        let pluginResult: CDVPluginResult?
+        if let result {
+            pluginResult = CDVPluginResult(status: .ok, messageAs: result)
+        } else {
+            pluginResult = CDVPluginResult(status: .ok)
+        }
+        guard let pluginResult else { return }
         self.commandDelegate.send(pluginResult, callbackId: callbackId)
     }
-    
+
     func send(error: FirebaseMessagingErrors, callbackId: String) {
-        let pluginResult = CDVPluginResult(status: .error, messageAs: [
+        let pluginResult: CDVPluginResult? = CDVPluginResult(status: .error, messageAs: [
             "code": "OS-PLUG-FCMS-\(String(format: "%04d", error.rawValue))",
             "message": error.description
         ])
+        guard let pluginResult else { return }
         self.commandDelegate.send(pluginResult, callbackId: callbackId)
     }
     
