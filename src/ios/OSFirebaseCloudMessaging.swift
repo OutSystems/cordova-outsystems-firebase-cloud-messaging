@@ -22,10 +22,16 @@ class OSFirebaseCloudMessaging: CDVPlugin {
         // Set resourceBundle before FirebaseMessagingController is created so CoreData picks
         // it up on first access (static let model is lazily initialised).
         CoreDataManager.resourceBundle = Bundle.module
-        #endif
+
         // Forces the linker to keep UIApplication+OSFirebaseCloudMessaging.m's +load-based
-        // AppDelegate swizzling in the binary - see OSFCMAppDelegateSwizzler.h for why.
+        // AppDelegate swizzling in the binary when statically linked via SPM - see
+        // OSFCMAppDelegateSwizzler.h for why. Classic Cordova compilation links this file
+        // straight into the app executable (no static-archive pruning), so +load always
+        // fires there regardless; OSFCMAppDelegateSwizzler is also only visible here because
+        // this branch imports OSCloudMessagingObjectiveC as a proper module - the classic
+        // Cordova target has no bridging header for it.
         OSFCMAppDelegateSwizzler.activate()
+        #endif
         self.plugin = FirebaseMessagingController()
         self.firebaseAppDelegate.eventDelegate = self
     }
