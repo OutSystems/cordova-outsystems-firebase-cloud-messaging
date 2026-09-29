@@ -55,8 +55,11 @@ static NSDictionary *OSFCMFixSoundPath(NSDictionary *userInfo) {
         return userInfo;
     }
 
-    // Cordova ships web assets under "www/", Capacitor under "public/".
-    NSString *webAssetsFolder = NSClassFromString(@"Capacitor.CAPBridge") ? @"public/" : @"www/";
+    // Cordova ships web assets under "www/", Capacitor under "public/". Capacitor 9 renamed its
+    // bridge class from CAPBridge to CapacitorBridge, so both are checked to detect Capacitor
+    // regardless of version.
+    BOOL isCapacitor = NSClassFromString(@"Capacitor.CAPBridge") != nil || NSClassFromString(@"Capacitor.CapacitorBridge") != nil;
+    NSString *webAssetsFolder = isCapacitor ? @"public/" : @"www/";
 
     NSString *sound = notificationDict[@"sound"];
     if ([sound isKindOfClass:[NSString class]] && ![sound hasPrefix:webAssetsFolder]) {
