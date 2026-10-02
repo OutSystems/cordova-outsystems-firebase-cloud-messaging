@@ -20,8 +20,14 @@ module.exports = function (context) {
 
         let platformPath = path.join(projectRoot, 'platforms/ios');
 
-        //Change info.plist
-        let infoPlistPath = path.join(platformPath, appName + '/'+ appName +'-info.plist');
+        // Cordova iOS 8 uses a fixed 'App' project folder/name regardless of the app's
+        // display name; earlier versions named it after the app.
+        if (fs.existsSync(path.join(platformPath, 'App'))) {
+            appName = 'App';
+        }
+
+        //Change Info.plist
+        let infoPlistPath = path.join(platformPath, appName, appName + '-Info.plist');
         let infoPlistFile = fs.readFileSync(infoPlistPath, 'utf8');
         var infoPlist = plist.parse(infoPlistFile);
 

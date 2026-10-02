@@ -72,21 +72,17 @@ function getPlatformSoundPath(context, platformConfig){
   return  path.join(projectRoot, platformConfig.getWWWFolder());
 }
 
-function isCordovaAbove(context, version) {
-  let cordovaVersion = context.opts.cordova.version;
-  let sp = cordovaVersion.split('.');
-  return parseInt(sp[0]) >= version;
-}
-
-function copyFromSourceToDestPath(defer, sourcePath, destPath) {
-  fs.createReadStream(sourcePath).pipe(fs.createWriteStream(destPath))
-  .on("close", function () {
-    console.log(`Finished copying ${sourcePath}.`);
-    defer.resolve();
-  })
-  .on("error", function (err) {
-    console.log(err);
-    throw new Error (`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when trying to copy sounds files. Please check the logs for more information.`);
+function copyFromSourceToDestPath(sourcePath, destPath) {
+  return new Promise(function (resolve, reject) {
+    fs.createReadStream(sourcePath).pipe(fs.createWriteStream(destPath))
+    .on("close", function () {
+      console.log(`Finished copying ${sourcePath}.`);
+      resolve();
+    })
+    .on("error", function (err) {
+      console.log(err);
+      reject(new Error(`OUTSYSTEMS_PLUGIN_ERROR: Something went wrong when trying to copy sounds files. Please check the logs for more information.`));
+    });
   });
 }
 
@@ -101,7 +97,6 @@ function getAppName(context) {
 }
 
 module.exports = {
-  isCordovaAbove,
   getPlatformConfigs,
   copyFromSourceToDestPath,
   getFilesFromPath,

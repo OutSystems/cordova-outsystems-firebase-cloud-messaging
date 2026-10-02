@@ -8,14 +8,6 @@ var constants = {
 };
 
 module.exports = function(context) {
-  let cordovaAbove8 = utils.isCordovaAbove(context, 8);
-  let defer;
-  if (cordovaAbove8) {
-    defer = require("q").defer();
-  } else {
-    defer = context.requireCordovaModule("q").defer();
-  }
-
   let platform = context.opts.platforms[0];
   let platformConfig = utils.getPlatformConfigs(platform);
 

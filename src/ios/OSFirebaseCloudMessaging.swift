@@ -1,6 +1,9 @@
 #if canImport(Cordova)
 import Cordova
 #endif
+#if SWIFT_PACKAGE
+import OSCloudMessagingObjectiveC
+#endif
 
 import Foundation
 import OSFirebaseMessagingLib
@@ -19,6 +22,15 @@ class OSFirebaseCloudMessaging: CDVPlugin {
         // Set resourceBundle before FirebaseMessagingController is created so CoreData picks
         // it up on first access (static let model is lazily initialised).
         CoreDataManager.resourceBundle = Bundle.module
+
+        // Forces the linker to keep UIApplication+OSFirebaseCloudMessaging.m's +load-based
+        // AppDelegate swizzling in the binary when statically linked via SPM - see
+        // OSFCMAppDelegateSwizzler.h for why. Classic Cordova compilation links this file
+        // straight into the app executable (no static-archive pruning), so +load always
+        // fires there regardless; OSFCMAppDelegateSwizzler is also only visible here because
+        // this branch imports OSCloudMessagingObjectiveC as a proper module - the classic
+        // Cordova target has no bridging header for it.
+        OSFCMAppDelegateSwizzler.activate()
         #endif
         self.plugin = FirebaseMessagingController()
         self.firebaseAppDelegate.eventDelegate = self
@@ -267,15 +279,25 @@ private extension OSFirebaseCloudMessaging {
     }
 
     func sendSuccess(result: String? = nil, callbackId: String) {
-        let pluginResult = CDVPluginResult(status: .ok, messageAs: result)
+        // CDVPluginResult's initializer is failable on Cordova iOS 8+ and no longer accepts an
+        // optional String directly for messageAs: - branch and explicitly type as optional so
+        // this compiles against both Cordova iOS 7 (non-failable) and 8 (failable).
+        let pluginResult: CDVPluginResult?
+        if let result {
+            pluginResult = CDVPluginResult(status: .ok, messageAs: result)
+        } else {
+            pluginResult = CDVPluginResult(status: .ok)
+        }
+        guard let pluginResult else { return }
         self.commandDelegate.send(pluginResult, callbackId: callbackId)
     }
-    
+
     func send(error: FirebaseMessagingErrors, callbackId: String) {
-        let pluginResult = CDVPluginResult(status: .error, messageAs: [
+        let pluginResult: CDVPluginResult? = CDVPluginResult(status: .error, messageAs: [
             "code": "OS-PLUG-FCMS-\(String(format: "%04d", error.rawValue))",
             "message": error.description
         ])
+        guard let pluginResult else { return }
         self.commandDelegate.send(pluginResult, callbackId: callbackId)
     }
     
