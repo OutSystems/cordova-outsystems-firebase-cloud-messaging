@@ -78,6 +78,7 @@
     <source-file src="src/android/com/outsystems/firebase/cloudmessaging/OSFCMPermissionEvents.kt" target-dir="app/src/main/kotlin/com/outsystems/firebase/cloudmessaging"/>
     <source-file src="src/android/com/outsystems/firebase/cloudmessaging/OSFirebaseCloudMessaging.kt" target-dir="app/src/main/kotlin/com/outsystems/firebase/cloudmessaging"/>
     <framework src="src/android/com/outsystems/firebase/cloudmessaging/build.gradle" custom="true" type="gradleReference" />
+    <resource-file src="src/android/res/raw/outsystems_firebase_cloud_messaging_keep.xml" target="res/raw/outsystems_firebase_cloud_messaging_keep.xml" />
 
   </platform>
   
