@@ -1,0 +1,1 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/notification_channel_name,@string/notification_channel_description" />
